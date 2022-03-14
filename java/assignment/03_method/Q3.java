@@ -24,8 +24,12 @@ public class Q3 {
 	
 	public static void digit(int num) {
 		
-		String zero = num < 10 ? "000" : num < 100 ? "00" : num < 1000 ? "0" : "";
-		System.out.println(zero + num);
+		// 문제 조건에 맞게 수정
+		// String zero = num < 10 ? "000" : num < 100 ? "00" : num < 1000 ? "0" : "";
+		// System.out.printf("%d -> %s\n", num, zero + num);
+		
+		System.out.printf("%d -> %04d\n", num, num);
+		
 	}
 
 }

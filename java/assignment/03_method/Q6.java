@@ -28,17 +28,20 @@ public class Q6 {
 		System.out.print("수학 : ");
 		int mathScore = Integer.parseInt(reader.readLine());
 		
-		test(korScore, engScore, mathScore);
+		System.out.println(test(korScore, engScore, mathScore));
 		
 	}
 
-	public static void test(int kor, int eng, int math) {
+	public static String test(int kor, int eng, int math) {
 		
 		int averageScore = (kor + eng + math) / 3;
+		
 		String fail = "불합격입니다.";
 		String pass = "합격입니다.";
 		
-		String res = averageScore <= 60 ? fail : kor < 40 ? fail : eng < 40 ? fail : math < 40 ? fail : pass; 
-		System.out.println(res);
+		// 조건 수정
+		// 삼항 연산자 조건식 묶어서 사용하는 것이 가독성 측면에서 좋고, 연산식이 짧아짐
+		String res = averageScore < 60 ? fail : (kor < 40 || eng < 40 || math < 40) ? fail : pass; 
+		return res;
 	}
 }

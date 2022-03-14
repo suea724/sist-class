@@ -35,6 +35,8 @@ public class Q7 {
 	public static int getTime(int station, int change, int time) {
 		
 		int travelTime = station * 2;
+		
+		// null로 반환 시 메인 메서드 출력하면 에러 발생. 오류 메세지를 출력하면서 값을 다시 받을 수 있는 방법을 생각해볼것 
 		int transferTime = (time == 1) ? 3 : (time == 2) ? 4 : (time == 3) ? 5 : null;
 		
 		return travelTime + (transferTime * change);
