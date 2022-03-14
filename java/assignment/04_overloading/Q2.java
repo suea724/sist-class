@@ -13,27 +13,28 @@ public class Q2 {
 
 	}
 	
-	public static void position(String employee1) {
+	// employee1, employee2, ... 보다는 각 직급을 나타낼 수 있는 단어로 나타내는 것이 각 변수의 역할을 명확히 구분하기에 좋다. 
+	public static void position(String staff) {
 		
-		System.out.printf("사원 : %s\n", employee1);
+		System.out.printf("사원 : %s\n", staff);
 		System.out.println();
 	}
 	
-	public static void position(String employee1, String employee2) {
+	public static void position(String staff, String assistManager) {
 		
-		System.out.printf("사원 : %s\n대리 : %s\n", employee1, employee2);
+		System.out.printf("사원 : %s\n대리 : %s\n", staff, assistManager);
 		System.out.println();
 	}
 	
-	public static void position(String employee1, String employee2, String employee3) {
+	public static void position(String staff, String assistManager, String deptManager) {
 		
-		System.out.printf("사원 : %s\n대리 : %s\n과장 : %s\n", employee1, employee2, employee3);
+		System.out.printf("사원 : %s\n대리 : %s\n과장 : %s\n", staff, assistManager, deptManager);
 		System.out.println();
 	}
 	
-	public static void position(String employee1, String employee2, String employee3, String employee4) {
+	public static void position(String staff, String assistManager, String deptManager, String executiveManager) {
 		
-		System.out.printf("사원 : %s\n대리 : %s\n과장 : %s\n부장 : %s\n", employee1, employee2, employee3, employee4);
+		System.out.printf("사원 : %s\n대리 : %s\n과장 : %s\n부장 : %s\n", staff, assistManager, deptManager, executiveManager);
 		System.out.println();
 	}
 

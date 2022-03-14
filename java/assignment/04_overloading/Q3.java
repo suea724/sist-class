@@ -30,44 +30,51 @@ public class Q3 {
 		System.out.printf("양수 : %d개\n", count);
 	}
 	
+	// 양수의 개수를 입력받는 변수를 각각 선언하면 선언해야 할 변수의 양도 많아지고 차지하는 메모리도 많아진다.
+	// count 변수를 하나 선언하고 할당 연산자(+=)를 사용하면 코드도 간결해지고 변수 양도 줄어든다.
 	public static int positive(int num1) {
 		
-		int isNum1Positive = num1 > 0 ? 1 : 0;
-		return isNum1Positive;
+		int count = 0;
+		count += num1 > 0 ? 1 : 0;
+		return count;
 	}
 	
 	public static int positive(int num1, int num2) {
 		
-		int isNum1Positive = num1 > 0 ? 1 : 0;
-		int isNum2Positive = num2 > 0 ? 1 : 0;
-		return isNum1Positive + isNum2Positive;
+		int count = 0;
+		count += num1 > 0 ? 1 : 0;
+		count += num2 > 0 ? 1 : 0;
+		return count;
 	}
 	
 	public static int positive(int num1, int num2, int num3) {
 		
-		int isNum1Positive = num1 > 0 ? 1 : 0;
-		int isNum2Positive = num2 > 0 ? 1 : 0;
-		int isNum3Positive = num3 > 0 ? 1 : 0;
-		return isNum1Positive + isNum2Positive + isNum3Positive;
+		int count = 0;
+		count += num1 > 0 ? 1 : 0;
+		count += num2 > 0 ? 1 : 0;
+		count += num3 > 0 ? 1 : 0;
+		return count;
 	}
 	
 	public static int positive(int num1, int num2, int num3, int num4) {
 		
-		int isNum1Positive = num1 > 0 ? 1 : 0;
-		int isNum2Positive = num2 > 0 ? 1 : 0;
-		int isNum3Positive = num3 > 0 ? 1 : 0;
-		int isNum4Positive = num4 > 0 ? 1 : 0;
-		return isNum1Positive + isNum2Positive + isNum3Positive + isNum4Positive;
+		int count = 0;
+		count += num1 > 0 ? 1 : 0;
+		count += num2 > 0 ? 1 : 0;
+		count += num3 > 0 ? 1 : 0;
+		count += num4 > 0 ? 1 : 0;
+		return count;
 	}
 	
 	public static int positive(int num1, int num2, int num3, int num4, int num5) {
 		
-		int isNum1Positive = num1 > 0 ? 1 : 0;
-		int isNum2Positive = num2 > 0 ? 1 : 0;
-		int isNum3Positive = num3 > 0 ? 1 : 0;
-		int isNum4Positive = num4 > 0 ? 1 : 0;
-		int isNum5Positive = num5 > 0 ? 1 : 0;
-		return isNum1Positive + isNum2Positive + isNum3Positive + isNum4Positive + isNum5Positive;
+		int count = 0;
+		count += num1 > 0 ? 1 : 0;
+		count += num2 > 0 ? 1 : 0;
+		count += num3 > 0 ? 1 : 0;
+		count += num4 > 0 ? 1 : 0;
+		count += num5 > 0 ? 1 : 0;
+		return count;
 	}
 
 }
