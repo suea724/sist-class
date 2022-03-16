@@ -26,6 +26,9 @@ public class Q8 {
 		System.out.print("분 : ");
 		int exitMinute = Integer.parseInt(reader.readLine());
 		
+		// 팀원들은 시간의 차이를 분으로 변환하여 parkingTime에 넣었다.
+		// 하지만 그렇게 할 경우 계산은 편리하게 할 수 있지만,
+		// hourDiff에 대한 유효성 검사를 할 수 없다. (나간 시간이 들어온 시간보다 빠를 경우에 hourDiff는 음수)
 		int minDiff = exitMinute - enterMinute;
 		int hourDiff = exitHour - enterHour;
 		int parkingTime = 0;

@@ -12,9 +12,11 @@ public class Q2 {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("점수 : ");
 		int score = Integer.parseInt(reader.readLine());
-			
+		
+		// 유효성 검사 조건
 		if (score >= 0 && score <= 100) {
 			
+			// 유효성 검사 조건과 겹치는 조건은 빼주어도 무방
 			if (score >= 90) {
 				System.out.printf("입력한 %d점은 성적 %c입니다.", score, 'A');
 			} else if (score >= 80 && score <= 89) {

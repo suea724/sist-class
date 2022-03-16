@@ -15,6 +15,7 @@ public class Q5 {
 		System.out.print("연산자 : ");
 		char operator= reader.readLine().charAt(0);
 		
+		// 조건을 boolean 변수를 선언해서 설정해주면 가독성이 높고 코드 길이가 짧다.
 		boolean isAsterisk = (operator ==  '*');
 		boolean isSlash = (operator ==  '/');
 		boolean isPlus = (operator ==  '+');

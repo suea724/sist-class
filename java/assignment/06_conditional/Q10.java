@@ -28,6 +28,10 @@ public class Q10 {
 			System.out.println("입력하신 날짜는 \'평일\'입니다.");
 			System.out.println("해당 주의 토요일로 이동합니다.");
 			
+			// 토요일로 이동하는 연산식 세 종류
+			// 1. if문을 사용해서 각 요일 별로 조건을 두어 add 함수를 사용해서 이동한다.
+			// 2. if문을 사용하지 않고, (7 - 입력받은 날짜의 요일)을 더해준다.
+			// 3. Calendar의 set 함수를 사용하여 바로 그 주의 토요일로 이동한다.
 			cal.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
 			System.out.printf("이동한 날짜는 \'%tF\'입니다.", cal);
 		
