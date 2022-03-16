@@ -1,4 +1,4 @@
-package com.test.java.datetime;
+package com.test.java.question.datetime;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -19,6 +19,11 @@ public class Q6 {
 		
 		System.out.print("분 : ");
 		int min = Integer.parseInt(reader.readLine());
+		
+		// Calendar 클래스의 add 함수를 사용할 수 있다.
+		// Calendar 사용 시 계산은 편리하게 할 수 있지만 코드가 길다.
+		// int 변수 사용 시 계산은 복잡하지만 코드가 짧다.
+		// 내 코드에서는 hour가 음수가 될 가능성이 있기 때문에 hour에 대한 유효성 검사를 추가해줘야 한다.
 		
 		System.out.printf("짜장면 : %d시 %d분\n", min - 10 < 0 ? hour - 1 : hour, min - 10 < 0 ? (min - 10) + 60 : min - 10);
 		System.out.printf("치킨 : %d시 %d분\n", min - 18 < 0 ? hour - 1 : hour, min - 18 < 0 ? (min - 18) + 60 : min - 18);

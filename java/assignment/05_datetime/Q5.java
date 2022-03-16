@@ -1,4 +1,4 @@
-package com.test.java.datetime;
+package com.test.java.question.datetime;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -32,7 +32,9 @@ public class Q5 {
 		
 		long dBirthDayTick = dBirthDay.getTimeInMillis();
 		long fBirthDayTick = fBirthDay.getTimeInMillis();
+		
 		long birthDiff = (dBirthDayTick - fBirthDayTick) / 1000 / 60 / 60 / 24;
+		
 		System.out.printf("아빠는 딸보다 총 %,d일을 더 살았습니다.", birthDiff);
 	}
 
