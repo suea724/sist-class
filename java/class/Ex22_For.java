@@ -18,16 +18,16 @@ public class Ex22_For {
 		// m8();
 		// m9();
 		// m10();
-		m11();
+		 m11();
 	}
 
 	private static void m11() {
-		
-		for (int i = 0 ; i < 10 ; i++) {
+
+		for (int i = 0; i < 10; i++) {
 			// 곱한 수는 나올 수 있는 (최소값 + 최댓값 + 1)
 			// 더한 값은 최소값
 			// 3 ~ 9사이의 난수값
-			int num = (int)(Math.random() * 7) + 3;
+			int num = (int) (Math.random() * 7) + 3;
 			System.out.println(num);
 		}
 	}
@@ -38,7 +38,7 @@ public class Ex22_For {
 		cal.set(2020, 1, 1);
 
 		int lastDay = cal.getActualMaximum(Calendar.DATE);
-		
+
 		for (int i = 1; i <= lastDay; i++) {
 			System.out.printf("%d년 %d월 %d일\n", cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1,
 					cal.get(Calendar.DATE));
