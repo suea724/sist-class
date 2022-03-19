@@ -1,4 +1,4 @@
-package com.test.java.question.loop;
+package com.test.java.question.forloop;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -30,7 +30,9 @@ public class Q5 {
 			sum += i;
 			
 			// lastNum이면 반복문 탈출
+			// 마지막 숫자이면 뒤에 "+" 연산자 대신 "=" 연산자 문자열 더함
 			if (i == lastNum) {
+				str += i + " = ";
 				break;
 			}
 			
@@ -39,8 +41,8 @@ public class Q5 {
 			
 		}
 		
-		// 반복문 빠져나오면 결과 문자열 더해서 출력
-		System.out.printf(str + "%d = %d", lastNum, sum);
+		// 반복문 빠져나오면 합 문자열 더해서 출력
+		System.out.printf(str + "%d", sum);
 		
 	}
 

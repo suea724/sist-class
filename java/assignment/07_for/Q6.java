@@ -1,4 +1,4 @@
-package com.test.java.question.loop;
+package com.test.java.question.forloop;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -23,32 +23,38 @@ public class Q6 {
 		
 		// 빈 문자열 선언
 		String str = "";
+		int flag = 1;
 		
 		// 반복문
 		for (int i = firstNum ; i <= lastNum ; i ++) {
 			
 			// 마지막 숫자일 때 반복문 탈출. 아래 조건 검사 X
 			if (i == lastNum) {
+				
+				// 마지막 숫자일때 홀수번째 숫자이면 lastNum을 더하고 짝수일때는 뺌
+				sum += (flag == 1) ? lastNum : -lastNum ;
+				str += i + " = ";
 				break;
 			}
 			
-			// 짝수번째 숫자일 때 -1을 곱해 음수로 만들고 sum에 더함. 숫자와 마이너스 기호 문자열 연산
-			if (i % 2 != 0) {
-				
-				sum += (-1) * i;
-				str += i + " - ";
-			
-			// 홀수번째 숫자일 때 i를 sum에 더함. 숫자와 플러스 기호 문자열 연산
-			} else {
+			// 홀수번째 숫자일 때
+			if (flag == 1) {
 				
 				sum += i;
+				str += i + " - ";
+				
+			} else { // 짝수번째 숫자일 때
+				
+				sum -= i;
 				str += i + " + ";
 			}
 			
+			flag *= -1;
+			
 		}
-		
+			
 		// 반복문 빠져나오면 결과 문자열 더해서 출력
-		System.out.printf(str + "%d = %d", lastNum, sum);
+		System.out.printf(str + "%d", sum);
 		
 	}
 

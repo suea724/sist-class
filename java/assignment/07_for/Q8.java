@@ -1,4 +1,4 @@
-package com.test.java.question.loop;
+package com.test.java.question.forloop;
 
 public class Q8 {
 	
@@ -6,7 +6,15 @@ public class Q8 {
 
 	public static void main(String[] args) {
 		
-		System.out.printf("%d년 %d월 %d일은 %,d일째 되는 날이고 %s요일입니다.",2022, 3, 16, calcDays(2022,3,16), getDay(16));
+		// 년, 월, 일을 변수로 빼면 유지보수시 편리
+		int year = 2022;
+		int month = 3;
+		int date = 19;
+		
+		String day = getDay(year, month, date);
+		int total = calcDays(year, month, date);
+		
+		System.out.printf("%d년 %d월 %d일은 %,d일째 되는 날이고 %s요일입니다.",year, month, date, total, day);
 		
 	}
 
@@ -15,30 +23,20 @@ public class Q8 {
 		
 		int dayCount = 0;
 		
-		// 1년 1월 1일 ~ 2022년 1월 1일 (윤년 계산)
-		for (int i = 1 ; i < year ; i ++) {
+		// 2021년 12월 31일까지
+		for (int i = 1 ; i < year ; i++) {
 			
-			if (i % 4 == 0) {
-				
-				if (i % 100 == 0) {
-					
-					if (i % 400 == 0) {
-						dayCount += 366;
-					} else {
-						dayCount += 365;
-					}
-				} else {
-					dayCount += 366;
-				}
+			if (isLeapYear(i)) {
+				dayCount += 366;
 			} else {
 				dayCount += 365;
 			}
 		}
 		
-		// 1월 1일 ~ 2월 28일까지 일의 간격
-		for (int i = 0 ; i < month - 1 ; i ++ ) {
+		// 2월까지 일수
+		for (int i = 1 ; i < month ; i ++ ) {
 			
-			switch (month) {
+			switch (i) {
 				case 1:
 				case 3:
 				case 5:
@@ -46,44 +44,67 @@ public class Q8 {
 				case 8:
 				case 10:
 				case 12:
-					dayCount += 30;
+					dayCount += 31;
 					break;
 				case 2:
-					dayCount += 27;
+					dayCount += (isLeapYear(year)) ? 29 : 28;
 					break;
 				case 4:
 				case 6:
 				case 9:
 				case 11:
-					dayCount += 29;
+					dayCount += 30;
 					break;
 				
 			}
 		}
 		
-		// 1일 ~ 16일까지 일의 간격
-		dayCount += date - 1;
+		// 일수
+		dayCount += date;
 		
 		return dayCount;
 	}
 	
 	// 요일 구하는 함수
-	public static String getDay(int date) {
+	public static String getDay(int year, int month, int date) {
 		
-		if (date % 7 == 0) {
+		int dayCount = calcDays(year, month, date);
+		
+		if (dayCount % 7 == 1) {
 			return "월";
-		} else if (date % 7 == 1) {
+		} else if (dayCount % 7 == 2) {
 			return "화"; 
-		} else if (date % 7 == 2) {
+		} else if (dayCount % 7 == 3) {
 			return "수";
-		} else if (date % 7 == 3) {
+		} else if (dayCount % 7 == 4) {
 			return "목";
-		} else if (date % 7 == 4) {
+		} else if (dayCount % 7 == 5) {
 			return "금";
-		} else if (date % 7 == 5) {
+		} else if (dayCount % 7 == 6) {
 			return "토";
 		} 
 		return "일";
 	}
+	
+	// 윤년 조건문
+	public static boolean isLeapYear(int year) {
+		
+			if (year % 4 == 0) {
+				
+				if (year % 100 == 0) {
+					
+					if (year % 400 == 0) {
+						return true;
+					} else {
+						return false;
+					}
+				} else {
+					return true;
+				}
+			} else {
+				return false;
+			}
+		}
+	
 }
 	

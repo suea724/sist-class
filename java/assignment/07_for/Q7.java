@@ -1,4 +1,4 @@
-package com.test.java.question.loop;
+package com.test.java.question.forloop;
 
 public class Q7 {
 	
