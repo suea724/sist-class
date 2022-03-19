@@ -22,8 +22,6 @@ public class Q5 {
 		forBendingMachine();
 	}
 		
-
-	
 	public static void whileBendingMachine() throws Exception{
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -65,7 +63,8 @@ public class Q5 {
 			}
 			
 			System.out.println("계속하시려면 엔터를 입력하세요.");
-			reader.readLine();
+			reader.readLine(); // readLine 사용시 엔터 외에 다른 문자와 함께 엔터가 입력되면 종료
+			// 엔터만 입력받고 싶으면 문자열로 입력받아서 빈 문자열일때만 종료하도록 해야함
 		}
 	}
 	

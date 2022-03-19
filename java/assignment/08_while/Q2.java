@@ -54,18 +54,18 @@ public class Q2 {
 					case 8:
 						str += "팔";
 						break;
-					case 9:
+					default:
 						str += "구";
 						
 				}
 				
 				loopNum++;
 			
-			// 1~9의 값이 아니면	loopNum 그대로
+			// 1~9의 값이 아니면 loopNum 그대로
 			} else {
 				
 				System.out.println("1~9 사이의 숫자를 입력해주세요.");
-				continue; // while문 조건으로 돌아감
+				continue; // while문 조건으로 다시감
 			}
 			
 		}

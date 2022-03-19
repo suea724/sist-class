@@ -25,14 +25,20 @@ public class Q4 {
 			// 9자리 미만의 숫자가 들어오면 나머지 자리는 0
 			// 각각 x.xxx 형태의 double로 만들어서 int로 변환 (소수점 버림)
 			int digit = (int) (inputNum % Math.pow(10, num) * Math.pow(10, 1 - num));
+			// System.out.println(digit);
+
+			// 팀원중 자릿수를 이렇게 구한 분도 계셨음
+			// Math.pow를 하나만 써서 비교적 식이 짧음
+			// 두 자릿수를 구하는 식 모두 몇 자리 수가 들어와도 9자리를 모두 검사하기 때문에 성능에 차이는 없는 것 같다.
+			// int digit = inputNum / (int)Math.pow(10, num-1) % 10;
 			System.out.println(digit);
 
-			 if (digit % 2 == 0) {
-			 evenSum += digit;
-			 } else {
-			 oddSum += digit ;
-			 }
-			
+			if (digit % 2 == 0) {
+				evenSum += digit;
+			} else {
+				oddSum += digit;
+			}
+
 			num++;
 		}
 

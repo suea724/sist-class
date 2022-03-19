@@ -35,26 +35,25 @@ public class Q1 {
 			System.out.print("숫자 입력: ");
 			int inputNum = Integer.parseInt(reader.readLine());
 			
-			// 첫번째 숫자일 때
-			if (sum == 0) {
-				sum += inputNum;
-				str += inputNum;
+			// 짝수일 때
+			if (inputNum % 2 == 0) {
 				
-			} else {
-				
-				// 짝수일 때
-				if (inputNum % 2 == 0) {
+				// 짝수일때 첫번째 숫자이면 문자열 연산 생략
+				if (sum == 0) {
 					sum += inputNum;
-					str += " + " + inputNum;
-					
-				// 홀수일 때	
-				} else {
-					sum -= inputNum;
-					str += " - " + inputNum;
+					str += inputNum;
+					continue;
 				}
 				
+				sum += inputNum;
+				str += " + " + inputNum;
+				
+			// 홀수일 때	
+			} else {
+				sum -= inputNum;
+				str += " - " + inputNum;
 			}
-			
+				
 		}
 		
 		System.out.printf(str + " = %d", sum);
@@ -72,21 +71,23 @@ public class Q1 {
 			System.out.print("숫자 입력: ");
 			int inputNum = Integer.parseInt(reader.readLine());
 			
-			if (sum == 0) {
-				sum += inputNum;
-				str += inputNum;
-			} else {
+			// 짝수일 때
+			if (inputNum % 2 == 0) {
 				
-				// 짝수일 때
-				if (inputNum % 2 == 0) {
+				// 짝수일때 첫번째 숫자이면 문자열 연산 생략
+				if (sum == 0) {
 					sum += inputNum;
-					str += " + " + inputNum;
-				// 홀수일 때	
-				} else {
-					sum -= inputNum;
-					str += " - " + inputNum;
+					str += inputNum;
+					continue;
 				}
 				
+				sum += inputNum;
+				str += " + " + inputNum;
+				
+			// 홀수일 때	
+			} else {
+				sum -= inputNum;
+				str += " - " + inputNum;
 			}
 			
 			if (sum > 100) {
