@@ -42,6 +42,7 @@ public class Q8 {
 				}
 				
 			}
+			
 		}
 		System.out.println(str);
 	}
@@ -50,19 +51,20 @@ public class Q8 {
 	private static void getCommonDivisor(int num1, int num2) {
 		
 		String str = String.format("%d와 %d의 공약수: ", num1, num2);
+		int smaller = (num1 < num2) ? num1 : num2;
 		
-		// 조건은 어느 숫자가 들어와도 상관 없음
-		for (int i = 1 ; i <= num1 ; i ++) {
+		// 공약수는 둘 중 작은 수 범위에 속함
+		for (int i = 1 ; i <= smaller ; i ++) {
 			
 			// 두 숫자로 나누어 떨어지면 문자열 추가
 			if (num1 % i == 0 && num2 % i == 0) {
 				
-					str += i + ", ";
+				str += i + ", ";
 			}
 			
 		}
 		
-		System.out.println(str);
+		System.out.println(str + "\b\b");
 			
 	}			
 }
