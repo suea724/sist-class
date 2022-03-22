@@ -103,21 +103,6 @@ public class Ex27_Array {
 
 		// 버블 정렬
 		int[] nums = {5, 3, 1, 4, 2};
-		// int temp;
-		//
-		// for (int i = 0 ; i < nums.length - 1 ; i ++) {
-		// for (int j = 1 ; j < i; j ++) {
-		// if (nums[i] > nums[j]) {
-		// temp = nums[i];
-		// nums[i] = nums[j];
-		// nums[j] = temp;
-		//
-		// }
-		// }
-		// }
-		//
-		// System.out.println(Arrays.toString(nums));
-
 		int temp;
 
 		// (갯수 - 1)번의 과정 필요
