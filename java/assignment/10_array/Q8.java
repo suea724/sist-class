@@ -9,7 +9,7 @@ public class Q8 {
 
 	public static void main(String[] args) throws Exception {
 
-		 int[] arr = {5, 6, 1, 3, 2, 8, 7, 4, 10, 9};
+		int[] arr = {5, 6, 1, 3, 2, 8, 7, 4, 10, 9};
 //		int[] arr = {5, 6, 1, 3, 2, 0, 0, 0, 0, 0};
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -21,14 +21,17 @@ public class Q8 {
 
 	}
 
+	/**
+	 * shift 하는 방법이 흔한 방법이지만, 삭제할 위치부터의 값을 복사하여 다른 배열에 복사해놓고 입력하는 방법도 있다!
+	 */
 	public static int[] deleteElementArr(int[] arr, int index) {
 
-		// 마지막 원소에서부터 값이 들어갈 자리 바로 뒤까지 앞 값을 자기 자리에 넣음
-		for (int i = index ; i < arr.length - 1; i ++) {
+		// 마지막 원소 바로 앞부터 값이 제거될 자리까지 뒤 값을 앞자리에 넣음 (left shift)
+		for (int i = index ; i < arr.length-1; i ++) {
 			
 			arr[i] = arr[i+1];
 			
-			// 마지막 바로 앞 요소이면 다음 값에 0
+			// 마지막 바로 앞 요소면 다음 값에 0 -> 그냥 마지막 요소에 0으로 초기화해주면 됨
 			if(i == arr.length - 2) {
 				arr[i+1] = 0;
 			}

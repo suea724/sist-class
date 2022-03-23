@@ -24,7 +24,7 @@ public class Q4 {
 		
 		System.out.println(result);
 		// 배열 정렬
-		bubbleSortArr(randArr);
+		bubbleSort(randArr);
 		
 		// 맨 앞에 있는 수는 최솟값, 맨 뒤에 있는 수는 최댓값
 		System.out.printf("최댓값: %d\n", randArr[randArr.length-1]);
@@ -33,7 +33,7 @@ public class Q4 {
 	}
 	
 	// 오름차순 버블 정렬
-	public static int[] bubbleSortArr(int[] arr) {
+	public static int[] bubbleSort(int[] arr) {
 		
 		for (int i = 0 ; i < arr.length-1 ; i ++) {
 			

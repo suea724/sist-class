@@ -9,8 +9,8 @@ public class Q7 {
 
 	public static void main(String[] args) throws Exception {
 
-		// int[] arr = {5, 6, 1, 3, 2, 8, 7, 4, 10, 9};
-		int[] arr = {5, 6, 1, 3, 2, 0, 0, 0, 0, 0};
+		int[] arr = {5, 6, 1, 3, 2, 8, 7, 4, 10, 9};
+//		int[] arr = {5, 6, 1, 3, 2, 0, 0, 0, 0, 0};
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("삽입 위치: ");
@@ -19,15 +19,17 @@ public class Q7 {
 		int value = Integer.parseInt(reader.readLine());
 
 		System.out.println("원본: " + dump(arr));
-		System.out.println("결과: " + dump(insertElementArr(arr, index, value)));
+		System.out.println("결과: " + dump(insertElement(arr, index, value)));
 
 	}
 
-	public static int[] insertElementArr(int[] arr, int index, int value) {
+	/**
+	 * shift 하는 방법이 흔한 방법이지만, 삽입할 위치부터의 값을 복사하여 다른 배열에 복사해놓고 입력하는 방법도 있다!
+	 */
+	public static int[] insertElement(int[] arr, int index, int value) {
 
-		// 마지막 원소에서부터 값이 들어갈 자리 바로 뒤까지 앞 값을 자기 자리에 넣음
-		for (int i = arr.length - 1; i > index; i--) {
-
+		// 마지막 원소에서부터 값이 들어갈 자리 바로 뒤까지 앞 값을 자기 자리에 넣음 (right shift)
+		for (int i = arr.length - 1; i > index; i --) {
 			arr[i] = arr[i-1];
 		}
 		// 값 넣기

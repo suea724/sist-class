@@ -13,20 +13,20 @@ public class Q9 {
 		System.out.print("배열 길이: ");
 		int length = Integer.parseInt(reader.readLine());
 
-		int[] randomArr = getRandomArr(length);
+		int[] randomArr = randomArr(length);
 		
 		System.out.println("원본: " + dump(randomArr));
-		System.out.println("결과: " + dump(getSumArr(randomArr)));
+		System.out.println("결과: " + dump(sumArr(randomArr)));
 		
 	}
 
-	// 길이를 입력받아 난수 배열 반환하는 함수
-	public static int[] getRandomArr(int length) {
+	// 길이를 입력받아 난수 배열 반환하는 함수 (원본 배열)
+	public static int[] randomArr(int length) {
 
 		int[] arr = new int[length];
 		
 		for (int i = 0 ; i < arr.length ; i ++) {
-			// 최솟값 1 ~ 9
+			// 1 ~ 9 랜덤 숫자 배열
 			arr[i] = (int)(Math.random() * 9) + 1;
 		}
 		
@@ -34,7 +34,8 @@ public class Q9 {
 		
 	}
 	
-	public static int[] getSumArr(int[] arr) {
+	// 결과 배열
+	public static int[] sumArr(int[] arr) {
 		
 		// 길이가 짝수일 때
 		if (arr.length % 2 == 0) {
@@ -57,6 +58,15 @@ public class Q9 {
 			int[] res = new int[arr.length / 2 + 1];
 			
 			// i는 마지막 전전 원소까지 2씩 증가
+			
+			/**
+			 * for (int i = 0 ; i < arr.length i ++) {
+			 * 		arr[i] = arr[2 * i] + arr[2 * i + 1];
+			 * }
+			 * 
+			 * 루프 변수 두개를 사용하지 않고 하나만 사용해서 건너뛰는 방법도 있다. 
+			 */
+			
 			for(int i = 0, j = 0 ; i < arr.length-2 ; i += 2) {
 				
 				res[j++] = arr[i] + arr[i+1];
