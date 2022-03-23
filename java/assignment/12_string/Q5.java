@@ -10,7 +10,7 @@ public class Q5 {
 	 * 1.index 변수를 -1로 초기화한다. 
 	 * 2.indexOf로 처음 word의 위치를 찾는다.
 	 * 3.다음 indexOf의 beginIndex에는 처음 word의 위치 + 1을 해준다.
-	 * 4.index가 0보다 작을때까지 루프를 돌린다. (만약 인덱스가 0보다 클경우 count++) 
+	 * 4.index가 -1보다 클때까지 루프를 돌린다. (만약 인덱스가 -1보다 클경우 count++) 
 	 */
 	
 	public static void main(String[] args) {
@@ -18,6 +18,11 @@ public class Q5 {
 		int cnt = 0;
 		String content = "안녕~ 길동아~ 잘가~ 길동아~";
 		String word = "길동";
+		
+		/**
+		 * - replace를 사용해서 검색어를 빈 문자열로 바꾸고 ((검색할 문자열 - 빈 문자열로 교체된 문자열) / 검색어 길이)로도 갯수를 찾을 수 있다.
+		 * - 또는 replace를 사용해서 다른 문자로 바꾼뒤 그 문자의 갯수를 세는 방법도 있다. 
+		 */
 		
 		int idx = content.indexOf(word); // 처음으로 나오는 검색 단어의 인덱스
 		

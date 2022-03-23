@@ -12,8 +12,6 @@ public class Q8 {
 	
 	public static void main(String[] args) throws Exception {
 		
-		// TODO 마지막 단어 처리
-
 		StringBuilder res = new StringBuilder();
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -26,16 +24,13 @@ public class Q8 {
 			
 			if (word.charAt(i) >= 'A' && word.charAt(i) <= 'Z') {
 				
-				// lastIndexOf
-				
 				res.append(word.substring(idx, i) + " ");
 				idx = i; // 이전 인덱스 저장
-				
-//				if (i == word.lastIndexOf(word.charAt(i))) {
-//					System.out.println(i);
-//				}
 			}
 		}
+		
+		// for문 빠져나오면 idx 값은 마지막 대문자 인덱스 위치
+		res.append(word.substring(idx)); 
 		
 		System.out.println(res);
 		

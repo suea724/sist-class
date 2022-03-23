@@ -9,7 +9,6 @@ public class Q10 {
 	// 조건: 입력 범위(원): 0 ~ 99,999,999
 	// 숫자를 몇번째 자리에서 추출했는지 알아야 함
 	// 배열써서 푸는 것이 쉬움
-	// TODO 숫자 아닌 것이 들어왔을 때 예외처리
 	
 	public static void main(String[] args) throws Exception {
 		
@@ -24,6 +23,7 @@ public class Q10 {
 			
 			res.append(numToKor(input.charAt(i)));
 			
+			// 뒤에서부터 인덱스 0, 1, 2 .. 증가
 			switch ((input.length()-1-i) % 4) {
 				
 				case 0:

@@ -28,6 +28,9 @@ public class Q4 {
 		
 		for (int i = 0 ; i < files.length ; i ++) {
 			
+			/**
+			 * - split()을 사용할 수도 있지만 배열을 하나 더 선언해야 하는 불편함이 있음
+			 */
 			// beginIndex "." 다음부터, 소문자로 비교
 			switch (files[i].substring(files[i].lastIndexOf(".") + 1).toLowerCase()) {
 				

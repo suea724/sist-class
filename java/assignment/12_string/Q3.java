@@ -22,6 +22,9 @@ public class Q3 {
 		System.out.print("숫자: ");
 		String input = reader.readLine();
 		
+		/**
+		 * - 문자열을 통째로 받아서 한 요소씩 charAt()으로 코드를 비교하는 방법도 있다.
+		 */
 		String[] digits = input.split(""); // 빈 문자열 기준으로 split
 		
 		for (int i = 0 ; i < digits.length ; i ++) {

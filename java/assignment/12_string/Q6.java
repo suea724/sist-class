@@ -19,24 +19,39 @@ public class Q6 {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("주민등록번호: ");
 		String regNum = reader.readLine();
+		String temp;
 		
-		if (regNum.contains("-")) { // 하이픈 포함한 경우
-			
-			if (regNum.length() != 14) { // 길이가 14자리가 아닌 경우 예외처리
-				System.out.println("길이가 올바르지 않은 주민등록번호입니다.");
-				
-			} else {
-				regNum = regNum.split("-")[0] + regNum.split("-")[1]; // 하이픈 제외 주민등록번호 합치기
-				checkValidation(regNum);
-			}
-			
-		} else { // 하이픈 포함하지 않은 경우
-			
-			if (regNum.length() != 13) {
-				System.out.println("길이가 올바르지 않은 주민등록번호입니다.");
-			} else {
-				checkValidation(regNum);
-			}
+//		if (regNum.contains("-")) { // 하이픈 포함한 경우
+//			
+//			if (regNum.length() != 14) { // 길이가 14자리가 아닌 경우 예외처리
+//				System.out.println("길이가 올바르지 않은 주민등록번호입니다.");
+//				
+//			} else {
+//				regNum = regNum.split("-")[0] + regNum.split("-")[1]; // 하이픈 제외 주민등록번호 합치기
+//				checkValidation(regNum);
+//			}
+//			
+//		} else { // 하이픈 포함하지 않은 경우
+//			
+//			if (regNum.length() != 13) {
+//				System.out.println("길이가 올바르지 않은 주민등록번호입니다.");
+//			} else {
+//				checkValidation(regNum);
+//			}
+//		}
+		
+		/**
+		 * - replace() 메서드를 사용하면 하이픈이 있을 때는 바꿔주고, 없을 땐 skip해줌
+		 * - 이 메서드를 사용하면 굳이 하이픈을 포함한 경우와 포함하지 않은 경우로 조건을 나눌 필요가 없음
+		 * - 길이 유효성 체크도 역시 replace() 사용 후 길이만 재면 되기 때문에 편리함
+		 */
+		
+		temp = regNum.replace("-", "");
+		
+		if (temp.length() != 13) {
+			System.out.println("길이가 올바르지 않은 주민등록번호입니다.");
+		} else {
+			checkValidation(temp);
 		}
 	}
 
