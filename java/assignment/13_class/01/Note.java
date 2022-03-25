@@ -1,4 +1,4 @@
-package com.test.java.obj.question;
+package com.test.java.obj.question.q1;
 
 class Note {
 	

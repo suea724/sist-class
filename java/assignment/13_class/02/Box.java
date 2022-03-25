@@ -9,15 +9,27 @@ class Box {
 	
 	public void cook() {
 		
+		// 마카롱의 상태가 결정되는 것은 Setter에서 하는 것보다 메서드 안에서 해주는 것이 좋다.
+		String[] colors = {"red","blue","yellow","white","pink","purple","green","black"};
+		
 		for (int i = 0 ; i < list.length ; i ++) {
+			
 			Macaron m = new Macaron();
-			m.setColor();
-			m.setSize();
-			m.setThickness();
+			// color의 length를 수정할 경우 변경하지 않아도 됨 (유지보수성 증가)
+			int n =  (int)(Math.random() * colors.length); 
+			m.setColor(colors[n]);
+			
+			n = (int)(Math.random() * 11) + 5;
+			m.setSize(n);
+			
+			n = (int)(Math.random() * 20) + 1;
+			m.setThickness(n);
+			
 			list[i] = m;
 		}
 		
-		System.out.println("마카롱을 10개 만들었습니다.");
+		// (10개 -> list.length)로 바꾸는 것이 좋음 (유지보수성)
+		System.out.println("마카롱을 "+ list.length +"개 만들었습니다.");
 		System.out.println();
 	}
 	

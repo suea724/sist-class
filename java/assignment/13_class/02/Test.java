@@ -4,11 +4,15 @@ public class Test {
 
 	public static void main(String[] args) {
 		
+		/* Box */
+		
 		Box box1 = new Box();
 		
 		box1.cook();
 		box1.check();
 		box1.list();
+		
+		/* Refrigerator */
 		
 		Refrigerator r = new Refrigerator();
 

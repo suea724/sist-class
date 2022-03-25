@@ -1,4 +1,4 @@
-package com.test.java.obj.question;
+package com.test.java.obj.question.q1;
 
 public class Test {
 
@@ -33,7 +33,7 @@ public class Test {
 		n2.setSize("A5");
 		n2.setColor("흰색");
 		n2.setPage(10);
-		n2.setOwner("수아");
+//		n2.setOwner("수아");
 		
 		System.out.println(n2.info());
 		
