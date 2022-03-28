@@ -2,9 +2,15 @@ package com.test.java.obj.question.q4.barista;
 
 class Barista {
 	
+	/**
+	 * - 객체를 생성한 후 각 count 변수를 증가시켜주게 되면, 객체를 한 개만 생성하는 경우와 여러 개 생성하는 경우, 두 경우 따로 count 변수를 증가시키는 코드가 들어간다.
+	 * - 이 경우 코드의 중복이 발생하고, 개발자가 누락하게 되면 값이 올바르지 않게 나올 수 있다.
+	 *  => (해결) 생성자 부분에서 count 변수를 증가시키면, 객체의 생성과 동시에 count가 증가하기 때문에 count 증가문을 따로 적어주지 않아도 된다!     
+	 */
+	
 	// espresso
 	public Espresso makeEspresso(int bean) {
-		Espresso espresso = new Espresso(bean);
+		Espresso espresso = new Espresso(bean); 
 		return espresso;
 	}
 	
