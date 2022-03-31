@@ -1,8 +1,8 @@
-package com.test.java.question.collection;
+package com.test.java.collection.question.arraylist;
 
 import java.util.ArrayList;
 
-public class Q1 {
+public class Test {
 
 	public static void main(String[] args) {
 		
@@ -74,6 +74,10 @@ public class Q1 {
 		
 		// 원하는 위치에 요소 추가
 		list.add(1, "김김김");
+		System.out.println(list);
+		
+		// 요소 개수에 맞는 배열
+		list.trimToSize();
 		System.out.println(list);
 		
 		// indexOf

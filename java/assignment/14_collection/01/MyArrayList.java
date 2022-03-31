@@ -1,4 +1,6 @@
-package com.test.java.question.collection;
+package com.test.java.collection.question.arraylist;
+
+import java.util.Arrays;
 
 /* ArrayList와 동일한 동작을 하는 클래스를 선언하시오. (String) */
 
@@ -8,11 +10,11 @@ class MyArrayList {
 	private int index; // 가장 중요!
 
 	public MyArrayList() { // default 생성자 
-		this.index = 0;
+		index = 0;
 	}
 	
 	public MyArrayList(int size) { // 사이즈 입력받는 생성자
-		this.index = 0;
+		index = 0;
 		list = new String[size];
 	}
 
@@ -27,24 +29,26 @@ class MyArrayList {
 		}
 			
 		list[index] = value;
-		index ++;
-		return true;
-	
+		
+		if (list[index] == value) { // index 위치의 값이 value면
+			index ++;
+			return true;
+		}
+		
+		return false;
+				
 	}
 
 	private void doublingList() {
-			
-		String[] temp = new String[index]; // 기존 값 복사할 임시 배열
+		
+		String[] temp = new String[list.length * 2]; // 더블링된 길이의 임시 배열
 		
 		for (int i = 0 ; i < index ; i ++) {
 			temp[i] = list[i];
 		}
 		
-		list = new String[list.length * 2]; // 더블링 길이의 배열 선언
+		list = temp;
 		
-		for (int i = 0 ; i < index ; i ++) {
-			list[i] = temp[i];
-		}
 	}
 	
 	public String get(int index) {
@@ -84,8 +88,13 @@ class MyArrayList {
 		}
 		
 		list[index] = value;
-		this.index ++;
-		return true;
+		
+		if (list[index] == value) {
+			this.index ++;
+			return true;
+		}
+		
+		return false;
 	}
 	
 	public int indexOf(String value) {
@@ -126,22 +135,26 @@ class MyArrayList {
 	}
 
 	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder("[");
-		
-		for (int i= 0 ; i < index ; i ++) {
-			
-			sb.append(list[i]);
-			
-			if (i == index - 1) {
-				break;
-			}
-			sb.append(", ");
-		}
-		
-		sb.append("]");
-		return sb.toString();
+	public String toString() { // null 값도 출력
+		return Arrays.toString(list);
 	}
 
-	
+//	@Override
+//	public String toString() { // ArrayList와 똑같이 출력	
+//		StringBuilder sb = new StringBuilder("[");
+//		
+//		for (int i= 0 ; i < index ; i ++) {
+//			
+//			sb.append(list[i]);
+//			
+//			if (i == index - 1) {
+//				break;
+//			}
+//			sb.append(", ");
+//		}
+//		
+//		sb.append("]");
+//		return sb.toString();
+//	}
+
 }
