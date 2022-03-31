@@ -11,7 +11,7 @@ public class Ex57_ArrayList {
 		 * 	- JCF, Java Collection Framework
 		 * 	- (향상된) 배열
 		 * 	- 기존 순수 배열의 성능 향상(입출력), 사용법 개량해서 클래스로 만들어놓음
-		 * 	- 내부에 순수 배열을 가지고 있음 > public 메서드를 통해 성능 or 사용법 개량
+		 * 	- 내부에 순수 배열을 가지고 있음 > ArrayList 클래스의 대부분의 기능이 내부 배열을 조작하는 기능들로 구성
 		 * 	- 길이 가변(!)
 		 * 	- 자료구조
 		 * 
@@ -44,7 +44,54 @@ public class Ex57_ArrayList {
 		// m2();
 		// m3();
 		// m4();
-		m5();
+		// m5();
+		m6();
+	}
+
+	private static void m6() {
+		
+		/* ArrayList 내부 배열 조작 방식 */
+		
+		// ArrayList
+		ArrayList<Integer> list = new ArrayList<>();
+		
+		// [문제 #1]
+		// 1. 가비지 발생 > 비용 발생
+		// 2. 배열 요소의 깊은 복사 > 비용 발생
+		// => 컬렉션에 반복적으로 데이터를 넣는 행위는 프로그램을 무겁게 할 수 있음 > 가변 특성을 유지하기 위함
+		
+		// <해결 방법>
+		// - ArrayList의 초기 길이를 지정할 수 있다. (생성시 매개변수)
+		
+		// [문제 #2]
+		// 값이 배열의 길이를 초과하면 무조건 더블링 됨 > 배열에 남는 공간이 생김 > 메모리 낭비
+		
+		// <해결 방법>
+		// - 데이터 갯수에 맞게 배열의 길이 조정 > trimToSize
+		// - 너무 자주 사용하면 가비지 발생 > 데이터 갯수에 대해 확신이 들때만 호출
+		
+		// => 모든 컬렉션에도 공통으로 적용
+		
+		for (int i = 0 ; i < 20 ; i ++) {  
+			list.add(i);
+		}
+		
+		for (int n : list) {
+			System.out.println(n);
+		}
+		
+		System.out.println();
+		
+		// 순수 배열
+		int[] num = new int[20];
+		for (int i = 0 ; i < 20 ; i ++) {
+			num[i] = i;
+		}
+		
+		for (int n : num) {
+			System.out.println(n);
+		}
+		
 	}
 
 	private static void m5() {
