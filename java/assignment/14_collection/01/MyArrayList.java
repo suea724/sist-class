@@ -18,7 +18,7 @@ class MyArrayList {
 		list = new String[size];
 	}
 
-	public boolean add(String value) {
+	public boolean add(String value) { 
 		
 		if (list == null) { // 할당받은 배열이 없을때
 			list = new String[4];
@@ -30,12 +30,12 @@ class MyArrayList {
 			
 		list[index] = value;
 		
-		if (list[index] == value) { // index 위치의 값이 value면
+		if (list[index].equals(value)) { // index 위치의 값이 value면
 			index ++;
 			return true;
 		}
 		
-		return false;
+		return false; // [반환에서 try-catch문 사용]
 				
 	}
 
@@ -52,7 +52,26 @@ class MyArrayList {
 	}
 	
 	public String get(int index) {
+		
+		throwIndexError(index);
+		
 		return list[index];
+	}
+	
+	private boolean validIndex(int index) {
+		
+		if (index >= 0 && index < this.index) { // 요소가 있는 위치의 인덱스까지 
+			return true; 
+		} 
+		
+		return false;
+	}
+	
+	private void throwIndexError(int index) {
+		
+		if (!validIndex(index)) {
+			throw new IndexOutOfBoundsException("요소가 있는 위치의 인덱스를 입력해야함.");
+		}
 	}
 	
 	public int size() {
@@ -61,23 +80,30 @@ class MyArrayList {
 	
 	public String set(int index, String value) {
 		
+		throwIndexError(index);
+		
 		String temp = list[index];
 		list[index] = value;
 		return temp; // 수정 전 값 리턴
 	}
 	
-	public String remove(int index) { 
+	public String remove(int index) {
+		
+		throwIndexError(index);
 		
 		String temp = list[index]; 
 		
-		for (int i = index ; i < list.length-1 ; i ++) {
+		for (int i = index ; i < this.index-1 ; i ++) {
 			list[i] = list[i+1];
 		}
+		list[this.index-1] = null;
 		this.index --;
 		return temp; // 제거 되는값 반환
 	}
 	
 	public boolean add(int index, String value) { 
+		
+		throwIndexError(index);
 		
 		if (this.index == list.length) { // 배열이 꽉찬 경우
 			doublingList();
@@ -89,7 +115,7 @@ class MyArrayList {
 		
 		list[index] = value;
 		
-		if (list[index] == value) {
+		if (list[index].equals(value)) {
 			this.index ++;
 			return true;
 		}
@@ -99,8 +125,8 @@ class MyArrayList {
 	
 	public int indexOf(String value) {
 		
-		for (int i = 0 ; i < list.length ; i ++) {
-			if (list[i] == value) {
+		for (int i = 0 ; i < this.index ; i ++) {
+			if (list[i].equals(value)) {
 				return i;
 			}
 		}
@@ -109,8 +135,8 @@ class MyArrayList {
 	
 	public int lastIndexOf(String value) {
 		
-		for (int i = list.length-1 ; i >= 0  ; i ++) {
-			if (list[i] == value) {
+		for (int i = this.index-1 ; i >= 0  ; i --) {
+			if (list[i].equals(value)) {
 				return i;
 			}
 		}
@@ -118,7 +144,11 @@ class MyArrayList {
 	}
 	
 	public void clear() {
-		// for문으로 null 값 설정해주기 or 같은 길이의 새로운 배열 할당하기
+		
+		// for문으로 null 값 설정해주기 > 시간 오래걸리지만 가비지 X
+		// 같은 길이의 새로운 배열 할당하기 > 메모리 낭비 발생하지만 빠름 
+		// index만 0으로 설정해주기 > 초기화에서 index == 0 조건 필요함 > 속도 빠르고 비용 저렴
+		
 		list = new String[list.length];
 		index = 0;
 	}
