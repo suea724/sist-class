@@ -51,11 +51,11 @@ class MyQueue {
 		
 		String temp = list[0]; 
 		
-		for (int i = 0 ; i < index ; i ++) { // left shift
+		for (int i = 0 ; i < index-1 ; i ++) { // left shift
 			list[i] = list[i+1];
 		}
 		
-		list[index] = null; // 마지막 요소 제거
+		list[index-1] = null; // 마지막 요소 제거
 		index--;
 		
 		return temp; // 0번째 위치의 값 리턴
