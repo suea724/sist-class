@@ -1,4 +1,4 @@
-package com.test.java.io.question;
+package com.test.java.io.question.q1;
 
 import java.io.File;
 
@@ -17,6 +17,7 @@ public class Q8 {
 		
 		if (dir.exists()) {
 			countFiles(dir);
+			System.out.printf("삭제한 폴더 개수는 %d개이고, 파일 개수는 %d개 입니다.\n", dirCnt, fileCnt);
 		} else {
 			System.out.println("올바르지 않은 경로입니다.");
 		}
