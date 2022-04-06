@@ -11,6 +11,10 @@ public class Q7 {
 	
 	// 직원들의 지각과 조퇴를 카운트하시오. 출근: 오전 9시, 퇴근 오후 6시
 	
+	/**
+	 * HashMap 두 개 사용하는 방법도 있음
+	 */
+	
 	public static void main(String[] args) {
 		
 		final String PATH = "D:\\suea7\\class\\파일_입출력_문제\\출결.dat";

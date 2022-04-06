@@ -19,11 +19,11 @@ public class Q1 {
 			
 			// 읽을 파일
 			File file = new File(PATH);
-			BufferedReader reader = new BufferedReader(new FileReader(file));
+			BufferedReader reader = new BufferedReader(new FileReader(PATH));
 			
 			// 출력할 파일
 			File newFile = new File(NEW_PATH);
-			BufferedWriter writer = new BufferedWriter(new FileWriter(newFile));
+			BufferedWriter writer = new BufferedWriter(new FileWriter(NEW_PATH));
 			
 			String line = null;
 			

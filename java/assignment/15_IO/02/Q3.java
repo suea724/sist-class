@@ -17,6 +17,8 @@ public class Q3 {
 		ArrayList<String> pass = new ArrayList<>();
 		ArrayList<String> fail = new ArrayList<>();
 		
+		// Set 차집합 사용할 수도 있돠
+		
 		try {
 			
 			// 읽을 파일
