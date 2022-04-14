@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import com.test.data.Data;
+import com.test.data.User;
 
 public class Ex76_Stream {
 
@@ -41,12 +42,87 @@ public class Ex76_Stream {
 		 * 	- 최종 처리 파이프
 		 * 	- 앞의 스트림 요소를 최종 처리하는 메서드
 		 * 
+		 * [매핑]
+		 * 	- map(), mapXXX()
+		 * 	- 중간처리 파이프
+		 * 	- 변환 작업에 사용한다. (**************)
+		 * 	- 앞의 스트림을 처리 후 다른 타입의 스트림을 반환한다.
+		 * 
 		 */
 		
 		// m1();
 		// m2();
-		m3();
+		// m3();
+		m4();
 		
+	}
+
+	private static void m4() {
+		
+		/* map() */
+		
+		List<String> list = Data.getStringList(10);
+		System.out.println(list);
+		
+		list.stream().filter(word -> word.length() <= 3).forEach(word -> System.out.println(word));
+		System.out.println();
+		
+		// String 스트림 -> Integer 스트림
+		list.stream().map(word -> word.length()).forEach(s -> System.out.println(s));
+		System.out.println();
+		
+		// distinct 추가
+		list.stream().map(word -> word.length()).distinct().forEach(s -> System.out.println(s));
+		System.out.println();
+		
+		String[] names = {"홍길동", "아무개", "하하하", "테스트", "홍길동", "호호호", "유재석", "박명수"};
+		
+		// 풀네임 -> 성 제외한 이름만 포함한 스트림으로 변환
+		Arrays.stream(names).map(name -> name.substring(1)).forEach(s -> System.out.println(s));
+		System.out.println();
+		
+		// 객체 배열
+		List<User> ulist = Data.getUserList();
+		ulist.stream().forEach(user -> System.out.println(user));
+		
+		// 객체 스트림 -> 문자열 스트림
+		ulist.stream().map(user -> user.getName()).forEach(user -> System.out.println(user));
+		System.out.println();
+		
+		List<Student> slist = new ArrayList<>();
+		slist.add(new Student("가가가", 90, 80, 70));
+		slist.add(new Student("나나나", 90, 70, 60));
+		slist.add(new Student("다다다", 70, 60, 40));
+		slist.add(new Student("라라라", 80, 90, 100));
+		slist.add(new Student("마마마", 78, 92, 88));
+		
+		// Student 스트림 -> String 스트림
+		slist.stream().map(s -> {
+			int total = s.getKor() + s.getEng() + s.getMath();
+			if (total >= 180) {
+				return "합격";
+			} else {
+				return "불합격";
+			}
+		}).forEach(result -> System.out.println(result));
+		System.out.println();
+		
+		// 이름과 결과를 함께 출력하고 싶으면?
+		slist.stream().map(s -> {
+
+			int total = s.getKor() + s.getEng() + s.getMath();
+			Result res = null;
+			
+			if (total >= 180) {
+				res = new Result(s.getName(), "합격");
+			} else {
+				res = new Result(s.getName(), "불합격");
+			}
+			return res;
+			
+		}).forEach(result -> System.out.printf("%s(%s)\n"
+												, result.getName()
+												, result.getResult()));
 	}
 
 	private static void m3() {
@@ -222,4 +298,86 @@ class Cup {
 	public boolean equals(Object obj) {
 		return (this.hashCode() == ((Cup)obj).hashCode());
 	}
+}
+
+class Student {
+	
+	private String name;
+	private int kor;
+	private int eng;
+	private int math;
+	
+	public Student(String name, int kor, int eng, int math) {
+		this.name = name;
+		this.kor = kor;
+		this.eng = eng;
+		this.math = math;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getKor() {
+		return kor;
+	}
+
+	public void setKor(int kor) {
+		this.kor = kor;
+	}
+
+	public int getEng() {
+		return eng;
+	}
+
+	public void setEng(int eng) {
+		this.eng = eng;
+	}
+
+	public int getMath() {
+		return math;
+	}
+
+	public void setMath(int math) {
+		this.math = math;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Student [name=%s, kor=%s, eng=%s, math=%s]", name, kor, eng, math);
+	}
+	
+}
+
+// Stream<Student> -> map() -> Stream<Result>
+class Result {
+	
+	private String name;
+	private String result;
+	
+	public Result(String name, String result) {
+		this.name = name;
+		this.result = result;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getResult() {
+		return result;
+	}
+	
+	public void setResult(String result) {
+		this.result = result;
+	}
+	
 }
