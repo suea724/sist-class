@@ -41,7 +41,7 @@ public class YearPersonal {
 			String input = sc.nextLine();
 			 
 			if(input.equals("1")) { // 안타
-				YearBatter.hitRank(RankMenu.year);
+				YearBatter.hitRank();
 			} else if(input.equals("2")) { // 홈런
 				YearBatter.homeRunRank();
 			} else if(input.equals("3")) { // 타점

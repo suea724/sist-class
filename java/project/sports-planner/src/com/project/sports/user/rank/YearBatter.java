@@ -11,7 +11,7 @@ public class YearBatter { // 연도별 타자 순위
 	public static List<Player> batterList = Data.playerList;
 	public static List<Team> teamList = Data.teamList;
 	
-	public static void hitRank(int year) { // 안타 순위
+	public static void hitRank() { // 안타 순위
 		
 		StringBuilder sb = new StringBuilder("\t\t\t\t======================================================\n");
 		sb.append("\t\t\t\t[순위]\t\t[이름]\t\t[팀]\t\t[안타]\n");
