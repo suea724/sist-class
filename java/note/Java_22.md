@@ -67,3 +67,26 @@ public boolean equals(Object obj) {
 - 위 코드에서는 **문자열 리터럴이 유일**하다는 특성을 사용해서 hashCode값을 설정했다.
 - hashCode값은 다른 방식으로도 구현해줄 수 있다.
     - e.g. hashCode를 유일해야 하는 id로 설정
+
+<br>
+
+# 📌 TreeSet
+- 이진 트리 구조
+- 자동으로 정렬됨
+```java
+TreeSet<Integer> set = new TreeSet<>();
+
+set.add(50);
+set.add(30);
+set.add(40);
+set.add(10);
+set.add(20);
+
+// TreeSet 고유 메서드
+System.out.println(set.first()); // 첫번째 요소
+System.out.println(set.last()); // 마지막 요소
+
+System.out.println(set.headSet(30)); // 미포함
+System.out.println(set.tailSet(70)); // 포함
+System.out.println(set.subSet(30, 70)); // 포함, 미포함
+```
