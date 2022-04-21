@@ -122,3 +122,26 @@ list.isEmpty()
 #### 💡 해결방법
 → 데이터 개수에 맞게 **배열의 길이를 조정**한다. **(trimToSize() 메서드 사용)**
 
+<br>
+
+# 📌 LinkedList
+
+### ✅ ArrayList vs LinkedList
+- 사용법이 유사하지만 내부 구조가 다르다. > 사용 용도가 다름
+
+#### 🔻 ArrayList
+- 모든 컬렉션 중에서 **요소에 접근하는 속도가 가장 빠르다.**
+- 요소의 **삽입/삭제에 대한 비용이 많이 든다.**
+
+<br>
+
+#### 🔻 LinkedList
+- 요소에 차례로 접근하므로 **접근 속도가 느리다.** (뒤에 있는 요소일수록)
+- 요소의 **삽입/삭제에 대한 비용이 거의 없다.** (shift 발생 X)
+
+<br>
+
+### ✅ 종류
+1. Linked-List : 일방향
+2. Double-Linked-List : 양방향
+3. Double-Circular-Linked-List : 양방향 + 처음 ~ 끝 연결 > 자바에 구현된 LinkedList 
