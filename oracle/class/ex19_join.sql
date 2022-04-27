@@ -535,14 +535,184 @@ select * from tblCustomer c
 */
 
 
+-- 구매 이력과 상관없이, 고객정보와 함께 구매 이력을 가져오시오.
+select 
+    * 
+from tblCustomer c 
+    left outer join tblSales s 
+        on c.seq = s.cseq;
 
 
- 
+-- 대여가 한번이라도 된 비디오와 그 대여 내역 가져오기
+select
+    *
+from tblVideo v 
+    inner join tblRent r
+        on v.seq = r.video;
 
 
 
+-- 대여가 한번이라도 됐었던 상품의 개수?
+select 
+    count(distinct v.name) as "대여 기록 존재 개수"
+from tblVideo v
+    inner join tblRent r
+        on v.seq = r.video;
 
 
+-- 대여와 상관없이 모든 비디오와 그 대여 내역을 가져오시오.
+select
+    *
+from tblVideo v
+    left outer join tblRent r
+        on v.seq = r.video;
+        
+        
+-- 대여를 한번이라도 한 고객의 정보와 대여 내역을 가져오시오.
+select
+    *
+from tblMember m
+    inner join tblRent r
+        on m.seq = r.member;
+        
+        
+-- 대여를 한번이라도 한 고객의 정보와 대여 내역을 가져오시오.
+select
+    *
+from tblMember m
+    left outer join tblRent r
+        on m.seq = r.member;
+        
+
+-- 대여 기록이 있는 회원의 이름과 대여 횟수를 가져오시오.
+select
+    m.name,
+    count(name)
+from tblMember m
+    inner join tblRent r
+        on m.seq = r.member
+            group by m.name;
+            
+
+-- 대여 기록과 무관하게 모든 회원의 이름과 대여 횟수를 가져오시오. > rentdate로 세기
+select
+    m.name,
+    count(rentdate)
+from tblMember m
+    left outer join tblRent r
+        on m.seq = r.member
+            group by m.name
+                order by count(rentdate) desc;
 
 
+/*
 
+    4. 셀프 조인, SELF JOIN
+    - 1개의 테이블을 사용해서 조인
+    - 테이블이 스스로 관계를 맺는 경우
+    - alias를 반드시 사용해주어야 한다.
+    
+    - 다중 조인(2개 이상의 테이블) + 내부 조인
+    - 다중 조인(2개 이상의 테이블) + 외부 조인
+    
+    - 셀프 조인(1개) + 내부 조인
+    - 셀프 조인(1개) + 외부 조인
+
+*/
+
+-- 직원 테이블
+create table tblSelf (
+    seq number primary key,                     -- 직원번호(PK)
+    name varchar2(30) not null,                 -- 직원명
+    department varchar2(50) null,               -- 부서명
+    super number null references tblSelf(seq)   -- 상사번호(FK) > 자기 참조
+);
+
+insert into tblSelf values (1, '홍사장', null, null);
+insert into tblSelf values (2, '김부장', '영업부', 1);
+insert into tblSelf values (3, '이과장', '영업부', 2);
+insert into tblSelf values (4, '정대리', '영업부', 3);
+insert into tblSelf values (5, '최사원', '영업부', 4);
+insert into tblSelf values (6, '박부장', '개발부', 1);
+insert into tblSelf values (7, '하과장', '개발부', 6);
+
+select * from tblSelf;
+
+-- 직원 명단을 가져오시오. 상사의 이름까지
+-- inner join
+select 
+    b.seq,
+    b.name,
+    b.department,
+    a.name as "상사"
+from tblSelf a                  -- 부모 테이블
+    inner join tblSelf b        -- 자식 테이블
+        on a.seq = b.super;
+
+
+-- outer join
+select 
+    b.seq,
+    b.name,
+    b.department,
+    a.name as "상사"
+from tblSelf a 
+    right outer join tblSelf b 
+        on a.seq = b.super;
+
+
+-- subquery
+select
+    name as "직원명",
+    department as "부서",
+    super,
+    (select name from tblSelf where seq = a.super)
+from tblSelf a;
+
+
+-- 직원명 + 매니저명
+select * from employees;
+
+select
+    *
+from employees a                            -- 부모 테이블 > 매니저
+    inner join employees b                  -- 자식 테이블 > 직원
+        on a.employee_id = b.manager_id;
+        
+/*
+
+     5. 전체 외부 조인, FULL OUTER JOIN
+     - 서로 참조하고 있는 관계에서만 사용이 가능한 조인 > 드물다 (관리하기 빡셈)
+*/
+select * from tblMan;
+select * from tblWoman;
+
+select
+    *
+from tblMan m
+    full outer join
+        tblWoman w
+            on m.couple = w.name;
+            
+
+select
+    * 
+from tblCustomer c
+    left outer join tblSales s -- 부모를 가리킨 조인
+        on c.seq = s.cseq;
+        
+
+select
+    * 
+from tblCustomer c
+    right outer join tblSales s -- 자식을 가리킨 조인 (내부 조인)
+        on c.seq = s.cseq;
+        
+        
+
+select
+    * 
+from tblCustomer c
+    full outer join tblSales s -- left outer join과 동일한 결과
+        on c.seq = s.cseq;
+        
