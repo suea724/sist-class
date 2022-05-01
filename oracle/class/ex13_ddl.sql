@@ -234,3 +234,44 @@ select * from tblMemo;
 
 insert into tblMemo(seq, name, memo) values (6, '홍길동', '메모입니다'); -- 현재 시간 입력됨
 
+
+
+-- DDL > 테이블 생성 > 컬럼 생성 = 컬럼명 + 자료형(길이) + 제약사항
+
+/*
+
+    [제약 사항을 만드는 방법]
+    
+    1. 컬럼 수준에서 만드는 방법
+        - 컬럼을 정의할 때 제약 사항도 같이 정의
+        
+    2. 테이블 수준에서 만드는 방법
+        - 컬럼 정의와 제약 사항 정의를 분리시킨 방법
+        - 제약 사항만 따로 정의 > 관리 차원 > 코드 분리
+        - not null, default > 컬럼 수준에서만 정의
+        
+    3. 외부에서 만드는 방법
+        - ALTER 사용
+*/
+
+
+drop table tblMemo;
+
+create table tblMemo(
+    
+    -- not null은 컬럼 수준에서만 정의할 수 있음
+    seq number(3) not null,             
+    name varchar2(30),     
+    memo varchar2(1000),                   
+    regdate date,
+    
+    -- 테이블 수준의 제약사항 정의
+    -- 제약사항 명 : 테이블명_컬럼명_제약사항
+    constraint tblmemo_seq_pk primary key(seq),
+    constraint tblmemo_name_uq unique(name),
+    constraint tblmemo_memo_ck check(length(memo) >= 10));
+
+-- ORA-00001: unique constraint (HR.TBLMEMO_SEQ_PK) violated
+insert into tblMemo values (1, '홍길동', '메모입니다 메모입니다', sysdate);
+
+
