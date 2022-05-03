@@ -11,12 +11,20 @@ import com.project.sports.input.User;
 import com.project.sports.main.Data;
 import com.project.sports.output.Output;
 
+/**
+ * 관리자 회원 관리 카테고리
+ * @author 안수아
+ *
+ */
 public class ManageUser {
 	
 	public static List<User> userList = Data.userList;
 	public static boolean mFlag = true;
 	
-	public static void manageUserMain() { // 회원 관리 메인
+	/**
+	 * 회원 관리 메인
+	 */
+	public static void manageUserMain() { 
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -27,7 +35,10 @@ public class ManageUser {
 		}
 	}
 
-	public static void printUserList() { // 모든 회원 정보 출력
+	/**
+	 * 모든 회원 정보 출력
+	 */
+	public static void printUserList() { 
 		
 		Scanner sc = new Scanner(System.in);
 		ArrayList<String> scList = new ArrayList<String>();//한줄씩 리스트에 저장
@@ -89,7 +100,10 @@ public class ManageUser {
 		}
 	}
 
-	public static void userDetail() { // 회원 상세 정보 보기
+	/**
+	 * 입력받은 회원의 상세 정보 보기
+	 */
+	public static void userDetail() { 
 		
 		Scanner sc = new Scanner(System.in);
 		boolean dFlag = true;
@@ -122,7 +136,11 @@ public class ManageUser {
 		}
 	}
 	
-	private static void printUserDetail(User user) { // 회원 개인 정보 + 회원의 예매 내역
+	/**
+	 * 회원 개인 정보, 회원의 예매 내역 출력
+	 * @param user
+	 */
+	private static void printUserDetail(User user) { 
 		
 		List<Ticketing> tempList = new ArrayList<>();
 		
@@ -182,7 +200,10 @@ public class ManageUser {
 		
 	}
 	
-	private static void addBlackList() { // 블랙리스트 추가
+	/**
+	 * 블랙리스트 추가
+	 */
+	private static void addBlackList() {
 		
 		Scanner sc = new Scanner(System.in);
 		boolean mFlag = true;

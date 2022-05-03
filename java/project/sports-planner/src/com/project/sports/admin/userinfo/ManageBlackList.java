@@ -7,9 +7,17 @@ import com.project.sports.input.User;
 import com.project.sports.main.Data;
 import com.project.sports.output.Output;
 
+/**
+ * 블랙리스트 관리
+ * @author 안수아
+ *
+ */
 public class ManageBlackList {
 	
-	public static void manageBlackList() { // 블랙리스트 관리
+	/**
+	 * 블랙리스트 관리
+	 */
+	public static void manageBlackList() { 
 		
 		Scanner sc = new Scanner(System.in);
 		boolean bFlag = true;
@@ -36,7 +44,10 @@ public class ManageBlackList {
 		}
 	}
 
-	public static void printBlackList() { // 블랙리스트 출력
+	/**
+	 * 블랙리스트 출력
+	 */
+	public static void printBlackList() { 
 		
 		StringBuilder sb = new StringBuilder("\t\t\t\t===========================================================\n");
 		sb.append("\t\t\t\t[회원번호]\t\t\t[이름]\t\t\t[아이디]\n");
@@ -60,7 +71,10 @@ public class ManageBlackList {
 		
 	}
 	
-	private static void blackListDetail() { // 블랙리스트 상세 보기
+	/**
+	 * 블랙리스트 상세 보기
+	 */
+	private static void blackListDetail() {
 		
 		Scanner sc = new Scanner(System.in);
 		boolean bdFlag = true;
@@ -120,7 +134,10 @@ public class ManageBlackList {
 		
 	}
 	
-	private static void deleteBlackList() { // 블랙리스트 삭제
+	/**
+	 * 블랙리스트 삭제
+	 */
+	private static void deleteBlackList() {
 		
 		Scanner sc = new Scanner(System.in);
 		boolean dbFlag = true;

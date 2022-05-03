@@ -6,12 +6,20 @@ import com.project.sports.input.Player;
 import com.project.sports.input.Team;
 import com.project.sports.main.Data;
 
-public class YearPitcher { // 연도별 투수 순위
+/**
+ * 연도별 투수 순위
+ * @author 안수아
+ *
+ */
+public class YearPitcher { 
 	
 	public static List<Player> pitcherList = Data.playerList;
 	public static List<Team> teamList = Data.teamList;
 	
-	public static void earnedRunAvgRank() { // 평균 자책 순위
+	/**
+	 * 평균 자책 순위
+	 */
+	public static void earnedRunAvgRank() { 
 		
 		StringBuilder sb = new StringBuilder("\t\t\t\t======================================================\n");
 		sb.append("\t\t\t\t[순위]\t\t[이름]\t\t[팀]\t\t[평균 자책]\n");
@@ -64,7 +72,10 @@ public class YearPitcher { // 연도별 투수 순위
 		com.project.sports.output.Output.pause();	
 	}
 
-	public static void winRank() { // 승수 순위
+	/**
+	 * 승수 순위
+	 */
+	public static void winRank() { 
 		StringBuilder sb = new StringBuilder("\t\t\t\t======================================================\n");
 		sb.append("\t\t\t\t[순위]\t\t[이름]\t\t[팀]\t\t[승수]\n");
 		sb.append("\t\t\t\t======================================================\n");
@@ -110,7 +121,10 @@ public class YearPitcher { // 연도별 투수 순위
 		com.project.sports.output.Output.pause();	
 	}
 
-	public static void threeOutRank() { // 탈삼진 순위
+	/**
+	 * 탈삼진 순위
+	 */
+	public static void threeOutRank() { 
 		
 		StringBuilder sb = new StringBuilder("\t\t\t\t======================================================\n");
 		sb.append("\t\t\t\t[순위]\t\t[이름]\t\t[팀]\t\t[탈삼진]\n");
@@ -148,7 +162,10 @@ public class YearPitcher { // 연도별 투수 순위
 		com.project.sports.output.Output.pause();	
 	}
 
-	public static void inningRank() { // 이닝 순위
+	/**
+	 * 이닝 순위
+	 */
+	public static void inningRank() { 
 		
 		StringBuilder sb = new StringBuilder("\t\t\t\t======================================================\n");
 		sb.append("\t\t\t\t[순위]\t\t[이름]\t\t[팀]\t\t[이닝]\n");

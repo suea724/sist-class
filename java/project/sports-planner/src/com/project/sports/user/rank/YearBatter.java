@@ -5,13 +5,20 @@ import java.util.List;
 import com.project.sports.input.Player;
 import com.project.sports.input.Team;
 import com.project.sports.main.Data;
-
-public class YearBatter { // 연도별 타자 순위
+/**
+ * 연도별 타자 순위
+ * @author 안수아
+ *
+ */
+public class YearBatter { 
 	
 	public static List<Player> batterList = Data.playerList;
 	public static List<Team> teamList = Data.teamList;
 	
-	public static void hitRank() { // 안타 순위
+	/**
+	 * 안타 순위
+	 */
+	public static void hitRank() { 
 		
 		StringBuilder sb = new StringBuilder("\t\t\t\t======================================================\n");
 		sb.append("\t\t\t\t[순위]\t\t[이름]\t\t[팀]\t\t[안타]\n");
@@ -50,7 +57,10 @@ public class YearBatter { // 연도별 타자 순위
 		com.project.sports.output.Output.pause();
 	}
 
-	public static void homeRunRank() { // 홈런 순위
+	/**
+	 * 홈런 순위
+	 */
+	public static void homeRunRank() { 
 		
 		StringBuilder sb = new StringBuilder("\t\t\t\t======================================================\n");
 		sb.append("\t\t\t\t[순위]\t\t[이름]\t\t[팀]\t\t[홈런]\n");
@@ -89,7 +99,10 @@ public class YearBatter { // 연도별 타자 순위
 		
 	}
 
-	public static void hitScoreRank() { // 타점 순위
+	/**
+	 * 타점 순위
+	 */
+	public static void hitScoreRank() { 
 		
 		StringBuilder sb = new StringBuilder("\t\t\t\t======================================================\n");
 		sb.append("\t\t\t\t[순위]\t\t[이름]\t\t[팀]\t\t[타점]\n");

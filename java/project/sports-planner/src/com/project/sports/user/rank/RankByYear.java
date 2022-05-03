@@ -4,12 +4,20 @@ import java.util.Comparator;
 import java.util.List;
 import com.project.sports.input.Team;
 import com.project.sports.main.Data;
-
+/**
+ * 순위 카테고리의 메인 순위 출력
+ * @author 안수아
+ *
+ */
 public class RankByYear {
 	
 	public static List<Team> teamList = Data.teamList;
 	
-	public static void mainRank(int year) { // 순위 카테고리의 메인 순위 출력
+	/**
+	 * 연도를 입력 받아 팀 순위를 출력
+	 * @param year
+	 */
+	public static void mainRank(int year) {
 		
 		StringBuilder sb = new StringBuilder("\n");
 		sb.append(String.format("\t\t\t\t\t\t   [%d년 팀 순위]\n", year));
@@ -51,7 +59,12 @@ public class RankByYear {
 		System.out.println(sb);
 	}
 	
-	public static boolean hasResult(int year) { // 입력으로 들어온 연도의 경기 결과가 존재하는 지 여부 확인
+	/**
+	 * 입력으로 들어온 연도의 경기 결과가 존재하는 지 여부 확인
+	 * @param year
+	 * @return
+	 */
+	public static boolean hasResult(int year) { 
 		
 		for (int i = 0 ; i < teamList.size() ; i ++) {
 			

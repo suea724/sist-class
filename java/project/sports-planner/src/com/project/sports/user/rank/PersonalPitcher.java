@@ -7,12 +7,19 @@ import com.project.sports.input.Player;
 import com.project.sports.input.Team;
 import com.project.sports.main.Data;
 
+/**
+ * 투수 개인 순위 클래스
+ * @author 안수아
+ *
+ */
 public class PersonalPitcher {
 	
 	public static List<Player> pitcherList = Data.playerList;
 	public static List<Team> teamList = Data.teamList;
 	
-	// 투수 메뉴
+	/**
+	 * 투수 항목 선택 메뉴
+	 */
 	public static void selectPitcherType() {
 		
 		Scanner sc = new Scanner(System.in);
@@ -40,8 +47,11 @@ public class PersonalPitcher {
 			
 		}
 	}
-
-	private static void earnedRunAvgRank() { // 평균 자책 순위
+	
+	/**
+	 * 평균 자책 순위 출력
+	 */
+	private static void earnedRunAvgRank() {
 		
 		StringBuilder sb = new StringBuilder("\t\t\t\t======================================================\n");
 		sb.append("\t\t\t\t[순위]\t\t[이름]\t\t[팀]\t\t[평균 자책]\n");
@@ -85,6 +95,9 @@ public class PersonalPitcher {
 		com.project.sports.output.Output.pause();	
 	}
 
+	/**
+	 * 승수 순위 출력
+	 */
 	private static void winRank() { // 승수 순위
 		
 		StringBuilder sb = new StringBuilder("\t\t\t\t======================================================\n");
@@ -122,6 +135,9 @@ public class PersonalPitcher {
 		com.project.sports.output.Output.pause();	
 	}
 
+	/**
+	 * 탈삼진 순위 출력
+	 */
 	private static void threeOutRank() { // 탈삼진 순위
 		
 		StringBuilder sb = new StringBuilder("\t\t\t\t======================================================\n");
@@ -159,6 +175,9 @@ public class PersonalPitcher {
 		com.project.sports.output.Output.pause();	
 	}
 
+	/**
+	 * 이닝 순위 출력
+	 */
 	private static void inningRank() { // 이닝 순위
 		
 		StringBuilder sb = new StringBuilder("\t\t\t\t======================================================\n");

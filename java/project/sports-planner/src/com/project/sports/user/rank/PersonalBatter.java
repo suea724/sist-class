@@ -7,12 +7,19 @@ import com.project.sports.input.Player;
 import com.project.sports.input.Team;
 import com.project.sports.main.Data;
 
+/**
+ * 타자 개인 순위 클래스
+ * @author 안수아
+ *
+ */
 public class PersonalBatter {
 	
 	public static List<Player> batterList = Data.playerList;
 	public static List<Team> teamList = Data.teamList;
 	
-	// 타자 메뉴
+	/**
+	 * 타자 항목 선택 메뉴
+	 */
 	public static void selectBatterType() {
 		
 		Scanner sc = new Scanner(System.in);
@@ -39,7 +46,10 @@ public class PersonalBatter {
 		}
 	}
 
-	private static void hitRank() { // 안타 순위
+	/**
+	 * 안타 순위 출력
+	 */
+	private static void hitRank() {
 		
 		StringBuilder sb = new StringBuilder("\t\t\t\t======================================================\n");
 		sb.append("\t\t\t\t[순위]\t\t[이름]\t\t[팀]\t\t[안타]\n");
@@ -76,7 +86,10 @@ public class PersonalBatter {
 		com.project.sports.output.Output.pause();
 	}
 
-	private static void homeRunRank() { // 홈런 순위
+	/**
+	 * 홈런 순위 출력
+	 */
+	private static void homeRunRank() {
 		
 		StringBuilder sb = new StringBuilder("\t\t\t\t======================================================\n");
 		sb.append("\t\t\t\t[순위]\t\t[이름]\t\t[팀]\t\t[홈런]\n");
@@ -114,7 +127,10 @@ public class PersonalBatter {
 		
 	}
 
-	private static void hitScoreRank() { // 타점 순위
+	/**
+	 * 타점 순위 출력
+	 */
+	private static void hitScoreRank() { 
 		
 		StringBuilder sb = new StringBuilder("\t\t\t\t======================================================\n");
 		sb.append("\t\t\t\t[순위]\t\t[이름]\t\t[팀]\t\t[타점]\n");

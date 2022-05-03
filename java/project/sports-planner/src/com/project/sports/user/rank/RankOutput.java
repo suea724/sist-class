@@ -2,9 +2,17 @@ package com.project.sports.user.rank;
 
 import com.project.sports.output.Output;
 
+/**
+ * 순위 카테고리의 메인 메뉴와 하위 메뉴를 출력
+ * @author 안수아
+ *
+ */
 public class RankOutput {
 
-	public static void printRankMenu() { // 순위 메인 메뉴
+	/**
+	 * 순위 카테고리의 메인 메뉴 출력
+	 */
+	public static void printRankMenu() { 
 		
 		System.out.println("\t\t\t\t\t ┌──────────────────────────────────┐");
 		System.out.println("\t\t\t\t\t │            1. 개인 순위\t\t    │");
@@ -15,7 +23,10 @@ public class RankOutput {
 		
 	}
 	
-	public static void printPositionMenu() { // 포지션 선택 메뉴
+	/**
+	 * 포지션 선택 메뉴 출력
+	 */
+	public static void printPositionMenu() { 
 		
 		System.out.println("\t\t\t\t\t ┌──────────────────────────────────┐");
 		System.out.println("\t\t\t\t\t │              1. 타자		    │");
@@ -25,7 +36,10 @@ public class RankOutput {
 		Output.input();
 	}
 	
-	public static void printBatterMenu() { // 타자 항목 선택 메뉴
+	/**
+	 * 개인 순위 타자 항목 선택 메뉴 출력
+	 */
+	public static void printBatterMenu() { 
 		
 		System.out.println("\t\t\t\t\t ┌──────────────────────────────────┐");
 		System.out.println("\t\t\t\t\t │              1. 안타		    │");
@@ -36,7 +50,10 @@ public class RankOutput {
 		Output.input();
 	}
 	
-	public static void printPitcherMenu() { // 투수 항목 선택 메뉴
+	/**
+	 * 개인 순위 투수 항목 선택 메뉴 출력
+	 */
+	public static void printPitcherMenu() {
 		
 		System.out.println("\t\t\t\t\t ┌──────────────────────────────────┐");
 		System.out.println("\t\t\t\t\t │            1. 평균 자책\t\t    │");
@@ -48,7 +65,10 @@ public class RankOutput {
 		Output.input();
 	}
 	
-	public static void printYearMenu() { // 연도별 검색 메뉴
+	/**
+	 * 연도 검색의 하위 메뉴 출력
+	 */
+	public static void printYearMenu() {
 		System.out.println("\t\t\t\t\t ┌──────────────────────────────────┐");
 		System.out.println("\t\t\t\t\t │            1. 개인 순위\t\t    │");
 		System.out.print("\t\t\t\t\t │\t      "); Output.back(); System.out.print("\t\t    │\n");
@@ -56,7 +76,10 @@ public class RankOutput {
 		Output.input();
 	}
 	
-	public static void printYearBatterMenu() { // 연도별 개인 순위 타자 검색 메뉴
+	/**
+	 * 연도별 개인 순위 타자 항목 선택 메뉴 출력
+	 */
+	public static void printYearBatterMenu() {
 		
 		System.out.println("\t\t\t\t\t ┌──────────────────────────────────┐");
 		System.out.println("\t\t\t\t\t │            1. 안타\t\t    │");
@@ -69,7 +92,10 @@ public class RankOutput {
 		
 	}
 	
-	public static void printYearPitcherMenu() { // 투수 항목 선택 메뉴
+	/**
+	 * 연도별 개인 순위 투수 항목 선택 메뉴 출력
+	 */
+	public static void printYearPitcherMenu() { 
 		
 		System.out.println("\t\t\t\t\t ┌──────────────────────────────────┐");
 		System.out.println("\t\t\t\t\t │            1. 평균 자책\t\t    │");

@@ -2,12 +2,19 @@ package com.project.sports.user.rank;
 
 import java.util.Calendar;
 import java.util.Scanner;
-
+/**
+ * 순위 카테고리
+ * @author 안수아
+ *
+ */
 public class RankMenu {
 	
 	public static int year = 0;
 	public static int currentYear = 0;
 	
+	/**
+	 * 순위 카테고리의 하위 메뉴
+	 */
 	public static void rankMenu() { // 순위 메뉴
 		
 		Calendar c = Calendar.getInstance();
@@ -38,6 +45,9 @@ public class RankMenu {
 		}
 	}
 
+	/**
+	 * 포지션 선택 메뉴
+	 */
 	private static void selectPosition() { // 포지션 메뉴
 		
 		Scanner sc = new Scanner(System.in);
@@ -65,6 +75,9 @@ public class RankMenu {
 		}
 	}
 	
+	/**
+	 * 연도를 입력받아 그 해의 팀 순위를 출력
+	 */
 	private static void searchByYear() { // 연도 검색
 		
 		boolean yearFlag = true;
@@ -93,6 +106,9 @@ public class RankMenu {
 		
 	}
 
+	/**
+	 * 연도 검색의 포지션 선택 메뉴
+	 */
 	private static void yearSearchMenu() { // 연도 검색 페이지 메뉴
 		
 		Scanner sc = new Scanner(System.in);

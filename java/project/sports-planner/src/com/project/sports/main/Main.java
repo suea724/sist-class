@@ -2,7 +2,6 @@ package com.project.sports.main;
 
 import java.util.Scanner;
 import com.project.sports.output.Output;
-import com.project.sports.user.UserLogin;
 import com.project.sports.user.findlogininfo.FindMenu;
 import com.project.sports.user.makeuser.MakeUser;
 
