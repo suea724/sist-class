@@ -249,7 +249,6 @@ begin
     vresult := width * height;
     dbms_output.put_line(vresult);
 end procTest;
-
 begin
     procTest(10, 20); -- 200
 end;
@@ -275,7 +274,9 @@ end;
 
 #### 👉 매개변수 모드
 - 매개변수가 값을 전달하는 방식
-- in모드(기본), out 모드
+- **in모드(기본)** : 프로시저 내부에서 사용하기 위한 변수
+- **out 모드** : 프로시저 외부로 반환하기 위한 변수
+- **단일값**을 반환하는 Out 파라미터
 ```sql
 create or replace procedure procTest (
     pnum1 in number,
@@ -304,3 +305,219 @@ begin
     dbms_output.put_line(vresult3);
 end;
 ```
+- **다중값**을 반환하는 Out 파라미터 > cursor 사용
+```sql
+create or replace procedure procBuseo(
+    pbuseo in varchar2,
+    pcursor out sys_refcursor -- 커서를 반환값으로 사용할 때 자료형
+)
+is
+begin
+    open pcursor 
+    for
+    select * from tblInsa where buseo = pbuseo; -- 커서 정의
+end procBuseo;
+
+declare
+    vcursor sys_refcursor; -- 커서 참조 변수
+    vrow tblInsa%rowtype;
+begin
+    procBuseo('영업부', vcursor);
+    loop
+        fetch vcursor into vrow;
+        exit when vcursor%notfound;
+        dbms_output.put_line(vrow.name);
+    end loop;
+end;
+```
+
+<br>
+
+### ✅ 저장 함수, Stored Function
+```sql
+-- 두 수의 합 반환하는 저장 함수
+-- 1. 선언
+create or replace function fnSum (
+    pnum1 in number,
+    pnum2 in number    
+) return number
+is
+begin
+    return pnum1 + pnum2;
+end fnSum;
+
+-- 2. 호출
+declare
+    vresult number;
+begin
+    vresult := fnSum(10, 20);
+    dbms_output.put_line(vresult);
+end;
+```
+- 저장 프로시저와 유사하다.
+- **반환값이 반드시 존재**한다. (out 파라미터가 아닌 return 문 사용)
+- 주로 ANSI-SQL에서 반복되는 작업을 줄이기 위해 사용한다. ⭐
+- 프로시저(PL/SQL) vs 함수(ANSI-SQL)
+
+<br>
+
+#### 👉 함수 사용 vs 미사용
+```sql
+-- 이름, 부서, 직위, 성별(남자, 여자)
+
+create or replace function fnGender(
+    pssn varchar2
+) return varchar2
+is 
+begin
+    return case
+        when substr(pssn, 8,1) = '1' then '남자'
+        when substr(pssn, 8,1) = '2' then '여자'
+    end;
+end;
+
+-- 함수 미사용
+    -- 생산 고비용
+    -- 호출 고비용
+    -- 개발자 가독성 + 조작성 저하 > 유지보수성 저하
+    -- 협업시 bad
+select
+    name, buseo, jikwi,
+    case
+        when substr(ssn, 8,1) = '1' then '남자'
+        when substr(ssn, 8,1) = '2' then '여자'
+    end
+from tblInsa;
+
+
+-- 함수 사용
+    -- 생산 저비용
+    -- 호출 저비용
+    -- 개발자 가독성 + 조작성 향상 > 유지보수성 향상
+    -- 협업시 good
+select
+    name, buseo, jikwi,fnGender(ssn)
+from tblInsa;
+```
+
+<br>
+
+### ✅ 트리거, Trigger
+```sql
+create or replace trigger 트리거명
+    before|after
+    insert|update|delete on 테이블명
+    [for each row]
+declare
+    선언부;
+begin
+    실행부;
+exception
+    예외처리부;
+end;
+```
+- 프로시저의 한 종류로, 미리 지정한 이벤트 발생 시 자동으로 실행된다.
+- 특정 테이블에서 **insert, update 또는 delete 발생 시, 지정한 트리거가 실행**된다. (오라클이 특정 테이블을 감시
+- **부하가 발생**한다는 단점이 있다.
+- 특정 테이블에 여러 개의 트리거가 적용되어 있으면 관리가 어려우므로 사용하지 않는 트리거는 삭제해주는 것이 좋다.
+
+<br>
+
+#### 👉 before 트리거
+- **트리거 실행 후, 쿼리가 실행**된다.
+- 쿼리를 사전에 검사하여 조건에 따라 쿼리 실행 유무를 통제할 수 있다.
+```sql
+create or replace trigger trgInsa
+    before delete on tblInsa
+begin
+    -- 월요일에는 퇴사가 불가능
+    if to_char(sysdate, 'dy') = '월' then
+    
+        -- 현재 진행하려던 업무 (delete 실행 전) > 취소 > 강제로 예외 발생
+        -- throw new Exception()
+        -- -20000 ~ -29999
+        raise_application_error(-20001, '월요일에는 퇴사가 불가능합니다.');
+    end if;
+end;
+
+delete from tblInsa where num = 1005;
+```
+
+<br>
+
+#### 👉 after 트리거
+- **쿼리 실행 후, 트리거가 실행**된다.
+- 주로 후처리 작업 시 사용된다. e.g. 로그
+```sql
+-- 쿼리문 실행할 때마다 로그 테이블에 기록
+create or replace trigger trgLogMan
+    after
+    insert or update or delete -- 세 가지 조작에 대한 트리거
+    on tblMan
+declare
+    vmessage varchar2(1000);
+begin
+    -- insert or update or delete 구분
+    if inserting then 
+        vmessage := '새로운 항목이 추가되었습니다.';
+    elsif updating then
+        vmessage := '새로운 항목이 수정되었습니다.';
+    elsif deleting then
+        vmessage := '기존 항목이 삭제되었습니다.';
+    end if;
+    
+    insert into tblLogMan values (seqLogMan.nextVal, vmessage, default);
+end;
+
+insert into tblMan values ('테스트', 22, 175, 60, null);
+update tblMan set weight = 65 where name = '테스트';
+delete from tblMan where name = '테스트';
+```
+
+<br>
+
+#### 👉 for each now
+- 트리거의 옵션
+- **사용하지 않을 경우**
+    - 문장(Query) 단위 트리거
+    - 사건이 적용되는 레코드의 개수와 상관없이 트리거는 1회 호출된다.
+    - 적용된 레코드의 정보가 중요하지 않은 경우 (사건 자체가 중요)
+- **사용하는 경우**
+    - 행(Record) 단위 트리거
+    - 사건이 적용되는 레코드의 개수만큼 트리거가 반복 호출된다.
+    - 적용된 레코드의 정보가 중요한 경우
+- **상관 관계(:old, :new)를 사용**한다. > 일종의 가상 레코드
+    - insert > :new (방금 추가된 행 참조)
+    - update > :old (수정되기 전 행 참조), :new (수정된 후 행 참조)
+    - delete > :old (삭제되기 전 행 참조)
+```sql
+-- update 트리거 상관 관계 사용
+create or replace trigger trgMan
+    after update on tblMan for each row
+begin
+    dbms_output.put_line('레코드를 수정했습니다. - ' || :old.name);
+    dbms_output.put_line('수정하기 전 나이 - ' || :old.age);
+    dbms_output.put_line('수정한 후 나이 - ' || :new.age);
+end;
+
+update tblMan set age = age + 1 where couple is not null;
+
+
+-- 직원 퇴사 전 담당 프로젝트 자동 위임
+create or replace trigger trgDeleteStaff
+    before delete on tblStaff for each row -- 직원 테이블에서 퇴사 전에 해당 직원 정보
+begin
+    update tblProject set
+        staff_seq = 4
+            where staff_seq = :old.seq; -- 삭제되는 직원의 seq값
+end;
+
+delete from tblStaff where seq = 2;
+```
+
+
+
+
+
+
+
