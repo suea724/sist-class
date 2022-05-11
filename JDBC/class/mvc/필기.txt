@@ -1,0 +1,64 @@
+
+주소록 관리 프로그램
+- 등록하기
+- 읽기
+- 수정하기
+- 삭제하기
+
+
+지금까지 메인 클래스(main())에 모든 코드를 같이 넣었음
+- 전체 흐름 통제 코드
+- 업무 조작 코드
+- JDBC
+- 입력코드
+- 출력구조
+	
+[자바 계층 구조]
+- 메인 클래스(main())
+	- 전체 흐름 통제 코드
+	
+- 업무 클래스(Service)
+	- 업무 코드 담당
+	- 메뉴별로 생성
+	ex) MemberService.java
+		AdministratorService.java
+		AuthService.java
+		BoardService.java
+	- 출력 업무 코드
+	- JDBC 업무 코드
+	
+- 출력 클래스(View)
+	- 화면 출력 코드 담당
+	
+- DB 클래스(DAO, Data Access Object)
+	- 데이터베이스 접근 코드 담당 (JDBC)
+	
+
+[파일]
+- Main.java
+	- 전체 흐름 통제
+	
+- Service.java
+	- 주소록 관리 담당
+
+- View.java
+	- 출력 담당
+
+- DAO.java
+	- DB 담당
+	
+- Address.java
+	- DTO(Data Transfer Object), VO(Value Object)
+	
+- DBUtil.java
+	- DB 연결
+	- 계층간의 데이터를 전달하는 용도
+	
+	
+[디자인 패턴]
+	- MVC 패턴
+		- Model > Data
+		- View > 출력
+		- Controller > 운용 역할, 제어 > Main, Service
+		
+	
