@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* 전체 선택자 */
+        /* * {
+            color : coral;
+        } */
+
+        /* 태그 선택자 */
+        /* h1 {
+            background-color: chartreuse;
+        }
+
+        h2 {
+            background-color: coral;
+        } */
+        
+        /* 아이디 선택자 */
+        h2#title {
+            color : hotpink;
+        }
+        
+        /* 클래스 선택자 */
+        p.test {
+            color : dodgerblue;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        [CSS 문법]
+
+        선택자 {
+            속성명 : 값;
+            속성명 : 값;
+            속성명 : 값;
+        }
+
+        [CSS 선택자, CSS Selector]
+        - HTML 소스에서 특정 태그를 검색
+        
+        1. 전체 선택자 (*)
+        - (구분없이) 모든 태그를 선택한다.
+        - 모든 태그에 적용할 CSS가 있을 때 사용
+        - 잘 사용하지 않음
+
+        2. 태그 선택자
+        - HTML 문서 내의 특정 태그를 선택하여 일괄 적용
+        - 많이 사용
+        - 생산성 높음, but 각 태그의 성격을 구분하지 않음
+
+        3. ID 선택자 > 다중 선택 불가, 유일한 값
+        - 태그에 명시된 id 속성을 사용해서 원하는 태그를 검색
+        - 태그명#id명 또는 #id명로 선택 
+
+        4. 클래스 선택자 > 다중 선택 가능, 동일 클래스명 허용
+        - 태그에 명시된 class 속성을 사용해서 원하는 태그 검색
+        - 태그명.클래스명 또는 .클래스명으로 선택
+        - 태그명을 지정하면 해당 태그에만 적용 (ID 선택자와 차이점)
+
+        => 2 ~ 4 조합해서 많이 사용됨 (그룹 선택자)
+
+    --> 
+    <h1 class="test">h1 입니다.</h1>
+
+    <p class="test">p 입니다.</p>
+    <p>p 입니다.</p>
+    <p class="test">p 입니다.</p>
+    <p>p 입니다.</p>
+    <p class="test">p 입니다.</p>
+
+    <div>div 입니다.</div>
+    <div>div 입니다.</div>
+    <div>div 입니다.</div>
+
+    <h2 id="title">h2 입니다.</h2>
+    <p>p 입니다.</p>
+
+    <h2>h2 입니다.</h2>
+    <p>p 입니다.</p>   
+</body>
+</html>
