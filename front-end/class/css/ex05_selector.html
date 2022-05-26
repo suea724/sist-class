@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* 
+
+        [자식 선택자, Child Selector]
+        - 부모선택자 > 자식선택자 {}
+        - 정밀도 높음 + 범위 좁음
+
+        [자손 선택자, Descendant Selector]
+        - 부모선택자 자식선택자 {}
+        - 정밀도 낮음 + 범위 넓음
+        
+        */
+
+        ul > li {
+            color : tomato;
+        }
+
+        /* 자식 선택자 */
+        ol > li > span {
+            color : blue;
+        }
+
+        /*자손 선택자*/
+        ol span {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>커리큘럼</h1>
+
+    <ol>
+        <li>Java <span>Programming</span></li>
+        <li>Oracle Database</li>
+        <li>JDBC <span>Programming</span></li>
+        <li>Client <span>Programming</span><b>(HTML)</b></li>
+        <li>Client <span>Programming</span><b>(CSS)</b></li>
+        <li>Client <span>Programming</span><b>(Javascript)</b></li>
+    </ol>
+
+    <h2>공지사항</h2>
+
+    <ul>
+        <li>구글 드라이브에 <span>백업본</span>을 다운로드 받으세요</li>
+        <li>과제는 <span>금요일</span>까지 제출하세요.</li>
+        <li>VS Code 설정을 백업하세요.</li>
+    </ul>
+</body>
+</body>
+</html>
