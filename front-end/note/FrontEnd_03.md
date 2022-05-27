@@ -49,10 +49,99 @@ text-decoration: line-through;
 |:-:|-|-|
 |color|색상|색상명 또는 색상코드|
 |text-align|텍스트 정렬|`left`, `right`, `center`, `justify`|
-|font-size|글자 크기|수치값|
-|line-height|줄간격|수치값|
+|font-family|폰트|폰트명 + `serif`, `sans-serif`, `monospace`|
+|font-size|글자 크기|수치값 (주로 em)|
 |font-style|글자 스타일|`normal`, `italic`|
 |font-weight|글자 두께|`lighter`, `normal`, `bold`, `bolder`, 수치값(100~900)|
+|line-height|줄간격|수치값|
 |word-spacing|단어 간격(스페이스 너비)|수치값|
 |letter-spacing|글자 간격|수치값|
 |text-decoration|글자 꾸밈|`none`, `overline`, `underline`, `line-through`, `underline overline`|
+|text-indent|들여쓰기|수치값|
+
+<br>
+
+### ✅ border
+```css
+ #box1 {
+    border-color : pink;
+    border-width: 5px;
+    border-style: dashed;
+
+    border : 3px solid lightskyblue;
+    border-top: 3px solid gold;
+    border-right: 3px solid lightgreen;
+    border-bottom: 3px solid orange;
+    border-left: 3px solid rgb(168, 168, 38);
+
+    border-color : red blue green yellow; /* 시계방향 */
+    border-color : royalblue tomato; /* 상, 하 */
+}
+```
+|속성|설명|속성값|
+|:-:|-|-|
+|border-color|테두리 색상 지정|색상명 또는 색상코드|
+|border-width|테두리 두께|수치값(px)|
+|border-style|선 종류|`solid`, `dashed`, `dotted`|
+|border|위 속성 동시에 지정 가능|테두리 속성값|
+|border-top|위 테두리|테두리 속성값|
+|border-right|오른쪽 테두리|테두리 속성값|
+|border-bottom|아래 테두리|테두리 속성값|
+|border-left|왼쪽 테두리|테두리 속성값|
+|border-collapse|테이블 선 합치기|`seperate` : 표 테두리와 셀 테두리 사이에 간격 O <br> `collapse` : 표 테두리와 셀 테두리 사이에 간격 X|
+
+<br>
+
+### ✅ margin, padding
+```css
+ #box2 {
+    padding : 20px;
+    padding-top : 50px;
+    padding-right : 10px;
+    padding-bottom: 0px;
+    padding-left: 100px;
+    
+    margin : 20px;
+    margin-top : 30px;
+    margin-right : 10px;
+    margin-bottom : 5px;
+    margin-left: 100px;
+}
+```
+- **padding**
+    - 테두리 안쪽 여백
+    - 태그의 테두리와 콘텐츠 영역 사이의 거리
+- **margin**
+    - 테두리 바깥쪽 여백
+    - 태그의 테두리와 외부 태그 사이의 거리
+    - 요소 배치용으로 사용
+
+    <br>
+
+### ✅ overflow
+**height 값 지정시** 오버플로우가 발생할 수 있다!
+|속성값|설명|
+|:-:|-|
+|visible|영역에 상관없이 내용을 끝까지 출력(default)|
+|scroll|스크롤바 생성|
+|hidden|영역 내 내용만 출력|
+|auto|기본 visible, 오버플로우 발생 시 scroll|
+    
+<br>
+
+### ✅ display
+요소의 **출력 방식을 조작**하는 속성
+|속성값|설명|
+|:-:|-|
+|none|요소를 화면에 출력하지 않는다. (영역 보존 X) <br> vs `visibility: hidden` : 영역 보존 O|
+|inline|요소를 개행없이 한줄에 배치|
+|block|요소를 개행하여 한줄씩 배치|
+|inline-block|inline 요소처럼 배치, inline요소에서 사용 불가능한 `width`, `height`, `margin`, `padding` 속성 사용 가능|
+
+<br>
+
+### ✅ float
+|속성|설명|속성값|
+|:-:|-|-|
+|float|기본 출력 방식을 깨고, 요소를 영역의 좌측 또는 우측 끝에 위치시킴|`left`, `right`|
+|clear|float의 영향을 받지 않도록 설정|`left`, `right`|
