@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* 
+            [박스 모델 width, height]
+            - 단위 : px(절대값), %(상대값)을 많이 사용
+            - 블럭 태그에만 적용이 가능
+            - 인라인 태그 중 일부에만 적용 가능 ex) img, text
+
+            * 일반적으로 height는 상대값 지정 불가능!
+        */
+
+        #box2 {
+            border-color : red;
+            background-color: darkgrey;
+            width : 200px;
+            height : 100px;
+        }
+
+        .box {
+            border : 1px solid black;
+        }
+
+        #div1 {
+            background-color: lightsalmon;
+
+            /* 반영 됨 */
+            width: 200px; 
+            height: 200px; /* default : auto */
+        }
+
+        #span1 {
+            background-color: lightgreen;
+
+            /* 반영 안됨 */
+            width: 200px; 
+            height: 200px;
+        }
+
+        #word {
+            display: inline-block;
+        }
+
+        #cat01 {
+            width : 150px;
+            height : 150px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>박스 모델</h1>
+    <div id="box1" class="box">상자1</div><br>
+    <div id="box2" class="box">상자2</div><br>
+    <div id="box3" class="box">상자3</div><br>
+
+    <h1>블럭 태그</h1>
+    <div id="div1">블럭태그</div>
+
+    <h1>인라인태그</h1>
+    <span id="span1">인라인태그</span>
+
+    <h1>문단</h1>
+    p > Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum vero dolores atque voluptatum? Ducimus incidunt accusantium dolorem suscipit eius quod sunt nisi quam, velit reiciendis quidem deleniti nesciunt rem consequatur ipsum molestiae iste aspernatur tempore itaque magni minima cupiditate. Quas <span id="word">nemo</span> earum suscipit maiores reprehenderit omnis aliquid exercitationem a vel consequatur laboriosam distinctio praesentium facere sit, sequi animi quisquam illo at dolor est ad esse? Possimus, quam neque? Nobis unde non voluptate aspernatur numquam, ipsum consequuntur ab laudantium accusamus, quo, assumenda a quidem cumque ex nesciunt. Ex unde sunt reprehenderit quam, porro amet veniam nesciunt cumque? Amet, est sit!
+
+
+
+</body>
+</html>

@@ -7,6 +7,16 @@
     <title>Document</title>
     <style>
 
+        /* 웹폰트 링크 import */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Tiro+Tamil&display=swap');
+
+        @font-face {
+            font-family: 'ParkYongJun';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/ParkYongJun.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         .txt {
 
             /*
@@ -50,6 +60,32 @@
 
             /* 꾸밈 */
             text-decoration: line-through;
+
+            /* 
+                [글꼴]
+                - 브라우저가 동작 중인 컴퓨터의 폰트 사용(서버측 폰트 X)
+
+                [폰트 예약어]
+                - 폰트의 종류를 나타내는 용어
+                1. serif : 획끝에 장식이 있는 폰트(궁서체, 바탕체)
+                2. sans-serif : 획끝에 장식이 없는 폰트(돋움체, 고딕체)
+                3. monospace : 문자폭이 균일(궁서, 궁서체)
+                4. cursive : 장식체 (영어)
+                5. fantasy : 장식체 (영어)
+
+                [웹폰트]
+                - 눈누, 구글 웹폰트
+                - 폰트를 서버로부터 다운로드 받아서 사용하는 기술
+                - 사용 기간은 일시적 > 해당 페이지에서만 적용됨
+                
+            */
+            /* font-family: '맑은 고딕', monospace; */
+        }
+
+        p {
+            /* 문단마다 들여쓰기 */
+            text-indent: 1em;
+            font-family: 'ParkYongJun','Tiro Tamil', serif;
         }
         
     </style>

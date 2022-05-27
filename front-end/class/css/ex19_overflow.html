@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            border : 1px solid #444;
+            width : 200px;
+            height: 200px; /* 높이 지정 시 오버플로우 발생 가능!! */
+
+            /* 
+            [overflow 속성값]
+            - 내용이 영역의 크기를 벗어났을 때 표현 설정
+            - auto : 기본 visible, overflow 발생 시 scroll
+            - visible : 영역에 상관없이 내용 출력 > default
+            - scroll : 스크롤바 생성
+            - hidden : 영역 내에서만 내용 출력
+            - default : visible 
+            */
+            overflow: auto; 
+        }
+    </style>
+</head>
+<body>
+    <div id="box">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa error odio magni fugiat, accusantium repellendus a tempore ducimus ratione esse numquam, repellat nam hic. Laboriosam, modi? Deleniti deserunt similique impedit! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem at et similique ut quod eius, laborum velit commodi assumenda suscipit hic tempore doloremque, itaque eligendi quos, fugiat sed voluptate veritatis.</div>
+</body>
+</html>
