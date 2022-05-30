@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            border: 10px solid black;
+            width: 200px;
+            height: 200px;
+        }
+
+        /* 
+            position이 static인 경우 좌표 변경 불가! > z-index 사용 불가!
+        */
+        #box1 {
+            background-color: tomato;
+        }
+        #box2 {
+            background-color: gold;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+            /* 기본값 0 */
+            z-index: 1;
+        }
+        #box3 {
+            background-color: cornflowerblue;
+            position: absolute;
+            left: 300px;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1" class="box">상자1</div>
+    <div id="box2" class="box">상자2</div>
+    <div id="box3" class="box">상자3</div>
+</body>
+</html>
