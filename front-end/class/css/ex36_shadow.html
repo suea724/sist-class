@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+            [그림자, shadow]
+            1. text-shadow : x y blur color
+            2. box-shadow : x y blur color
+        */
+        .box {
+            margin: 20px;
+        }
+
+        #box1 {
+            text-shadow: 1px 1px 0.5px gray;
+        }
+
+        #box2 {
+            box-shadow: 2px 2px 2px gray;
+            background-color: aliceblue;
+        }
+        
+        #box3 {
+            box-shadow: 0px 0px 5px gray;
+        }
+
+        p:hover > span {
+            text-shadow: 2px 2px 2px gray;
+        }
+    </style>
+</head>
+    <div id="box1" class="box">상자1입니다.</div>
+    <div id="box2" class="box">상자2입니다.</div>
+    <div id="box3" class="box">상자3입니다.</div>
+
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. <span>Amet</span> illo optio cum sit vitae expedita fugiat <span>numquam</span> distinctio et minus atque vero quidem <span>quibusdam</span> molestias voluptate, dolores corrupti aliquam deserunt?
+    </p>
+</body>
+</html>

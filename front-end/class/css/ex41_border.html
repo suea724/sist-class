@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> <!-- 구글 폰트 -->
+    <script src="https://kit.fontawesome.com/94e7820b34.js" crossorigin="anonymous"></script> <!-- fontawesome -->
+    <style>
+        #box {
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+            margin: 50px;
+            border-radius: 10px;
+            padding: 15px;
+
+            /* 
+                모서리 둥글기
+                - border-radius: px, %
+                - 단축의 1/2 = 최대값
+             */
+        }
+
+        #txt-search {
+            border: 1px solid gray;
+            border-radius: 50px;
+        }
+
+        #btn-search {
+            border: 1px solid gray;
+            border-radius: 50px;
+        }
+        
+        .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+        }
+
+        #btn-search i {
+            color: tomato;
+        }
+
+        #list img{
+            border-radius: 50%;
+        }
+</style>
+    </style>
+</head>
+<body>
+    <div id="box">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum ab praesentium fugiat exercitationem itaque ut quisquam explicabo odit magni! Hic odio libero nostrum earum id consequatur, dolor culpa sit ipsam.</div>
+
+    <hr>
+
+    <input type="text" id="txt-search" placeholder="검색어를 입력하세요.">
+    
+    <button id="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+    <div id="list">
+        <img src="images/dog01.jpg" alt="">
+        <img src="images/dog02.jpg" alt="">
+        <img src="images/dog03.jpg" alt="">
+        <img src="images/dog04.jpg" alt="">
+        <img src="images/dog05.jpg" alt="">
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {width: 200px; height: 200px;}
+
+        /* 
+            border: 객체 영역에 포함 O > 레이아웃 깨짐
+            outline: 객체 영역에 포함 X > 레이아웃 깨지지 않음
+        */
+
+        #box1 {
+            /* border: 10px solid black; */
+            outline: 10px solid black;
+        }
+        #box2 {
+            /* border: 10px solid blue; */
+            outline: 20px solid blue;
+        }
+        #box3 {
+            /* border: 10px solid red; */
+            outline: 10px solid red;
+        }
+
+        #txt {
+            border: 1px solid black;
+            padding: 3px;
+            outline: none;
+            display: block;
+        }
+
+        .txt:focus {
+            outline: 3px solid red;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box1" class="box"></div>
+    <div id="box2" class="box"></div>
+    <div id="box3" class="box"></div>
+
+    <hr>
+
+    <input type="text" class="txt">
+    <input type="text" class="txt">
+    <input type="text" class="txt">
+    <input type="text" class="txt">
+    <input type="text" class="txt">
+    <input type="text" class="txt">
+    <input type="text" class="txt">
+    <input type="text" class="txt">
+    <input type="text" class="txt">
+    <input type="text" class="txt">
+</body>
+</html>
