@@ -153,6 +153,25 @@ hr ~ p {
 
 <br>
 
+#### 👉 전후 선택자
+```css
+p > span::before {
+    content: '[';
+    color: orange;
+    font-weight: bold;
+}
+
+p > span::after {
+    content: ']';
+    color: orange;
+    font-weight: bold;
+}
+```
+- 선택한 요소의 앞이나 뒤에 추가로 지정한 내용을 생성하는 역할
+
+
+<br>
+
 ### ✅ 의사 클래스, Pseudo Class
 실제 태그의 class 속성에 명시되어 있지 않지만, 선택자에서 존재하는 클래스처럼 사용하는 클래스
 ```css
