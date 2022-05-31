@@ -26,6 +26,7 @@ background-attachment: fixed;
 |background-color|요소의 배경 색상|색상명 또는 색상코드|
 |background-image|배경 이미지|`url(이미지 주소)`|
 |background-repeat|배경 이미지 반복 여부|`no-repeat` : 반복 안함 <br> `repeat-x` : 가로 반복 <br> `repeat-y` : 세로 반복 <br> `repeat` : 모든 방향 반복 (default)|
+|background-size|배경 이미지 크기 조정|수치값 <br> `contains` : 이미지가 잘리지 않음<br> `cover` : 영역에 꽉참|
 |background-position|배경 이미지 위치|`left`, `center`, `right` : 수평정렬 <br> `top`, `center`, `bottom` : 수직정렬 <br> 수치(px, %)|
 |background-attachment|배경 이미지 스크롤 여부|`scroll` : 스크롤 시 배경 이미지는 스크롤 되지 않음 <br> `fixed` : 스크롤과 관계없이 고정|
 
@@ -83,12 +84,15 @@ text-decoration: line-through;
 |border-color|테두리 색상 지정|색상명 또는 색상코드|
 |border-width|테두리 두께|수치값(px)|
 |border-style|선 종류|`solid`, `dashed`, `dotted`|
+|border-radius|모서리 둥글기|수치값(px, %)|
 |border|위 속성 동시에 지정 가능|테두리 속성값|
 |border-top|위 테두리|테두리 속성값|
 |border-right|오른쪽 테두리|테두리 속성값|
 |border-bottom|아래 테두리|테두리 속성값|
 |border-left|왼쪽 테두리|테두리 속성값|
 |border-collapse|테이블 선 합치기|`seperate` : 표 테두리와 셀 테두리 사이에 간격 O <br> `collapse` : 표 테두리와 셀 테두리 사이에 간격 X|
+
+※ border 사용 시 레이아웃을 깨뜨릴 수 있다. 레이아웃이 깨지지 않길 원하면 `outline` 속성을 사용한다.
 
 <br>
 
@@ -108,15 +112,13 @@ text-decoration: line-through;
     margin-left: 100px;
 }
 ```
-- **padding**
-    - 테두리 안쪽 여백
-    - 태그의 테두리와 콘텐츠 영역 사이의 거리
-- **margin**
-    - 테두리 바깥쪽 여백
-    - 태그의 테두리와 외부 태그 사이의 거리
-    - 요소 배치용으로 사용
 
-    <br>
+|속성|설명|
+|:-:|-|
+|padding|- 테두리 안쪽 여백 <br> - 태그의 테두리와 콘텐츠 영역 사이의 거리|
+|margin|- 테두리 바깥쪽 여백 <br> - 태그의 테두리와 외부 태그 사이의 거리 <br> - 요소 배치용으로 사용|    
+
+<br>
 
 ### ✅ box-sizing
 - width, height를 지정해도 border, padding 등과 같이 다른 속성에 의해 요소의 크기가 달라질 수 있다.
@@ -172,3 +174,19 @@ text-decoration: line-through;
 |fixed|고정 좌표|브라우저 창의 좌측 상단|제거됨|
 
 <br>
+
+### ✅ shadow
+|속성|설명|속성값|
+|:-:|-|-|
+|text-shadow|글자 요소에 그림자 생성|좌표, 흐림도, 색상|
+|box-shadow|요소를 포함하는 블럭에 그림자 생성|좌표, 흐림도, 색상|
+
+<br>
+
+### ✅ column
+다단 구조 생성시 사용하는 속성
+|속성|설명|
+|:-:|-|
+|column-count|분할의 개수를 지정|
+|column-gap|분할 사이 간격 조정|
+|column-rule|분할 사이에 구분선 추가|
