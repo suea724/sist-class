@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /*
+            [transition, 전환]
+            - 객체의 속성(상태)값이 변화되는 과정을 시간 순서대로 보여줌
+            - 수치형 속성값에만 적용 가능(숫자, 색상)
+        */
+    #box {
+        border: 10px solid black;
+        width: 200px;
+        height : 200px;
+        background-color: gold;
+        /* transition-property: width, height, background-color; */
+        transition-property: all;
+        transition-duration: 1s;
+        overflow: hidden;
+
+        transform-origin: 400px center;
+    }
+
+    #box:hover {
+        /* width: 400px; */
+        /* height: 400px; */
+        /* background-color: purple; */
+        /* opacity: 0; */
+        /* border-radius: 50%; */
+        /* box-shadow: 5px 5px 5px gray; */
+        /* margin-left: 100px; */
+        /* padding: 100px; */  
+        /* border-width: 50px; */
+        /* border-color: tomato; */
+
+        /* transform: translate(500px, 0px); */
+        /* transform: scale(-1, 1); */
+        transform: rotate(360deg);
+    }
+
+    #cat img {
+        transition: 1s all;
+        transform-origin: 0 0;
+    }
+
+    #cat img:hover {
+        transform: rotate(360deg);
+    }
+
+    </style>
+</head>
+<body>
+    <div id="box">상자</div>
+
+    <h1>고양이</h1>
+    <div id="cat">
+        <img src="images/catty01.png" alt="">
+        <img src="images/catty02.png" alt="">
+        <img src="images/catty03.png" alt="">
+        <img src="images/catty04.png" alt="">
+        <img src="images/catty05.png" alt="">
+    </div>
+</body>
+</html>

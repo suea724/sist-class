@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin-bottom : 200px;
+            margin: 0 auto;
+        }
+
+        .box {
+            border: 1px solid black;
+            width: 200px;
+            height : 200px;
+            margin: 20px;
+        }
+
+        #box2 {
+            background-color: gold;
+        }
+
+        body #box2:hover {
+            background-color: cornflowerblue;
+            transform: rotate(45deg);
+
+            /* 변화 중심 축(기본값 center, center, 50%, 50%) */
+            transform-origin: 0 0;
+        }
+
+        #box4 {
+            overflow : hidden;
+        }
+
+        #box4 img {
+            width : 200px;
+            height : 200px;
+        }
+
+        #box4:hover img {
+            transform: translate(100px, 100px);
+        }
+    </style>
+</head>
+<body>
+    <div id="box1" class="box">상자1</div>
+    <div id="box2" class="box">상자2</div>
+    <div id="box3" class="box">상자3</div>
+
+    <div id="box4" class="box">
+        <img src="images/cat01.jpg" alt="">
+    </div>
+</body>
+</html>

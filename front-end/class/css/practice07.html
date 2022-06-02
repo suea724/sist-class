@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 800px;
+            margin: 10px auto;
+        }
+
+        .box {
+            width: 800px;
+            height: 150px;
+            border: 2px solid black;
+            position: relative;
+        }
+
+        .circle {
+            border: 1px solid black;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transition-property: all;
+            transition-duration: 3s;
+            transform: rotate(0deg);
+        }
+
+        #box1 > .circle {
+            background-color: tomato;
+            transition-timing-function: linear;
+            
+        }
+
+        #box2 > .circle {
+            background-color: cornflowerblue;transition-timing-function: ease;
+        }
+
+        #box3 > .circle {
+            background-color: gold;
+            transition-timing-function: ease-in-out;
+        }
+
+        #box4 > .circle {
+            background-color: lightgreen;
+            transition-timing-function: ease-in;
+        }
+
+        #box5 > .circle {
+            background-color: plum;
+            transition-timing-function: ease-out;
+        }
+
+        body:hover .circle {
+            left: 700px;
+            transform: rotate(3600deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="box1" class="box">
+        <div class="circle"><h1>A</h1></div>
+    </div>
+    <div id="box2" class="box">
+        <div class="circle"><h1>B</h1></div>
+    </div>
+    <div id="box3" class="box">
+        <div class="circle"><h1>C</h1></div>
+    </div>
+    <div id="box4" class="box">
+        <div class="circle"><h1>D</h1></div>
+    </div>
+    <div id="box5" class="box">
+        <div class="circle"><h1>E</h1></div>
+    </div>
+</body>
+</html>
