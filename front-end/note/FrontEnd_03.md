@@ -190,3 +190,32 @@ text-decoration: line-through;
 |column-count|분할의 개수를 지정|
 |column-gap|분할 사이 간격 조정|
 |column-rule|분할 사이에 구분선 추가|
+
+<br>
+
+### ✅ transform
+요소를 회전하거나 확대/축소, 비틀기 등 형태를 변형하는 속성
+|속성값|설명|
+|:-:|-|
+|translate(좌표)|위치 이동|
+|scale(비율)|배율 변형(확대, 축소)|
+|rotate(angle)|회전 변형, 회전 기준점은 `transform-origin`으로 설정 가능(기본값 : 요소의 중심)|
+|skew(angle)|왜곡(비틀기)|
+
+
+
+[transform 참고자료](https://www.codingfactory.net/12593) 
+
+<br>
+
+### ✅ transition
+객체의 속성값이 변화되는 과정을 애니메이션 형태로 나타내주는 속성 (수치형 속성값에만 적용 가능)
+|속성|설명|속성값|
+|:-:|-|-|
+|transition-delay|전환효과의 시작을 연기|시간(s 또는 ms)|
+|transition-duration|전환효과의 총 시간 설정|시간(s 또는 ms)|
+|transition-property|전환효과를 설정할 요소의 속성 설정|`none` : 모든 속성에 적용하지 않음 <br> `all` : 모든 속성에 적용 <br> `property` : 속성 지정, 여러 개의 속성 지정 시 쉼표로 구분|
+|transition-timing-function|전환효과의 진행 속도 설정|`ease` : 천천히 - 빠르게 - 천천히 <br> `linear` : 등속 <br> `ease-in` : 천천히 - 보통 <br> `ease-out` : 보통 - 천천히 <br> `ease-in-out` : 천천히 - 보통 - 천천히|
+
+
+[transition 참고자료](https://www.codingfactory.net/10953)
