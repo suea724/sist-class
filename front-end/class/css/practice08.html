@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 600px;
+            height: 800px;
+            border: 5px solid black;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .ball {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 5px solid black;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            animation-duration: 1s;
+            animation-name: key-ball;
+        }
+
+        @keyframes key-ball {
+            from {
+                transform: translate(0, 0);
+            }
+            to {
+                transform: translate(0, 745px);
+            }
+        }
+
+        #ball1 {
+            background-color: coral;
+            animation-timing-function: ease;
+        }
+        #ball2 {
+            background-color: yellowgreen;
+            animation-timing-function: ease-in;
+        }
+        #ball3 {
+            background-color: hotpink;
+            animation-timing-function: ease-out;            
+        }
+        #ball4 {
+            background-color: cornflowerblue;
+            animation-timing-function: ease-in-out;
+        }
+        #ball5 {
+            background-color: gold;
+            animation-timing-function: linear;
+        }
+        #ball6 {
+            background-color: lightseagreen;
+            animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+        #ball7 {
+            background-color: lightgray;
+            animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="ball1" class="ball"></div>
+        <div id="ball2" class="ball"></div>
+        <div id="ball3" class="ball"></div>
+        <div id="ball4" class="ball"></div>
+        <div id="ball5" class="ball"></div>
+        <div id="ball6" class="ball"></div>
+        <div id="ball7" class="ball"></div>
+    </div>
+</body>
+</html>

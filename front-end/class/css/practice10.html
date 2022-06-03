@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            overflow: hidden;
+        }
+
+        div {
+            text-align: center;
+            margin-top: 300px;
+        }
+
+        div span {
+            display: inline-block;
+            color : white;
+            font-size: 10rem;
+            animation-duration: 1s;
+            animation-name: key-text;
+            animation-direction: normal;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-out;
+            transform: translate(2000px, 0px);
+        }
+
+        @keyframes key-text {
+            from {
+                transform: translate(0, 0) rotate(0deg);
+                transform: translate(2000px, 0);
+            }
+            to {
+                transform: translate(0, 0) rotate(-1800deg);
+            }
+        }
+
+        #text span:nth-child(2) {
+            animation-delay: .15s;
+        }
+        
+        #text span:nth-child(3) {
+            animation-delay: .3s;
+        }
+        
+        #text span:nth-child(4) {
+            animation-delay: .45s;
+        }
+        
+        #text span:nth-child(5) {
+            animation-delay: .6s;
+        }
+        
+        #text span:nth-child(6) {
+            animation-delay: .75s;
+        }
+        
+        #text span:nth-child(7) {
+            animation-delay: .9s;
+        }
+        
+        #text span:nth-child(8) {
+            animation-delay: 1.05s;
+        }
+        
+        #text span:nth-child(9) {
+            animation-delay: 1.2s;
+        }
+        
+        #text span:nth-child(10) {
+            animation-delay: 1.35s;
+        }
+        
+        #text span:nth-child(11) {
+            animation-delay: 1.5s;
+            color: gold;
+        }
+
+    </style>
+    <script src="https://kit.fontawesome.com/94e7820b34.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="text">
+        <span>H</span>
+        <span>e</span>
+        <span>l</span>
+        <span>l</span>
+        <span>o</span>
+        <span>!</span>
+        <span>H</span>
+        <span>T</span>
+        <span>M</span>
+        <span>L</span>
+        <span><i class="fa-brands fa-html5 icon"></i></span>
+    </div>
+    
+</body>
+</html>
