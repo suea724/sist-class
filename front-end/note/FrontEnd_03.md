@@ -151,6 +151,18 @@ text-decoration: line-through;
 |inline|요소를 개행없이 한줄에 배치|
 |block|요소를 개행하여 한줄씩 배치|
 |inline-block|inline 요소처럼 배치, inline요소에서 사용 불가능한 `width`, `height`, `margin`, `padding` 속성 사용 가능|
+|flex|요소를 수직 또는 수평으로 배치(flex conatiner)|
+
+<br>
+
+### ✅ flex
+|속성|설명|속성값|
+|:-:|-|-|
+|flex-flow|flex-direction과 flext-wrap의 단축 속성|각 속성값|
+|flex-direction|flex 요소의 주축을 설정|`row` : 기본값, 수평방향으로 왼쪽에서 오른쪽으로 정렬 <br> `row-reverse` : row와 반대 <br> `column` : 수직방향으로 위에서 아래로 정렬 <br> `column-reverse` : column과 반대|
+|flex-wrap|flex 요소의 줄바꿈 설정|`nowrap` : 모든 요소를 한줄에 표시 <br> `wrap` : 요소 줄바꿈 <br> `wrap-reverse` : 요소를 역방향으로 줄바꿈 |
+|justify-content|주축의 정렬 방법 설정|`flex-start` : 요소를 주축 기준 시작부분부터 배치 <br> `flex-end` : 요소를 주축 기준 끝부분부터 배치 <br> `center` : 요소 주축 기준 가운데 정렬 <br> `space-between` : 요소 사이에 동일한 간격을 둠 <br> `space-around` : 양 끝에 여백, 요소 사이에 동일한 간격을 둠 <br> `space-evenly` : 양 끝에 여백과 요소 사이 간격이 동일 <br> `stretch` : 주축 기준으로 끝까지 요소를 채움|
+|align-content|교차축의 정렬 방법을 설정|`flex-start` : 요소를 교차축 기준 시작부분부터 배치 <br> `flex-end` : 요소를 교차축 기준 끝부분부터 배치 <br> `center` : 요소 교차축 기준 가운데 정렬 <br> `space-between` : 요소 사이에 동일한 간격을 둠 <br> `space-around` : 양 끝에 여백, 요소 사이에 동일한 간격을 둠 <br> `space-evenly` : 양 끝에 여백과 요소 사이 간격이 동일 <br> `stretch` : 교차축 기준으로 끝까지 요소를 채움|
 
 <br>
 
@@ -219,3 +231,21 @@ text-decoration: line-through;
 
 
 [transition 참고자료](https://www.codingfactory.net/10953)
+
+<br>
+
+### ✅ animation
+요소에 동적인 효과를 부여하는 속성 (transition보다 세밀)
+|속성|설명|속성값|
+|:-:|-|-|
+|@keyframes|어떤 모양에서 어떤 모양으로 바꿀지 설정|0% ~ 100% 또는 from, to로 설정|
+|animation-name|어떤 @keyframes를 사용할지 설정|@keyframes 이름|
+|animation-duration|애니메이션의 지속 시간 (총 시간 = 지속 시간 * 반복 횟수)|시간 (s 또는 ms)|
+|animation-timing-function|애니메이션 진행 속도|transition-timing-fuction와 동일|
+|animation-delay|애니메이션 시작 전 대기 시간|시간 (s 또는 ms)|
+|animation-iteration-count|애니메이션 반복 횟수|숫자|
+|animation-direction|애니메이션 진행 방향|`normal` : 기본값, 정해진 순서로 진행 <br> `reverse` : 반대 순서로 진행 <br> `alternate` : 정해진 순서로 진행 후 반대 순서로 진행 <br> `alternate-reverse` : 반대 순서로 진행 후 정해진 순서로 진행|
+|animation-fill-mode|애니메이션을 마친 후 상태|`none` : 애니메이션이 끝난 후 상태를 설정하지 않음 <br> `forwards` : 애니메이션이 끝난 후 그 지점에 그대로 있음 <br> `backwords` : 애니메이션이 끝난 후 시작점으로 돌아옴<br> `both` : 애니메이션의 앞 뒤 결과를 조합하여 설정|
+
+[animation 참고자료](https://www.codingfactory.net/11163)
+
