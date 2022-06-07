@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            스코프, Scope
+            - 변수의 생명 주기
+            - 변수의 영역
+
+            자바 스크립트
+            1. 전역 변수: 페이지 전체 > 선언문 실행(생성) ~ 페이지 종료(소멸)
+            2. 지역 변수: 함수 전역, 제어문은 영역으로 인식하지 않음
+        */
+       var num = 100; // 전역 변수. <script> 태그 내에서 직접 선언한 변수
+
+        function m1() {
+            var num2 = 100;
+            console.log(num2);
+
+            if (num2 > 0) {
+                var num3 = 300;
+                console.log(num3);
+            }
+            console.log(num3); // 실행 됨!
+        }
+
+        m1();
+
+        // Uncaught ReferenceError: num2 is not defined
+        // console.log(num2);
+
+        var a = 10;
+        var a = 20; // 재정의(O), 에러 발생(X) > X
+
+        var b = 20;
+        c = 30; // 변수 선언문(var)을 사용하지 않고 변수 생성 가능. 절대 사용 금지! > 무조건 전역 변수(함수에서 선언해도)
+
+        console.log(c);
+    </script>
+</body>
+</html>

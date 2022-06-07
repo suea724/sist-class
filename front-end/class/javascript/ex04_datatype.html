@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*
+            [JavaScript 자료형]
+            1. number
+                - 숫자형(정수, 실수)
+            2. string
+                - 문자, 문자열
+            3. boolean
+                - 논리형
+            4. object
+                - 객체형
+                - Class X
+                - JavaScript > 객체 기반 프로그래밍 언어
+            5. 기타
+                - null
+                - undifined
+                - NaN (Not a Number)
+
+            
+                변수, 상수(리터럴)
+                - JavaScript는 변수 타입을 선언하지 않는다. 
+
+        */
+
+        // var 변수명 = 리터럴
+        var num = 10;
+        var num2 = 10.5;
+
+        var name = "홍길동";
+        var name2 = '홍길동';
+
+        var now = new Date();
+
+        var flag = true;
+        var flag = false;
+
+        // 현재 변수나 상수의 자료형을 확인하는 연산자
+        console.log(typeof 100);
+        console.log(typeof 3.14);
+        console.log(typeof num);
+        console.log(typeof name);
+        console.log(typeof flag);
+
+        // 연산자 > 자바와 동일
+        // 제어문 > 자바와 동일
+
+        // JavaScript는 자료형에 대한 처리가 유연하다. > weak type(자동 형변환)
+        // 참고 > TypeScript: JavaScript의 자료형 취급 모호 & 느슨함을 개선한 언어
+
+        console.log('10' + 2);
+        console.log('10' * 2);
+        console.log(2 + '10');
+
+        // 문자 이스케이프
+        // - 자바와 동일
+        console.log('C:\\class\\client');
+ 
+    </script>
+</body>
+</html>

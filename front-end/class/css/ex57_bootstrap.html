@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap-css/bootstrap.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="bootstrap-js/bootstrap.js"></script>
+    <style>
+        .container {
+            width: 960px;
+            padding-top: 50px;
+        }
+
+        .table {
+            margin-top : 20px;
+        }
+
+        .table th:nth-child(1) {width : 70px;}
+        .table th:nth-child(2) {width : auto}
+        .table th:nth-child(3) {width : 100px;}
+        .table th:nth-child(4) {width : 130px;}
+        .table th:nth-child(5) {width : 70px;}
+
+        .table th, .table td {
+            text-align: center;
+        }
+
+        .table td:nth-child(2) {
+            text-align: left;
+        }
+        
+        nav {
+            text-align: center;
+            width: 250px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Board</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>이름</th>
+                <th>날짜</th>
+                <th>읽음</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Lorem, ipsum dolor.</td>
+                <td>홍길동</td>
+                <td>2022-06-07</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Lorem, ipsum dolor.</td>
+                <td>홍길동</td>
+                <td>2022-06-07</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Lorem, ipsum dolor.</td>
+                <td>홍길동</td>
+                <td>2022-06-07</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Lorem, ipsum dolor.</td>
+                <td>홍길동</td>
+                <td>2022-06-07</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Lorem, ipsum dolor.</td>
+                <td>홍길동</td>
+                <td>2022-06-07</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Lorem, ipsum dolor.</td>
+                <td>홍길동</td>
+                <td>2022-06-07</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Lorem, ipsum dolor.</td>
+                <td>홍길동</td>
+                <td>2022-06-07</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Lorem, ipsum dolor.</td>
+                <td>홍길동</td>
+                <td>2022-06-07</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Lorem, ipsum dolor.</td>
+                <td>홍길동</td>
+                <td>2022-06-07</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Lorem, ipsum dolor.</td>
+                <td>홍길동</td>
+                <td>2022-06-07</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Lorem, ipsum dolor.</td>
+                <td>홍길동</td>
+                <td>2022-06-07</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Lorem, ipsum dolor.</td>
+                <td>홍길동</td>
+                <td>2022-06-07</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Lorem, ipsum dolor.</td>
+                <td>홍길동</td>
+                <td>2022-06-07</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Lorem, ipsum dolor.</td>
+                <td>홍길동</td>
+                <td>2022-06-07</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Lorem, ipsum dolor.</td>
+                <td>홍길동</td>
+                <td>2022-06-07</td>
+                <td>3</td>
+            </tr>
+        </tbody>
+    </table>
+    <nav aria-label="...">
+        <ul class="pagination">
+          <li class="page-item disabled">
+            <a class="page-link">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+
+    <div class="btns">
+        <button class="btn btn-primary">Write</button>
+    </div>
+    </div>
+</body>
+</html>
