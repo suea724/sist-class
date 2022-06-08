@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Browser Object Model</h1>
+
+    <img src="images/catty01.png" alt="" name="cat1">
+
+    <hr>
+
+    <form action="" name="form1">
+        <div>
+            <label for="">이름: </label>
+            <input type="text" name="txt1">
+        </div>
+        <div>
+            <label for="">나이: </label>
+            <input type="text" name="txt2">
+        </div>
+    </form>
+
+    <script>
+        
+        /*
+            [HTML 계층 구조]
+            - HTML 문서의 소스를 계층 구조화하는 모델
+
+            1. BOM
+                - 초창기 모델
+                - HTML 문서를 미리 정해진 트리 구조에 따라 접근하는 모델
+                - 조작할 수 있는 태그의 수가 한정적(이미지, 링크, 폼 관련 태그만)
+                - 태그의 name을 사용해서 접근
+                - id, class는 접근 불가
+
+            2. DOM
+                - 발전 모델
+                - BOM + @
+                - 모든 태그를 조작 가능
+                - name, id, class 모두 인식 가능
+        
+        */
+
+        // 이름 (텍스트박스)
+        // .value : 속성 접근
+        // = '홍길동' : 값 대입
+        window.document.form1.txt1.value = '홍길동';
+    
+    </script>
+</body>
+</html>

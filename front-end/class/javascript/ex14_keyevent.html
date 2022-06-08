@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input, textarea {
+            display: block;
+            margin-bottom: 10px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>키 이벤트</h1>
+
+    <form action="" name="form1">
+        <input type="text" name="txt1" autocomplete="off">
+        <input type="text" name="txt2">
+        <textarea name="txt3"></textarea>
+    </form>
+
+    <script>
+        var txt1 = window.document.form1.txt1;
+        var txt2 = window.document.form1.txt2;
+        var txt3 = window.document.form1.txt3;
+
+        /*
+            [키 관련 이벤트]
+            - onkeyXXX
+            - 포커스를 가지는 태그에서만 발생(텍스트박스, 체크박스 등)
+
+            1. onkeydown
+                - 키를 눌렀을 때 발생
+                - 입력된 문자는 중요하지 않음 > 키를 누르는 행위가 중요
+                - 키보드에 존재하는 모든 키에 반응(******)
+                - 방금 입력한 문자가 필요없는 경우 사용
+
+            2. onkeyup
+                - 키를 뗐을 때 발생
+                - 방금 입력한 문자가 필요한 경우 사용
+
+            3. onkeypress
+                - 키를 눌렀을 때 발생
+                - 거의 사용하지 않음
+                - 문자키에 반응 > 입력된 문자를 구분할 수 있다.
+                - 문자가 아닌 키는 반응 안함 (******)
+
+            'a'키를 누르면 > 텍스트박스 'a'입력
+            - 사용자가 'a'를 누른다.
+                1. keydown 이벤트 발생
+                2. 컨트롤(텍스트박스)에 같이 입력
+                3. keyup 이벤트 발생
+        */
+
+        txt1.onkeydown = m1;
+        txt1.onkeyup = m2;
+        txt1.onkeypress = m3;
+
+        function m1() {
+            // console.log('keydown');
+            // console.log(event.keyCode);
+            // if (event.keyCode == 37) { // 방향키 왼
+            //     txt3.cols--;
+            // } else if (event.keyCode == 39) { // 방향키 오
+            //     txt3.cols++;
+            // } else if (event.keyCode == 38) { // 방향키 위
+            //     txt3.rows--;
+            // } else if (event.keyCode == 40) { // 방향키 아래
+            //     txt3.rows++;
+            // }
+
+            txt1.value = txt2.value;
+        }
+
+        function m2() {
+            // console.log('keyup');
+        }
+
+        function m3() {
+            // console.log('keypress');
+            console.log(event.keyCode);
+        }
+
+    </script>
+</body>
+</html>
