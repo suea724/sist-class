@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            border: 1px solid gray;
+            width: 600px;
+            height: 300px;
+            margin: 0 auto;
+            padding: 10px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        input[type=button] {
+            display: block;
+            width: 100px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 400px;
+            height: 300px;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        
+        <form action="" name="form1">
+            <input type="button" value="강아지1" name="btn" data-number="1">
+            <input type="button" value="강아지2" name="btn" data-number="2">
+            <input type="button" value="강아지3" name="btn" data-number="3">
+            <input type="button" value="강아지4" name="btn" data-number="4">
+            <input type="button" value="강아지5" name="btn" data-number="5">
+        </form>
+        <img src="images/dog01.jpg" name="dog">
+    </div>
+
+    <script>
+        for (var i = 0 ; i < document.form1.btn.length ; i ++) {
+            document.form1.btn[i].onmouseover = function() {
+                document.images['dog'].src = "images/dog0" + event.target.dataset['number'] + ".jpg";
+            }
+
+            document.form1.btn[i].onclick = function() {
+                window.open("images/dog0" + event.target.dataset['number'] + "_big.jpg", "", "width=1600 height=1200");
+            }
+        }
+    </script>
+</body>
+</html>

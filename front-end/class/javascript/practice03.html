@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>고양이</h1>
+    <div name="cats">
+        <img src="images/catty01.png" name="cat" alt="" >
+        <img src="images/catty02.png" name="cat" alt="">
+        <img src="images/catty03.png" name="cat" alt="">
+        <img src="images/catty04.png" name="cat" alt="">
+        <img src="images/catty05.png" name="cat" alt="">
+    </div>
+
+    <script>
+        for (var i = 0 ; i < document.cat.length ; i ++) {
+            document.cat[i].onmouseover = m1;
+            document.cat[i].onclick = m2;
+        }
+
+        function m1(evt) {
+            evt.target.width ++;
+        }
+
+        function m2(evt) {
+            evt.target.width = 128;   
+        }
+
+        window.onkeydown = function(evt) {
+            if (evt.keyCode >= 49 && evt.keyCode <= 53) {
+                document.cat[evt.keyCode-49].width ++;
+            } else if (evt.keyCode == 27) {
+                for (var i = 0 ; i < document.cat.length ; i ++) {
+                    document.cat[i].width = 128;
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

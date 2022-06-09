@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            
+        }
+        table th {
+            background-color: lightgray;
+            padding: 10px;
+        }
+        table td {
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>회원가입</h1>
+    <table border>
+        <tr>
+            <th>주민번호</th>
+            <td><input type="text" name="front" size=10 onkeyup="check(this)"> <span>-</span> <input type="text" name="back" size=10 onkeyup="checkGender(this)"> </td>
+        </tr>
+        <tr>
+            <th>생년월일</th>
+            <td><input type="text" name="year" size="8">년<input type="text" name="month" size="8">월<input type="text" name="day" size="8">일</td>
+        </tr>
+        <tr>
+            <th>성별</th>
+            <td><input type="radio" name="gender" id="m"> <label for="m">남자</label> <input type="radio" name="gender" id=""> <label for="f">여자</label></td>
+        </tr>
+    </table>
+
+    <script>
+        function check(front) {
+            var year = document.all.year;
+            var month = document.all.month;
+            var day = document.all.day;
+            var back = document.all.back;
+
+            if (front.value.length == 6) {
+                year.value = '19' + front.value.substring(0, 2);
+                month.value = front.value.substring(2, 4);
+                day.value = front.value.substring(4, 6);
+                back.focus();
+            }
+        }
+
+        function checkGender(back) {
+            var fnum = document.all.back.value.charAt(0);
+            var gender = document.all.gender;
+
+            if (fnum == 1) {
+                gender[0].checked = true;
+            } else if (fnum == 2) {
+                gender[1].checked = true;
+            }
+        }
+    </script>
+</body>
+</html>

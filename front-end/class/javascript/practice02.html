@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>회원가입</h1>
+    <form action="" name="form1">
+        아이디 : <input type="text" name="txt1"><br>
+        <input type="text" name="result" readonly="readonly" id="result" style="border: none; color:#dc3545">
+    </form>
+
+    <script>
+        document.form1.txt1.onkeyup = m1;
+        
+        function m1() {
+            var length = document.form1.txt1.value.length;
+
+            if (length < 4) {
+                document.form1.result.value = "아이디가 너무 짧습니다."
+            } else if (length >= 4 && length < 12) {
+                document.form1.result.value = "적절한 아이디입니다."
+            } else {
+                document.form1.result.value = "아이디가 너무 깁니다."
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="images/cat01.jpg" alt="" name="cat">
+    <img src="images/cat02.jpg" alt="" name="cat">
+    <img src="images/cat03.jpg" alt="" name="cat">
+    <img src="images/cat04.jpg" alt="" name="cat">
+    <img src="images/cat05.jpg" alt="" name="cat">
+
+    <script>
+        for(var i = 0 ; i < document.cat.length ; i ++) {
+            document.cat[i].onmouseover = m1;
+            document.cat[i].onmouseout = m2;
+        }
+
+        function m1(evt) {
+            evt.target.src = evt.target.src.replace('cat', 'dog');
+        }
+
+        function m2(evt) {
+            evt.target.src = evt.target.src.replace('dog', 'cat');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <h1>데이터 입력</h1>
+    <form action="" name="form1">
+        이름 : <input type="text" name="txt"><br>
+        나이 : <input type="text" name="txt"><br>
+        별명 : <input type="text" name="txt"><br>
+        <input type="button" name="btnLong" value="Long">
+        <input type="button" name="btnShort" value="Short"> 
+    </form>
+
+    <script>
+        document.form1.btnLong.onclick = m1;
+        document.form1.btnShort.onclick = m2;
+
+        function m1() {
+            for (var i = 0 ; i < document.form1.txt.length ; i ++) {
+                document.form1.txt[i].size = 50
+            }
+        }
+        function m2() {
+            for (var i = 0 ; i < document.form1.txt.length ; i ++) {
+                document.form1.txt[i].size = 10
+            }
+            
+        }
+    </script>
+</body>
+</html>
