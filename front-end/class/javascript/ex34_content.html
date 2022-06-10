@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #sample {
+            background-color: #EEE;
+            border: 1px solid black;
+            padding: 20px;
+            width: 800px;
+        }
+
+        #sample img {
+            width: 150px;
+            border-radius: 5px;
+            opacity: 0.7;
+            cursor: pointer;
+        }
+        
+        #sample img:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="sample">
+        <img src="images/cat01.jpg" alt="" class="pic">
+        <img src="images/cat02.jpg" alt="" class="pic">
+        <img src="images/cat03.jpg" alt="" class="pic">
+        <img src="images/cat04.jpg" alt="" class="pic">
+        <img src="images/cat05.jpg" alt="" class="pic">
+        <img src="images/dog01.jpg" alt="" class="pic">
+        <img src="images/dog02.jpg" alt="" class="pic">
+        <img src="images/dog03.jpg" alt="" class="pic">
+        <img src="images/dog04.jpg" alt="" class="pic">
+        <img src="images/dog05.jpg" alt="" class="pic">
+    </div>
+    <hr>
+    <input type="button" value="전체삭제" id="btnClear">
+    <hr>
+    <div id="output"></div>
+
+    <script>
+        var pic = document.getElementsByClassName('pic');
+
+        for (var i = 0 ; i < pic.length ; i ++) {
+            pic[i].onclick = m1;
+        }
+
+        function m1(event) {
+            // 클릭한 썸네일이 누군지
+            var filename = getFileName(event.target.src);
+            document.getElementById('output').innerHTML += '<img src = "images/' + filename + '">';
+        }
+
+        function getFileName(path) {
+            var index = path.lastIndexOf('/');
+            return path.substr(index);
+        }
+
+        document.getElementById('btnClear').onclick = m2;
+
+        function m2() {
+            if (document.getElementById('output').innerHTML == '') {
+                alert('사진이 없습니다.');
+                return;
+            }
+
+            if (confirm('정말 삭제하시겠습니까?')) {
+                document.getElementById('output').innerHTML = '';
+            }
+        }
+    </script>
+</body>
+</html>

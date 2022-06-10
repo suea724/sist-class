@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset {
+            width: 300px;
+            margin-bottom: 30px;
+        }
+
+        fieldset span {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            min-width: 600px;
+            text-align: center;
+        }
+
+        table th, table td {
+            border: 1px solid black;
+            padding: 10px;
+
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>입력 항목</legend>
+        <span>이름 : <input type="text" id="nme"></span>
+        <span>나이 : <select name="age" id="age"></select></span>
+        <span>성별 : <input type="radio" name="gender" value="male" id="m"><label for="m">남자</label> 
+            <input type="radio" name="gender" value="female" id="f"><label for="f">여자</label></span>
+        <span>주소 : <input type="text" id="address"></span>
+        <input type="button" value="추가하기" id="btn">
+    </fieldset>
+
+    <table id="tbl">
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>나이</th>
+            <th>성별</th>
+            <th>주소</th>
+        </tr>
+        <tr id="info">
+            <td colspan="5">등록된 항목이 없습니다.</td>
+        </tr>
+    </table>
+
+    <script>
+
+        var num = 1;
+        var nme = document.getElementById('nme');
+        var age = document.getElementById('age');
+        var gender = document.getElementsByName('gender');
+        var address = document.getElementById('address');
+        var picsrc;
+
+        // 옵션 추가
+        for (var i = 20 ; i <= 60 ; i ++) {
+            age.options.add(new Option(i, i));
+        }
+
+        // 라디오 버튼 onchange 이벤트
+        for (var i = 0 ; i < gender.length ; i ++) {
+            gender[i].onchange = function(evt) {
+                if (evt.target.value == 'male') {
+                    picsrc = "<img src='images/gender_m.png'>";
+                } else {
+                    picsrc = "<img src='images/gender_f.png'>";
+                }
+            }
+        }
+
+        document.getElementById('btn').onclick = function() {
+
+            if (nme.value == "") {
+                nme.focus();
+                alert('이름을 입력해주세요.');
+                return;
+            }
+
+            if (address.value == "") {
+                address.focus();
+                alert('주소를 입력해주세요.');
+                return;
+            }
+
+            var temp = '<tr>';
+            temp += '<td>' + num + '</td>';
+            temp += '<td>' + nme.value + '</td>';
+            temp += '<td>' + age.value + '</td>';
+            temp += '<td>' + picsrc + '</td>';
+            temp += '<td>' + address.value + '</td>';
+            temp += '</tr>';
+
+            if (document.getElementById('info').innerText == '등록된 항목이 없습니다.') {
+                document.getElementById('info').innerText = "";
+            }
+
+            document.getElementById('tbl').innerHTML += temp;
+
+            nme.value = "";
+            gender[0].checked = false;
+            gender[1].checked = false;
+            address.value = "";
+        }
+
+    </script>
+</body>
+</html>

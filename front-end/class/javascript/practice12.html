@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 800px;
+            margin: 30px auto;
+        }
+        form {
+            text-align: center;
+        }
+
+        #box {
+            border: 1px solid black;
+            margin-bottom: 10px;
+        }
+
+        form input[type=text] {
+            font-size: 5rem;
+            width: 200px;
+            margin-bottom: 20px;
+            text-align: center;
+            outline: none;
+            border: none;
+        }
+        form > input[type=button] {
+            width:100px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" name="form1">
+        <div id="box">
+            <input type="text" name="min" id="" ><span style="font-size:5rem;">:</span>
+            <input type="text" name="sec" id="" readonly><span style="font-size:5rem;">:</span>
+            <input type="text" name="msec" id="" readonly>
+        </div>
+        <input type="button" name="start" value="시작">
+        <input type="button" name="stop" value="멈춤" disabled>
+        <input type="button" name="end" value="종료" disabled>
+    </form>
+    
+    <script>
+        document.all.min.value = "00";
+        document.all.sec.value = "00";
+        document.all.msec.value = "00";
+
+        var len = 0;
+        var min = document.all.min;
+        var sec = document.all.sec;
+        var msec = document.all.msec;
+        var timer = 0;
+
+        document.form1.start.onclick = function() {
+            
+            if (timer == 0) {
+                timer = setInterval(function() {
+                    len ++;
+                    msec.value = len % 100;
+                    sec.value = parseInt(len / 100) < 10 ? '0' + parseInt(len / 100) : parseInt(len / 100);
+                    min.value = parseInt(len / 60000) < 10 ? '0' + parseInt(len / 60000) : parseInt(len / 60000);
+                }, 10);
+            }
+        }
+
+        document.form1.stop.onclick = function() {
+            clearInterval(timer);
+            timer = 0;
+        }
+
+        document.form1.end.onclick = function() {
+            clearInterval(timer);
+            timer = 0;
+            len = 0;
+            document.all.min.value = "00";
+            document.all.sec.value = "00";
+            document.all.msec.value = "00";
+        }
+        
+    </script>
+</body>
+</html>

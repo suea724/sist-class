@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        fieldset {
+            width: 230px;
+            height: 120px;
+            margin-bottom: 10px;
+            border: 1px solid gray;
+        }
+
+        fieldset > span {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 300px;
+            border: 1px solid gray;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <h2>테이블</h2>
+    <fieldset>
+        <legend>색상 입력</legend>
+        <span>색상 : <input type="color" id="color"></span>
+        <span>이름 : <input type="text" id="txt"></span>
+        <span><input type="button" value="추가하기" id="btn"></span>
+    </fieldset>
+
+    <table id="tbl">
+        <tr>
+            <th>색상명</th>
+            <th>미리보기</th>
+        </tr>
+        <tr>
+            <td>노랑</td>
+            <td style="background-color:#FFFF00;">#FFFF00</td>
+        </tr>
+        <tr>
+            <td>풀색</td>
+            <td style="background-color:#ACEF12;">#ACEF12</td>
+        </tr>
+    </table>
+
+    <script>
+        var tbl = document.getElementById('tbl');
+        var color = document.getElementById('color');
+        var txt = document.getElementById('txt');
+
+        document.getElementById('btn').onclick = function() {
+            var temp = "<tr>";
+            temp += "<td>" + txt.value + "</td>";
+            temp += "<td style=\"background-color:" + color.value + "\">" + color.value + "</td>";
+            temp += "</tr>";
+
+            tbl.innerHTML += temp;
+
+            color.value = "#FFFFFF";
+            txt.value = "";
+        }
+    </script>
+</body>
+</html>

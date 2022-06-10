@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset {
+            border: 1px solid #777;
+            width: 200px;
+        }
+
+        fieldset > label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #tbl1 {
+            border: 1px solid gray;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-left: 1px;
+        }
+
+        #tbl1 td {
+            border: 1px solid gray;
+            width: 50px;
+            height: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>테이블 생성하기</h1>
+
+    <fieldset>
+        <legend>행 X 열</legend>
+        <label for="">행 <select id="selrow"></select></label>
+        <label for="">열 <select id="selcol"></select></label>
+        <input type="button" value="생성하기" id="btnCreate">
+    </fieldset>
+
+    <table id="tbl1"></table>
+
+    <script>
+        var selrow = document.getElementById('selrow');
+        var selcol = document.getElementById('selcol');
+        var btnCreate = document.getElementById('btnCreate');
+        var tbl1 = document.getElementById('tbl1');
+
+        // 셀렉트 박스 초기화
+        for (var i = 1 ; i <= 10 ; i ++) {
+            selrow.options.add(new Option(i, i));
+            selcol.options.add(new Option(i, i));
+        }
+
+        selrow.selectedIndex = 4;
+        selcol.selectedIndex = 4;
+
+        btnCreate.onclick = m1;
+
+        function m1() {
+
+            // <tr>, <td> 동적 생성
+            var temp = '';
+
+            for (var i = 0 ; i < selrow.value ; i ++) {
+                temp += '<tr>';
+
+                    for (var j = 0 ; j < selcol.value ; j ++) {
+                        temp += '<td>';
+                        temp += '(' + i + ',' + j + ')';
+                        temp += '</td>';
+                    }
+
+                temp += '</tr>';
+            }
+
+            document.getElementById('tbl1').innerHTML = temp;
+        }
+
+    </script>
+</body>
+</html>

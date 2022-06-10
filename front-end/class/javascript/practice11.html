@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 20px auto;
+            width: 800px;
+            height: 600px;
+        }
+
+        form {
+            border: 1px solid lightgray;
+        }
+
+        form textarea {
+            display: block;
+            margin: 10px auto;
+        }
+
+        form input[type=button] {
+            margin: 10px 0 10px 50px;
+        }
+        
+    </style>
+</head>
+<body>
+    <form action="" name="form1">
+        <textarea name="tarea1" id="" cols="100" rows="10"></textarea>
+        <textarea name="tarea2" id="" cols="100" rows="10">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint rerum animi blanditiis doloribus quae et facilis, hic dolorem voluptas corrupti, laudantium minus ex iusto voluptate magnam nihil? Dolorem, voluptas aliquam.</textarea>
+        <input type="button" value="시작" name="start">    
+        <input type="button" value="정지" name="stop">    
+    </form>
+
+    <script>
+
+        var txt1 = document.form1.tarea1;
+        var txt2 = document.form1.tarea2;
+        var idx = 0;
+        var timer = 0;
+
+        document.form1.start.onclick = function() {
+
+            if (timer == 0) {
+                timer = setInterval(f1, 100);
+            }
+        }
+
+        function f1() {
+            txt1.value += txt2.value.charAt(idx);
+            idx ++;
+
+            if (idx == txt2.value.length) {
+                return;
+            }
+        }
+
+        document.form1.stop.onclick = function() {
+            clearInterval(timer);
+            timer = 0;
+        }
+    </script>
+</body>
+</html>

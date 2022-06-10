@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            width : 1100px;
+            margin: 0 auto;
+            padding-top: 10%;
+        }
+
+        button {
+            width: 100px;
+            height: 100px;
+            font-size: 2.5rem;
+            background-color: lightgray;
+            border: 1px solid gray;
+            cursor: pointer;
+        }
+
+        button:enabled {
+            background-color: white;
+        }
+
+        button:disabled {
+            cursor: not-allowed;
+        }
+
+    </style>
+    <script src="https://kit.fontawesome.com/94e7820b34.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <button name="btn" disabled><i class="fa-solid fa-cat"></i></button>
+    <button name="btn" disabled><i class="fa-solid fa-cat"></i></button>
+    <button name="btn" disabled><i class="fa-solid fa-cat"></i></button>
+    <button name="btn" disabled><i class="fa-solid fa-cat"></i></button>
+    <button name="btn" disabled><i class="fa-solid fa-cat"></i></button>
+    <button name="btn" disabled><i class="fa-solid fa-cat"></i></button>
+    <button name="btn" disabled><i class="fa-solid fa-cat"></i></button>
+    <button name="btn" disabled><i class="fa-solid fa-cat"></i></button>
+    <button name="btn" disabled><i class="fa-solid fa-cat"></i></button>
+    <button name="btn" disabled><i class="fa-solid fa-cat"></i></button>
+
+    <script>
+        var btn = document.all.btn;
+        var loop = 0;
+
+        var timer = setInterval(function() {
+            if (loop > 0) {
+                btn[loop-1].disabled = true;
+            }
+            btn[loop].disabled = false;
+            loop ++;
+
+            if (loop > btn.length) {
+                btn[loop-1].disabled = true;
+                loop = 0;
+            }
+        }, 500)
+
+    </script>
+</body>
+</html>

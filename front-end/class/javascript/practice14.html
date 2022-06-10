@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            min-height: 200px;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+
+<script>
+    var box = document.getElementById('box');
+
+    onkeyup = function(event) {
+        if (event.keyCode >= 48 && event.keyCode <= 57) {
+            box.innerHTML += "<img src='images/" + (event.keyCode - 48) + ".png'>";
+        } else if (event.keyCode >= 96 && event.keyCode <= 105) {
+            box.innerHTML += "<img src='images/" + (event.keyCode - 96) + ".png'>";
+        }
+    }
+</script>
+</html>
