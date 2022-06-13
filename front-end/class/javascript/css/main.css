@@ -1,0 +1,99 @@
+
+@font-face {
+    font-family: 'SUIT-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, h1, h2, h3, h4, h5, h6, div, span, p, ul, ol, li, dl, dt, dd, table, th, td, input, textarea, option, fieldset, a {
+    font-family: 'SUIT-Medium';
+    color : #444;    
+}
+
+body, div, span, p, ul, ol, li, dl, dt, dd, table, th, td, input, textarea, option, fieldset, a {
+    font-size : 16px;
+    line-height: 1.5rem;
+}
+
+.box {
+    border: 1px solid black;
+}
+
+.box.small {
+    width: 100px;
+    height: 100px;
+}
+
+.box.medium {
+    width: 200px;
+    height: 200px;
+}
+
+.box.large {
+    width: 400px;
+    height: 400px;
+}
+
+.box.red {
+    background-color: tomato;
+}
+
+.box.blue {
+    background-color: cornflowerblue;
+}
+
+.box.yellow {
+    background-color: gold;
+}
+
+.box.margin-5 {
+    margin: 5px;
+}
+
+.box.margin-10 {
+    margin: 10px;
+}
+
+.box.margin-20 {
+    margin: 20px;
+}
+
+.box.padding-5 {
+    padding: 5px;
+}
+
+.box.padding-10 {
+    padding: 10px;
+}
+
+.box.padding-20 {
+    padding: 20px;
+}
+
+.table {
+    border : 1px solid gray;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid gray;
+    padding: 5px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: tomato
+}
+
+input, select, textarea {
+    outline: none; 
+}
+
+input[type=text], input[type=password], textarea {
+    padding: 3px;
+}

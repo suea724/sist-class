@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            호이스팅, Hoisting
+            - 변수 호이스팅, 함수 호이스팅
+            - 코드 실행 직전에 변수 선언문과 함수 선언문을 해당 스코프의 최상단으로 끌어 올린다. > 코드 재배치
+        */
+
+        m1();
+
+        function m1() {
+            alert();
+        }
+
+        alert(n1); // undefined 선언만 된 상태
+
+        var n1 = 10;
+
+        function m2() {
+            alert(n2); // undfined
+            var n2 = 20;
+
+            // alert(n3); // Cannot access 'n3' before initialization > 초기화 전 사용 불가
+            // let n3 = 30;
+        }
+
+        m2();
+
+
+    </script>
+</body>
+</html>

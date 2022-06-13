@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            border : 1px solid black;
+            padding: 15px;
+            margin: 15px;
+        }
+
+        #me {
+            border-width : 10px;
+        }
+
+        .check {
+            background-color: aliceblue;
+        }
+
+        .one {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="버튼" id="btn">
+    <div>할아버지 
+        <div>
+            큰아버지
+            <div>
+                사촌
+            </div>
+        </div>
+        <div>
+            아버지
+            <div>
+                언니
+            </div>
+            <div id="me">
+                나
+                <div>
+                    자식
+                </div>
+                <div>
+                    자식
+                </div>
+                <div>
+                    자식
+                    <div>
+                        손자
+                    </div>
+                </div>
+            </div>
+            <div>
+                동생
+            </div>
+        </div>
+    </div>
+    <script>
+        /*
+            DOM > Axis, Traversing
+            - 트리 구조를 탐색하는 구조
+            - 본인을 기준으로 부모, 자식, 형제를 탐색하는 방법
+
+            BOM 트리의 구성 요소
+            - 내장 객체 + 태그들로 구성된 트리
+
+            DOM 트리의 구성 요소
+            - DOM 트리는 태그들로만 구성되어 있지 않다.
+            - 구성 요소 > 태그, PCDATA, 주석, 엔티티, 선언문, 속성 등
+
+            DOM 트리 노드의 프로퍼티
+            1. nodeType : 해당 노드가 어떤 타입인지 숫자로 표현
+            2. nodeName : 태그(태그명), 속성(속성명), PCDATA(#text)
+            3. nodeValue : 태그(null), 속성(속성값), PCDATA(문자열)
+
+            자식 & 손자 접근
+            - childNodes : 자식 노드들 (모든 요소)
+            - firstChild : 첫번째 자식 노드
+            - lastChild : 마지막 자식 노드
+
+            - children : 자식 노드들(태그만)
+            - firstElementChild : 첫번째 자식 태그
+            - lastElementChild : 마지막 자식 태그
+
+            부모 & 조상 접근
+            - parentNode : 태그
+            - parentElement : 태그
+
+            형제 접근
+            - previousSibling : 바로 위의 형제
+            - nextSibling : 바로 밑의 형제
+            - previousElementSibling
+            - nextElementSibling
+
+
+            DOM 트리구조의 최상위 노드 > document 객체
+
+            class 속성 제어 프로퍼티
+            1. className : 단일 클래스 > BOM
+            2. classList : 다중 클래스(배열) > DOM
+
+        */
+
+        document.getElementById('btn').onclick = m1;
+
+        function m1() {
+            var me = document.getElementById('me');
+            // me.className = 'check';
+
+            // 자식 접근
+
+            // alert(me.childNodes.length);
+
+            // for (var i = 0 ; i < me.childNodes.length ; i ++) {
+            //     // console.log(me.childNodes[i]);
+            //     console.log(me.childNodes[i].nodeType,
+            //                     me.childNodes[i].nodeName,
+            //                     me.childNodes[i].nodeValue);
+            // }
+        
+            // for (var i = 0 ; i < me.childNodes.length ; i ++) {
+            //     if (me.childNodes[i].nodeType == 1) { 
+            //         console.log(me.childNodes[i]); // 태그만 출력
+            //     }
+            // }
+
+            // alert(me.children.length);
+
+            // for(var i = 0 ; i < me.children.length ; i ++) {
+            //     me.children[i].className = 'check';
+            // }
+
+            // me.firstElementChild.className = 'check';
+            // me.lastElementChild.className = 'check';
+
+            // me.children[2].firstElementChild.className = 'check';
+
+            // 부모 접근
+
+            // me.parentNode.className = 'check'; 
+            // me.parentElement.className = 'check';
+
+            // me.parentElement.parentElement.className = 'check';
+
+            // 형제 접근
+            // me.parentElement.lastElementChild.className = 'check';
+            // me.previousElementSibling.className = 'check';
+            // me.nextElementSibling.className = 'check';
+
+            // class 속성제어
+            // me.classList.add('check');
+            // me.classList.add('one');
+
+            // me.classList.remove('one');
+        }
+
+    </script>
+</body>
+</html>

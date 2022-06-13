@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            변수 선언
+            1. var
+                - BOM ~ DOM ~ ES6
+                - function-scoped
+                - 중복 선언 가능
+                - 상수 선언 불가능
+
+            2. let
+                - ES6
+                - block-scoped
+                - 중복 선언 불가능
+                - 변수 선언
+
+            3. const
+                - ES6
+                - block-scoped
+                - 중복 선언 불가능
+                - 상수 선언(final 변수)
+        */
+
+        var a = 10;
+        var a = 20;
+
+        let b = 10;
+        // let b = 20; // Identifier 'b' has already been declared
+        console.log(b);
+
+        var i = 20;
+
+        for (var i = 0 ; i < 10 ; i ++) {
+
+        }
+
+        console.log('루프 밖', i);
+
+        let j = 20;
+
+        for (let j = 0 ; j < 10 ; j ++) {
+
+        }
+
+        console.log('루프 밖', j);
+
+        const c = 30;
+        c = 40; // 값 변경 불가 Assignment to constant variable.
+
+        console.log(c);
+
+    </script>
+    
+</body>
+</html>

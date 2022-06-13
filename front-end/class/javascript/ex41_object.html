@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            객체, Object
+            - 자바스크립트에는 클래스가 없다. 내장 객체를 제공한다.
+
+            1. 내장 객체
+                - Array, Date, Math, Object 등
+                - new Array()
+                - new Date()
+                - Math.메서드()
+
+            2. BOM 객체
+                - window, document, form, text, button 등
+                - BOM 트리 구성 요소들
+
+            3. DOM 객체
+                - elemeent, attribute, text, comment 등
+
+            4. 사용자 정의 객체
+                - JavaScript에는 클래스가 없다. > 원하는 객체 생성 불가능 > 원하는 형태(구조)의 객체를 만들 수 있다.
+                - ES6에서 클래스 문법이 만들어짐 > class 처럼 보이는 요소 도입
+
+            
+            사용자 정의 객체를 만드는 방법
+            1. Object 클래스 사용
+            2. {} 사용 > 객체 리터럴 표기법
+            
+        */
+
+        // 객체 생성 시 주로 const 변수를 사용 > var 사용 시 객체가 변경될 가능성이 있음!
+        const hong = new Object();
+
+        // JavaScript의 객체는 프로퍼티를 자유롭게 생성할 수 있다.
+        hong.name = '홍길동'; // hong 객체에 프로퍼티 정의(추가)
+        hong.age = 20;
+        hong.address = '서울시 강남구';
+        hong['address'] = '서울시 동대문구';
+
+        console.log(hong);
+
+        const lee = new Object();
+
+        lee.name = '이순신';
+        lee.age = 25;
+        lee.address = '서울시 강서구';
+
+        console.log(lee);
+
+        // 객체 프로퍼티 접근
+        console.log(hong.address);
+        console.log(lee.address);
+
+        const park = {
+            name: '박세리',
+            age : 20,
+            address: '서울시 강남구'
+        };
+
+        // 객체 내에 객체를 선언할 수 있음
+        const jung = {
+            name: '정형돈',
+            age: 30,
+            address: {
+                sido: '서울시',
+                gugun: '강동구',
+                dong: '천호동'
+            }
+        };
+
+        console.log(jung.address.sido);
+
+        // 객체 내에 함수를 선언할 수 있음
+        const yang = {
+            name: '양세찬',
+            age: 25,
+            hello: function() {
+                console.log('안녕하세요. ' + this.name + '입니다.'); // 블럭 내 프로퍼티 접근 시 this 키워드 사용
+            }
+        };
+
+        yang.hello(); // 객체의 메서드 호출
+
+    </script>
+    
+</body>
+</html>
