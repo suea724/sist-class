@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .box {
+            padding: 100px;
+        }
+
+        #p1 {
+           background-color: tomato; 
+        }
+        #p2 {
+            background-color: gold;
+        }
+        #p3 {
+            background-color: cornflowerblue;
+        }
+
+        #tbl2 td {
+            width : 126px;
+            height: 126px;
+            padding: 0;
+        }
+
+        #tbl2 td img {
+            display: block;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false">
+    <div id="p1" class="box">
+        <div id="p2" class="box">
+            <div id="p3" class="box">
+            </div>
+        </div>
+    </div>
+
+    <h1>테이블</h1>
+
+    <table class="table">
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+        <tr>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+            <td>item</td>
+        </tr>
+    </table>
+
+    <h1>테이블</h1>
+
+    <table class="table" id="tbl2">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <script>
+        /*
+            [이벤트 전달 방식]
+               - 이벤트 버블링(Event Bubbling)
+               - 이벤트 터널링(Event Tunneling)
+               - 이벤트 캡쳐링(Event Capturing)
+               ** 자바스크립트는 기본적으로 이벤트 버블링을 지원한다. 
+
+               BOM Event > 이벤트 버블링
+        */
+
+        const p1 = document.getElementById('p1');
+        const p2 = document.getElementById('p2');
+        const p3 = document.getElementById('p3');
+
+        // 부모와 자식 간 동일한 이벤트를 추가하는 경우
+        p1.onclick = function() {
+            alert('빨강');
+        }
+
+        p2.onclick = function() {
+            alert('노랑');
+        }
+
+        p3.onclick = function() {
+            alert('파랑');
+        }
+
+        /*
+            DOM Event > 이벤트 버블링 or 이벤트 캡처링 선택 가능
+        */
+
+        // 이벤트 캡처링 > 세번째 매개변수 true
+       p1.addEventListener('click', function() {
+            alert('빨강');
+       }, true);
+
+       p2.addEventListener('click', function() {
+            alert('노랑');
+       }, true);
+
+       p3.addEventListener('click', function() {
+            alert('파랑');
+       }, true);
+
+       // 이벤트 버블링 > 세번째 매개변수 false
+       p1.addEventListener('click', function() {
+            alert('red');
+       }, false);
+
+       p2.addEventListener('click', function() {
+            alert('gold');
+       }, false);
+
+       p3.addEventListener('click', function() {
+            alert('cornflowerblue');
+       }, false);
+
+
+       // 부모 요소의 이벤트 호출되지 않도록!
+       p1.onclick = function() {
+            alert('빨강');
+            event.cancelBubble = true;
+        }
+
+        p2.onclick = function() {
+            alert('노랑');
+            event.cancelBubble = true;
+        }
+
+        p3.onclick = function() {
+            alert('파랑');
+            event.cancelBubble = true;
+        }
+
+
+
+        // hover 테이블 > tr 태그에 이벤트 매핑
+        const table = document.getElementsByClassName('table')[0];
+        const row = table.firstElementChild.children // table.tbody.tr
+
+        for (let i = 0 ; i < row.length ; i ++) {
+            row[i].onmouseover = function(event) {
+                // row[i].bgColor = 'gold';
+                // event.target.bgColor = 'gold'; > td
+                // event.target.parentElement.bgColor = 'gold';
+                event.currentTarget.bgColor = 'gold';
+            };
+
+            row[i].onmouseout = function(event) {
+                event.currentTarget.bgColor = 'transparent'
+            };
+        }
+
+        const tbl2 = document.getElementById('tbl2');
+        const trlist = tbl2.firstElementChild.children;
+
+        for (let i = 0 ; i < trlist.length ; i ++) {
+
+            const tdlist = trlist[i].children;
+
+            for (let j = 0 ; j < tdlist.length ; j ++) {
+
+                tdlist[j].addEventListener('mousedown', function(event) {
+
+                    if (event.buttons == 1) {
+                        if (event.target.nodeName == 'TD') {
+                            let img = document.createElement('img');
+                            img.setAttribute('src', 'images/rect_icon01.png');
+                            event.target.appendChild(img);    
+                        } else {
+                            // 기존이미지 제거
+                            let td = event.target.parentElement;
+
+                            td.removeChild(event.target);
+
+                            let img = document.createElement('img');
+                            img.setAttribute('src', 'images/rect_icon01.png');
+                            
+                            td.appendChild(img);
+                        }
+
+                    } else if (event.buttons == 2) {
+
+                        if (event.target.nodeName == 'TD') {
+                            let img = document.createElement('img');
+                            img.setAttribute('src', 'images/rect_icon02.png');
+                            event.target.appendChild(img);    
+                        } else {
+                            // 기존이미지 제거
+                            let td = event.target.parentElement;
+
+                            td.removeChild(event.target);
+
+                            let img = document.createElement('img');
+                            img.setAttribute('src', 'images/rect_icon02.png');
+                            
+                            td.appendChild(img);
+                        }
+                        
+
+                    } else if (event.buttons == 4) {
+                        
+                        // 삭제
+                        event.target.parentElement.removeChild(event.target);
+                    }
+                });
+            }
+        }
+
+    </script>
+</body>
+</html> 

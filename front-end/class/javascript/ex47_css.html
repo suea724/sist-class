@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box {
+        border : 1px solid black;
+        width : 200px;
+        height: 200px;
+    }
+</style>
+<body>
+    <h1>JavaScript + CSS</h1>
+    <input type="button" value="버튼" id="btn">
+    <hr>
+    <div id="box" style="width: 250px">상자입니다.</div>
+
+    <h1>텍스트</h1>
+
+    <div class="tool">
+        <input type="button" value="  +  " id="btn1">
+        <input type="button" value="  -  " id="btn2">
+    </div>
+
+    <p id="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto accusantium animi assumenda, quis vel odio dolore recusandae possimus, quaerat unde aspernatur sunt maiores ullam facere molestias nulla eligendi minima dolorem aut velit corrupti. Id nihil eveniet laborum inventore sed dignissimos beatae velit dolor tenetur sunt ad est minima quisquam maxime itaque non, voluptatum, nam hic delectus! Excepturi, facilis temporibus dolore nisi quas quaerat nobis sapiente accusantium atque dolorem modi distinctio illum laboriosam sunt qui? Enim inventore aliquam reprehenderit dolorem placeat odio modi harum magni magnam debitis architecto accusamus temporibus, recusandae a perferendis, unde vitae! Mollitia, debitis sint voluptas deserunt eos aliquam doloribus optio explicabo repudiandae rem esse laborum recusandae et quia. Repellendus ab dolorem recusandae incidunt officia unde hic enim eligendi alias provident laborum saepe laudantium eaque vel dolore impedit, facilis aperiam magni tempore itaque. Quas, omnis ullam vero praesentium beatae incidunt distinctio sunt expedita, tempora facere minus optio similique? Voluptates, doloribus! Error dolorum laboriosam quas ipsum quibusdam iste neque voluptas repellendus numquam quia eos, sequi rerum voluptatibus facilis atque explicabo a recusandae reprehenderit odit quae! Placeat dolorem eveniet delectus, dolor saepe laboriosam non quibusdam inventore esse cumque. Alias modi consequuntur at libero tempora minima aspernatur tempore, ad voluptas ullam nemo doloribus mollitia iure nesciunt illum! Optio quo numquam praesentium beatae. At sunt nemo sequi blanditiis consectetur minus officiis omnis, placeat neque exercitationem facere nisi rem atque enim reprehenderit inventore deleniti. Aspernatur qui modi expedita incidunt voluptatem, debitis ullam id minus consequuntur eius magnam rerum accusantium nostrum voluptas iste est at accusamus! Cupiditate vitae molestias assumenda, tenetur vel corrupti error labore culpa esse ipsa saepe modi quo voluptates minima repellat omnis quis reprehenderit ratione odio? Assumenda veniam provident molestiae delectus, veritatis culpa eos expedita sapiente repudiandae explicabo minus nam eveniet officiis at, aliquam laborum corporis nulla architecto dolores similique officia?</p>
+
+    <script>
+
+        /*
+            JavaScript로 CSS 조작
+            - style 프로퍼티 제공 > 하위 배열(CSS 속성에 준하는 키) 제공
+        */
+        const btn = document.getElementById('btn');
+        const box = document.getElementById('box');
+
+        btn.addEventListener('click', function() {
+            // box.style = 'color: blue'; > 관리 불편 > 사용 안함
+
+            // box.style.color = 'blue';
+            // box.style['color'] = 'blue';
+
+            // 누를 때마다 현재 너비에 + 50px
+            // box.style.width = box.style.width + 50;
+            // alert(box.style.width);
+
+            // (인라인 스타일 시트가 아닌)CSS로 정의된 속성값은 자바스크립트로 읽지 못한다.
+
+            // 임베디드와 외부 CSS를 읽어오는 방법 > 태그에 적용된 모든 CSS를 읽어오는 방법
+            // 어떤 방식으로 cSS가 적용되었는지는 모르겠지만 현재 태그에 적용되어 있는 모든 CSS를 직접 확인해서 정보를 가져와라
+            const list = getComputedStyle(box);
+
+            // alert(box.style.height);
+            // alert(list.getPropertyValue('height'));
+
+            let width = list.getPropertyValue('width');
+            // alert(width);
+
+            box.style.width = parseInt(width) + 50 + 'px';
+
+        });
+
+        let fontSize = 16;
+
+        document.getElementById('btn1').addEventListener('click', function() {
+
+            // 확대
+            fontSize += 3;
+
+            if (fontSize > 30) {
+                fontSize = 30;
+            }
+            document.getElementById('content').style.fontSize = fontSize + 'px';
+
+        });
+        document.getElementById('btn2').addEventListener('click', function() {
+
+            // 축소
+            fontSize -= 3;
+
+            if (fontSize < 10) {
+                fontSize = 10;
+            }
+            document.getElementById('content').style.fontSize = fontSize + 'px';
+        });
+    </script>
+</body>
+</html>

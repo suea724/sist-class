@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 800px;
+            margin: 0 auto;
+        }
+        #tbl {
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        #tbl td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table id="tbl">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <script>
+        var list = document.getElementsByTagName("td");
+        var idx = 0;
+
+        list[idx].bgColor = "gold";
+
+        onkeydown = function(evt) {
+            if (evt.keyCode == 37) {
+                idx --;
+                if (idx < 0 || idx % 5 == 4) {
+                    idx ++;
+                }
+            } else if (evt.keyCode == 38) {
+                idx -= 5;
+                if (idx >= -5 && idx <= -1) {
+                    idx += 5;
+                }
+            } else if (evt.keyCode == 39) {
+                idx ++;
+                if (idx % 5 == 0) {
+                    idx --;
+                }
+            } else if (evt.keyCode == 40) {
+                idx += 5;
+                if (idx >= 25 && idx <= 29) {
+                    idx -= 5;
+                }
+            }
+            list[idx].bgColor = "gold";
+            clear(idx);
+        }
+
+        function clear(idx) {
+            for (var i = 0 ; i < list.length ; i ++) {
+                if (i == idx) {
+                    continue;
+                }
+                list[i].bgColor = "white";
+            }
+        }
+    </script>
+</body>
+</html>

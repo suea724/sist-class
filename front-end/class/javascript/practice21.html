@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let i = 0;
+        let imgCnt = 0;
+
+        onmousedown = function(event) {
+
+            i = parseInt(Math.random() * 8 + 1);
+
+            let img = document.createElement('img');
+
+            img.setAttribute('src', `images/m0${i}.png`);
+
+            img.style.width = 126 + "px"; 
+            img.style.height = 126 + "px"; 
+            img.style.position = "absolute";
+            img.style.left = event.clientX - 63 + "px";
+            img.style.top = event.clientY - 63 + "px";
+
+            imgCnt ++;
+
+            if (imgCnt > 8) {
+                document.body.removeChild(document.body.firstElementChild);
+            }
+            
+            document.body.appendChild(img);
+        }
+    </script>
+</body>
+</html>
