@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width : 250px;
+            height: 188px;
+            border: 3px solid gold;
+            overflow: hidden;
+        }
+
+        #list {
+            width: 1250px;
+            display: flex;
+            outline: 5px solid tomato;
+            transition: .7s all;
+        }
+
+        #family {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        #family tr:nth-child(1) td:nth-child(1) {
+            width: 500px;
+            height: 400px;
+        }
+
+        #family tr:nth-child(1) td:nth-child(1) div {
+            width: 500px;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        #family #vslide {
+            transform: rotate(90deg);
+            width: 400px;
+        }
+
+        #family input[type=range] {
+            margin: 20px 0;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <h1>고양이</h1>
+
+    <div id="box">
+        <div id="list">
+            <img src="images/cat01.jpg" alt="">
+            <img src="images/cat02.jpg" alt="">
+            <img src="images/cat03.jpg" alt="">
+            <img src="images/cat04.jpg" alt="">
+            <img src="images/cat05.jpg" alt="">
+        </div>
+    </div>
+
+    <hr>
+
+    <select id="sel">
+        <option value="1">고양이1</option>
+        <option value="2">고양이2</option>
+        <option value="3">고양이3</option>
+        <option value="4">고양이4</option>
+        <option value="5">고양이5</option>
+    </select>
+
+    <hr>
+
+    <input type="range" name="" id="range" min="0" max="4" value="0" style="width: 300;">
+
+    <hr>
+
+    <h1>Donald Duck</h1>
+    <table id="family">
+        <tr>
+            <td><div><img src="images/donald.jpg" id="donald"></div></td>
+            <td><input type="range" id="vslide"></td>
+        </tr>
+        <tr>
+            <td><input type="range" id="hslide"></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <script>
+        const box = document.getElementById('box');
+        const list = document.getElementById('list');
+        const sel = document.getElementById('sel');
+        const range = document.getElementById('range');
+
+        let dist = 0;
+
+        box.onmouseover = function() {
+            dist += 250;
+            list.style.transform = `trnaslate(-${dist}px, 0px)`;
+        };
+
+        sel.onchange = function() {
+            // alert(sel.value);
+            dist = sel.selectedIndex * 250;
+            list.style.transform = `translate(-${dist}px, 0px)`;
+        };
+
+        range.onchange = function() {
+            dist = range.value * 250;
+            list.style.transform = `translate(-${dist}px, 0px)`;
+        };
+
+        const donald = document.getElementById('donald');
+        const vslide = document.getElementById('vslide');
+        const hslide = document.getElementById('hslide');
+
+        // html 문서와 이미지 로드 시간이 다를 수 있음 > html문서 로딩과 동시에 바로 이미지의 사이즈를 알아낼 수 없다!
+        // alert(donald.width); // 0
+
+        donald.onload = function() {
+            hslide.min = 0;
+            hslide.max = donald.width - 500;
+            hslide.value = 0;
+
+            vslide.min = 0;
+            vslide.max = donald.height - 400;
+            vslide.value = 0;
+        }
+
+        // 입력이 끝나야만 이미지 사이즈 변경
+        // hslide.onchange = function() {
+        //     donald.style.transform = `translate(-${hslide.value}px, 0px)`;
+        // }
+
+        hslide.oninput = function() {
+            donald.style.transform = `translate(-${hslide.value}px, -${vslide.value}px)`;
+        }
+
+        vslide.oninput = function() {
+            donald.style.transform = `translate(-${hslide.value}px, -${vslide.value}px)`;
+        }
+
+    </script>
+</body>
+</html>

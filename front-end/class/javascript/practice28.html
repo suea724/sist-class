@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+    <style>
+        body {
+            width: 800px;
+            height: 700px;
+            margin: 0 auto;
+            
+        }
+
+        #box {
+            width: 200px;
+            height: 140px;
+            background-image: url(images/fly.png);
+            background-repeat: no-repeat;
+            overflow: hidden;
+            transition: transform 3s;
+        }
+    </style>
+</head>
+<body>
+    <h1>새 날개짓</h1>
+    <div id="box"></div>
+    <span>
+        새의 속도:
+        <select id="selspeed">
+            <option value="300">느림</option>
+            <option value="100" selected>보통</option>
+            <option value="60">빠름</option>
+            <option value="10">엄청 빠름</option>
+        </select>
+    </span>
+
+    <script>
+
+        const box = document.getElementById('box');
+        const selspeed = document.getElementById('selspeed');
+
+        let speed = 100;
+        let x = 0;
+        let timer = 0;
+
+        timer = setInterval(function() {
+            x -= 200;
+            if (x < -(200 * 3)) {
+                x = 0;
+            }
+            box.style.backgroundPosition = `${x}px 0px`;
+        },speed);
+
+        selspeed.onchange = function() {
+            clearInterval(timer);
+
+            timer = setInterval(function() {
+                x -= 200;
+                if (x < -(200 * 3)) {
+                    x = 0;
+                }
+                box.style.backgroundPosition = `${x}px 0px`;
+
+                if (document.getElementById("selspeed").value == 10) {
+                    box.style.transform = 'translate(0, -1000px)';
+                }
+            }, event.target.value);
+        };
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+    <style>
+
+        #btns, #box {
+            text-align: center;
+            margin: 10px auto;
+        }
+
+        #box {
+            width: 1200px;
+            height: 600px;
+            border: 1px solid black;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: 0.7s all;
+        }
+
+        #btns input {
+            width: 70px;
+            height: 50px;
+            background-color: white;
+            border : 1px solid #999;
+            cursor: pointer;
+        }
+
+        #btns #slidebtn {
+            background-color: coral;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>이미지 뷰어</h1>
+    <div id="btns">
+        <input type="button" value="▷" id="slidebtn">
+        <input type="button" value="1" selected>
+        <input type="button" value="2">
+        <input type="button" value="3">
+        <input type="button" value="4">
+        <input type="button" value="5">
+        <input type="button" value="6">
+        <input type="button" value="7">
+        <input type="button" value="8">
+        <input type="button" value="9">
+        <input type="button" value="10">
+    </div>
+    <div id="box"></div>
+
+    <script>
+        const box = document.getElementById('box');
+        const btns = document.getElementById('btns').children;
+        let idx = 0;
+        let timer = 0;
+        
+        const images = [
+            'images/wall01.jpg',
+            'images/wall02.jpg',
+            'images/wall03.jpg',
+            'images/wall04.jpg',
+            'images/wall05.jpg',
+            'images/wall06.jpg',
+            'images/wall07.jpg',
+            'images/wall08.jpg',
+            'images/wall09.jpg',
+            'images/wall10.jpg'
+        ];
+
+        btns[0].onclick = function(event) {
+
+            idx = 0;
+
+            if (timer == 0) {
+                timer = setInterval(function() {
+                    box.style.backgroundImage = `url(${images[idx]})`;
+                    idx ++;
+    
+                    if (idx > 9) {
+                        idx = 0;
+                    }
+                    
+                }, 1000);
+            }
+        }
+
+        for (let i = 1 ; i < btns.length ; i ++) {
+            btns[i].onclick = function(event) {
+                clearInterval(timer);
+                timer = 0;
+                box.style.backgroundImage = `url(${images[i-1]})`;
+            }
+        }
+
+    </script>
+</body>
+</html>

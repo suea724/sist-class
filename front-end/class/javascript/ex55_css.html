@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #menu {
+            border: 1px solid black;
+            display: flex;
+            width : 630px;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            margin: 0 auto;
+
+            transform: translate(0, -100px);
+        }
+
+        main {
+            width: 800px;
+            margin: 50px auto;
+        }
+
+        #menu img {
+            transition: .5s all;
+        }
+    </style>
+    <script>
+        // function init() {
+        //     alert('테스트');
+        // }
+
+        let olditem = null;
+
+        window.onload = function() {
+            const item = document.getElementById('menu').children;
+
+            for (let i = 0 ; i < item.length ; i ++) {
+                item[i].onclick = function(event) {
+
+                    if (olditem != null) { // 누군가 열려있다면
+                        olditem.style.transform = 'translate(0, 0)';
+                    }
+
+                    if (event.target != olditem) {
+                        event.target.style.transform = 'translate(0, 90px)';
+                        olditem =  event.target;
+                    } else {
+                        event.target.style.transform = 'translate(0, 0)';
+                    }
+
+                }
+            }
+        }
+    </script>
+</head>
+<!-- <body onload="init();"> -->
+<body>
+    <nav id="menu">
+        <img src="images/rect_icon01.png" alt="">
+        <img src="images/rect_icon02.png" alt="">
+        <img src="images/rect_icon03.png" alt="">
+        <img src="images/rect_icon04.png" alt="">
+        <img src="images/rect_icon05.png" alt="">
+    </nav>
+    <main>
+        <h1>Title</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt natus optio sint unde rem doloremque. Veritatis, provident fuga! Ea maxime veritatis deleniti accusantium facilis rerum, praesentium possimus nobis unde! Maxime.
+        </p>
+        <p>
+            Dolorum fugit excepturi minus quae sapiente, dicta quia eveniet maxime ad quidem soluta debitis consectetur magni rerum corrupti veniam. Consequuntur porro consequatur ullam quaerat quas nihil ratione veniam magni consectetur!
+        </p>
+        <p>
+            Temporibus aperiam quod necessitatibus inventore illum ipsam nemo. Non beatae perferendis est aspernatur omnis quo blanditiis, saepe maiores magni ea repellendus, assumenda excepturi possimus laboriosam reprehenderit iure error doloribus et?
+        </p>
+        <p>
+            Praesentium placeat odio dolore, molestias consequuntur nam dignissimos, rem cum cumque facilis recusandae nulla nisi, nesciunt necessitatibus? Similique corporis aliquid, sapiente ipsam tempora eveniet soluta, laborum laudantium, accusantium nisi cupiditate.
+        </p>
+        <p>
+            Quia eius mollitia velit qui nemo ipsam ea explicabo quam natus quisquam veritatis voluptatem officiis dicta facere soluta possimus ex esse a, laborum ad odio nesciunt modi aspernatur. Magnam, in!
+        </p>
+        <p>
+            In commodi dolorum repellat qui harum explicabo voluptatibus autem cum, asperiores voluptate atque facere iusto quasi facilis deleniti possimus consequuntur unde maxime molestias? Reprehenderit, adipisci laudantium impedit corporis ipsam iure?
+        </p>
+        <p>
+            Hic unde doloribus ut. Eaque illum impedit labore earum iusto vitae asperiores voluptate vel! Aliquam rerum qui corporis debitis voluptatem nostrum perferendis placeat repellendus tenetur, natus iste sunt harum id.
+        </p>
+        <p>
+            Recusandae quod quaerat esse facere nostrum? Et debitis dolores tempore saepe alias, sed facilis eligendi magni adipisci consequatur, distinctio assumenda, iste ad. Impedit minus laudantium sunt sequi laborum aspernatur eaque.
+        </p>
+        <p>
+            Magnam fugiat, cum quaerat vitae architecto dicta dolorem exercitationem amet. Sint magnam nesciunt repudiandae necessitatibus corporis vel, impedit assumenda laudantium possimus animi eaque omnis in, soluta veritatis, tenetur iure vero?
+        </p>
+        <p>
+            Autem dolores quae, ipsum consequuntur impedit saepe. Officia, itaque. Odit non adipisci sunt excepturi. Consequatur quidem natus veniam commodi dolorum accusantium facere, unde excepturi iste! Eveniet, perspiciatis esse. Necessitatibus, error.
+        </p>
+        <p>
+            Explicabo beatae aliquid atque obcaecati rem animi consectetur necessitatibus ad corrupti. Minus soluta quam quisquam repudiandae doloribus officia omnis quo ea sint eveniet. Assumenda cumque explicabo iste tempora veritatis aut.
+        </p>
+        <p>
+            Laudantium error excepturi vitae numquam facere nemo quam, ipsum voluptates. Neque, praesentium pariatur magnam reiciendis nisi iure dolor eum inventore autem voluptas commodi repellat fugit vero magni expedita quisquam similique!
+        </p>
+        <p>
+            Eaque expedita quas sunt sed optio molestiae, sit, debitis architecto nisi et officia vero veniam rerum odio ipsum ullam libero? Facere assumenda repudiandae eum quis nemo omnis soluta quo facilis?
+        </p>
+        <p>
+            Laudantium tempore optio consequatur repellat fugit amet fugiat eos perspiciatis quae minima quas earum, in sit ipsum nostrum perferendis porro, eveniet est! Distinctio corrupti exercitationem soluta sapiente enim natus et!
+        </p>
+        <p>
+            Repudiandae recusandae blanditiis odio, enim nihil voluptatibus nisi fugit aut. Distinctio, in. Architecto odio minus nesciunt, aliquid nobis amet officiis. Cumque odio culpa accusamus vel dolore. Dolorum numquam dignissimos quas!
+        </p>
+        <p>
+            Totam, commodi sapiente dignissimos eius perferendis deserunt obcaecati temporibus recusandae. Quod vel sunt maxime voluptate quis id non cum praesentium corrupti, sed nihil mollitia recusandae velit sapiente. Quod, eius architecto.
+        </p>
+        <p>
+            Impedit dicta molestias sunt expedita amet, nobis voluptates nemo autem corrupti ipsa ipsum, repellat praesentium, ex earum error sequi voluptatum aspernatur quae quo unde consectetur quidem excepturi porro! Esse, sequi.
+        </p>
+        <p>
+            Cumque saepe aut excepturi quo repellendus, unde, facilis non amet voluptatum sequi sunt molestiae, obcaecati architecto earum inventore fugiat. A dicta optio unde tempore fugit magni ipsa id deleniti porro!
+        </p>
+        <p>
+            Dolorum consectetur, ipsum neque repellat totam odit doloribus debitis aut officiis quis hic ipsam, inventore corrupti nulla dolore beatae assumenda nam autem. Dicta ea voluptatem veritatis facilis distinctio officia voluptatum.
+        </p>
+        <p>
+            Soluta magnam commodi ea perspiciatis hic saepe ex, quasi possimus debitis laboriosam! Ex aut veritatis possimus quidem impedit alias illum blanditiis ratione natus id culpa, repudiandae, sequi ullam numquam adipisci.
+        </p>
+    </main>
+</body>
+</html>

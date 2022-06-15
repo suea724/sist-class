@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #txt {
+            width: 80%;
+            height: 80px;
+            font-size: 3rem;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            const txt = document.getElementById('txt');
+            let color = 0;
+            let timer = 0;
+            let gap = 0;
+            
+            txt.onkeydown = function() {
+                document.body.style.transform = `translate(${Math.random() * 5}px, ${Math.random() * 5}px)`;
+                document.body.style.backgroundColor = `rgba(255, 0, 0, ${color})`;
+
+                color += 0.01;
+                gap = 0;
+            };
+
+            timer = setInterval(function() {
+                gap ++;
+
+                if (gap > 1) {
+                    gap = 0;
+                    timer = 0;
+                    color = 0;
+                    document.body.style.backgroundColor = "white";
+                }
+            }, 1000);
+        };
+
+        
+    </script>
+</head>
+<body>
+    <h1>Title</h1>
+    <input type="text" id="txt">
+    <hr>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas non voluptate, ad, quo suscipit eligendi ex fugit eum cum quia, aliquam pariatur dolores beatae impedit. Asperiores omnis itaque labore, dicta illum ipsa tempore hic ratione similique, eum magnam beatae, dolorem autem harum eius. Assumenda amet necessitatibus a tempora cupiditate delectus.
+    </p>
+    <p>
+        Eum ratione debitis velit quia ad tempore alias modi odio, magni placeat nulla inventore optio nobis ipsa odit autem architecto sapiente nemo voluptatem similique libero, natus animi aperiam quisquam! Est suscipit obcaecati a, perferendis, enim dolore itaque culpa consectetur nobis eos adipisci nemo molestiae officiis maxime facilis quia cumque. Consectetur.
+    </p>
+    <p>
+        Quas ducimus, error labore quod tempore esse assumenda rerum facilis. In eius, quia eaque quis, a consectetur inventore maiores animi, tempore voluptatem quisquam? Nihil quam voluptatem similique unde harum, voluptates natus officia autem ea maxime, soluta, tempore necessitatibus omnis optio non quidem. Facilis rem mollitia omnis fugit sequi id consequatur?
+    </p>
+    <p>
+        Tempora repellendus ea vitae, laboriosam sed, dignissimos, a quisquam consequatur sapiente eveniet architecto deleniti omnis reiciendis at eligendi quos. Dicta doloribus earum at corporis assumenda eligendi fuga ullam a minima facere! Unde impedit, nihil optio quisquam aliquam placeat veniam deserunt reiciendis accusantium quas sed vitae, nobis id nisi sint perferendis.
+    </p>
+    <p>
+        Reiciendis, ullam obcaecati earum necessitatibus maiores, minima ratione voluptatem dolore molestiae quaerat magnam aspernatur facilis praesentium distinctio vitae quod repellat iure dicta veniam fugiat! Nesciunt distinctio odio, possimus aperiam architecto doloremque voluptate nulla voluptates numquam recusandae fuga beatae, ea quisquam! Nemo, rem dolore iste ab tempora iusto. Commodi, alias dolor.
+    </p>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            transition: 0.5s all;
+        }
+        .box {
+            width: 800px;
+            height: 700px;
+            border: 1px solid black;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+    <script>
+        window.onscroll = function() {
+
+            const list = document.getElementsByClassName('box');
+            
+            const s1 = list[0].getBoundingClientRect().top;
+            const s2 = list[1].getBoundingClientRect().top - 100;
+            const s3 = list[2].getBoundingClientRect().top - 100;
+            const s4 = list[3].getBoundingClientRect().top - 100;
+            const s5 = list[4].getBoundingClientRect().top - 100;
+
+            if (window.screenY < s2) {
+                document.body.style.backgroundColor = 'yellowgreen';
+                
+            } else if (window.screenY < s3) {
+                document.body.style.backgroundColor = 'orange';
+                
+            } else if (window.screenY < s4) {
+                document.body.style.backgroundColor = 'cornflowerblue';
+                
+            } else if (window.screenY < s5) {
+                document.body.style.backgroundColor = 'tomato';
+
+            } else {
+                document.body.style.backgroundColor = 'green';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <h1>Index</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut dolorem alias illum et cupiditate, voluptatum nemo sint, pariatur incidunt dolorum natus sequi. Omnis totam natus voluptate illum enim reprehenderit optio, doloremque, id dignissimos repudiandae veniam assumenda distinctio vel inventore soluta, minima fugit mollitia. Exercitationem, eveniet! Inventore non corporis omnis ipsam.
+        </p>
+    </div>
+    <div class="box">
+        <h1>About me</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere sit vel, ipsum nostrum culpa inventore optio obcaecati laborum sed, maxime incidunt itaque, alias dolore asperiores corporis exercitationem laudantium perferendis impedit harum quidem. Magni ullam reiciendis beatae quas, consequatur, earum vero sunt ipsum suscipit modi fugit unde voluptatem perspiciatis deleniti. Enim!
+        </p>
+    </div>
+    <div class="box">
+        <h1>Career</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat totam, eaque provident dicta dolore, omnis officiis neque saepe, adipisci tenetur modi ea ipsam corporis voluptate nisi natus doloremque itaque suscipit porro cum illo molestiae ipsum. Corporis nobis in mollitia, quod molestiae, aliquam quas ullam totam velit veritatis deleniti, ex nulla.
+        </p>
+    </div>
+    <div class="box">
+        <h1>Portfolio</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae laudantium excepturi exercitationem molestias quam illo officiis. Sed rerum incidunt quam, magni architecto itaque blanditiis, quo voluptatibus qui odio quaerat aliquid amet! Dolorum quisquam, rerum ab odit perferendis vero, esse harum non asperiores omnis natus excepturi ex corrupti voluptas delectus nisi.
+        </p>
+    </div>
+    <div class="box">
+        <h1>Education</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium debitis vero sunt? Eius expedita unde sint voluptate quidem impedit ratione quis suscipit illo totam, dolorum laborum ipsam officia, autem recusandae necessitatibus eos aperiam, distinctio perspiciatis facere. Reprehenderit unde sequi soluta quis in et magnam quia, ipsam blanditiis ut repellendus recusandae.
+        </p>
+    </div>
+</body>
+</html>

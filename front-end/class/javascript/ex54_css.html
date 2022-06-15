@@ -6,34 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #cat {
-            position: absolute;
-            left: 125px;
-
+        #box {
+            width : 200px;
+            height: 200px;
+            background-color: cornflowerblue;
+            margin: 100px;
+            transition: 1s all;
         }
     </style>
 </head>
 <body>
-    <img src="images/cat01.jpg" id="cat1">
-    <img src="images/cat02.jpg" id="cat2">
-    <img src="images/cat03.jpg" id="cat3">
+    <div id="box">상자</div>
 
     <script>
+        const box = document.getElementById('box');
 
-        window.onmousedown = function(event) {
-            
-            let x = event.clientX;
-            let y = event.clientY;
+        let degree = 45;
 
-            // alert(event.target.id);
+        box.addEventListener('click', function() {
+            setInterval(action, 100);
+        });
 
-            /*
-                특정 포인트에 겹쳐있는 모든 태그 알아내기
-                - document.elementFromPoint
-                - document.elementsFromPoint
-            */ 
-
-            console.log(document.elementsFromPoint(x, y));
+        function action() {
+            box.style.transform = `rotate(${degree}deg)`;
+            degree ++;
         }
     </script>
 </body>

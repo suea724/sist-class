@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            화살표 함수, Array Function
+            - 익명 함수를 표현하는 방식
+        */
+
+        // 1. 함수 선언
+        function f1() {
+            console.log('f1');
+        }
+
+        f1();
+
+        // 2. 함수 표현식(리터럴) == 익명 함수
+        const f2 = function() {
+            console.log('f2');
+        }
+
+        f2();
+
+        // 3. 화살표 함수 == 익명 함수
+        const f3 = () => {
+            console.log('f3');
+        };
+
+        f3();
+
+
+        // 실행문이 한줄일 때 실행 블럭(중괄호) 생략
+        const f4 = () => console.log('f4');
+        f4();
+
+        // 매개변수 하나일 때는 괄호 생략 가능
+        const f5 = num => console.log(num);
+        const f6 = (a, b) => console.log(a + b);
+
+        // 반환값 return 문 한줄일 때는 괄호와 return 키워드 생략 가능
+        const f8 = () => {return 100;};
+        const f9 = () => 200;
+
+        const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        
+        list.forEach(function(num) {
+            console.log(num);
+        });
+
+        list.forEach(n => console.log(n));
+        list.forEach((item, index) => console.log(item, index));
+
+        // map()
+        // 요소를 다른 값으로 변경 후 새로운 배열 반환
+        // 가공 + 변환
+        list.map(n => n % 2 == 0 ? '짝수' : '홀수').forEach(str => console.log(str));
+
+        const names = ['홍길동', '아무개', '호호호'];
+
+        // 이름을 받아 객체로 반환
+        names.map(name => {
+            return {
+                name: name,
+                age: 20,
+                address: '서울시'
+            }
+        })
+
+        console.clear();
+
+        // filter()
+        // 조건에 부합하는 요소만 반환
+        list.filter(item => item > 5).forEach(n => console.log(n));
+
+        // find()
+        // 요소 검색
+        const mlist = ['홍길동', '아무개', '하하하', '호호호', '홍홍홍'];
+
+        let result = list.find(item => item == 5);
+        console.log(result);
+
+        // 첫번째 요소만 반환, 없으면 undefined
+        let mresult = mlist.find(item => item.startsWith('홍'));
+        console.log(mresult);
+
+
+    </script>
+</body>
+</html>
