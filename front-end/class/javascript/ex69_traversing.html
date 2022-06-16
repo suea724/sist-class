@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-1.12.4.js"></script>
+    <title>Document</title>
+    <style>
+        div {
+            border : 1px solid black;
+            padding: 15px;
+            margin: 15px;
+        }
+
+        #me {
+            border-width : 10px;
+        }
+
+        .check {
+            background-color: plum;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="버튼" id="btn">
+    <div>할아버지 
+        <div>
+            큰아버지
+            <div>
+                사촌
+            </div>
+        </div>
+        <div>
+            아버지
+            <div>
+                언니
+            </div>
+            <div id="me">
+                나
+                <div>
+                    자식
+                <span>추가</span>
+                </div>
+                <div>
+                    자식
+                </div>
+                <div>
+                    자식
+                    <div>
+                        손자
+                        <span>추가</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                동생
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        $('#btn').click(function() {
+            
+            // 자식 탐색
+            // - childNodes, children
+
+            // 자식에 class 일괄 적용
+            // $('#me').children().addClass('check');
+
+            // 첫번째, 마지막 요소 찾기
+            // $('#me').children().first().addClass('check');
+            // $('#me').children().last().addClass('check');
+
+            // 인덱스로 찾기
+            // $('#me').children().eq(0).addClass('check');
+            // $('#me').children().eq(-1).addClass('check');
+
+            // CSS 선택자로 찾기
+            // $('#me > * > *').addClass('check');
+
+            // 나 > span 검색
+            // $('#me').find('span').css('border', '3px solid tomato');
+
+            // 조상 탐색
+            // - parentNode, parentElement
+
+            // $('#me').parent().css('border', '3px solid tomato');
+            // $('#me').parents().css('border', '3px solid tomato');
+            // $('#me').parentsUntil('body > div').css('border', '3px solid tomato');
+
+            // 형제 탐색
+            // - previousSibling, nextSibling
+            // $('#me').prevAll().css('border', '3px solid tomato');
+            // $('#me').prev().css('border', '3px solid tomato');
+
+            // $('#me').nextAll().css('border', '3px solid tomato');
+            // $('#me').next().css('border', '3px solid tomato');
+  
+            // $('#me').prevUntil().css('border', '3px solid tomato');
+            // $('#me').nextUntil().css('border', '3px solid tomato');
+
+            $('#me').siblings().css('border', '3px solid tomato');
+
+        })
+    </script>
+</body>
+</html>

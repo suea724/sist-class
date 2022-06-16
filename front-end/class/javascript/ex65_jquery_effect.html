@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-1.12.4.js"></script>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            background-color: gold;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>jQuery Effect</h1>
+    <input type="button" value="버튼1" id="btn1">
+    <input type="button" value="버튼2" id="btn2">
+    <input type="button" value="버튼3" id="btn3">
+    <hr>
+    <div id="box">상자</div>
+
+    <script>
+
+        /*
+            jQuery Effect Function
+            1. hide(time), show(time), toggle(time)
+            2. fadeOut(), fadeIn(), fadeToggle()
+            3. slideUp(), slideDown(), slideToggle()
+            4. animate() > 사용자 정의
+        */
+
+        $('#btn1').click(function() {
+            // $('#box').hide('slow');
+            // $('#box').fadeOut();
+            // $('#box').slideUp();
+
+            // $('#box').animate({
+            //     width: 0,
+            //     height: 0,
+            //     opacity: 0
+            // });
+
+            // $('#box').animate({
+            //     width: '+=100px',
+            //     height: '+=50px'
+            // });
+
+            // $('#box').animate({
+            //     // marginLeft: '+=50px'
+            //     'margin-left' : '+=50px'
+            // }, 1000, function() {
+            //     // alert('애니메이션 끝난 후 실행');
+            //     $('h1').text('jQuery Effect' + n);
+            //     n ++;
+
+            //     if (n > 5) {
+            //         // 이벤트 제거
+            //         $('#btn1').off('click');
+            //     }
+            // });
+
+            // jQuery 기능 : 메서드로 제공, 메서드 체이닝
+            // 대다수의 메서드가 jQuery 객체를 반환한다.
+
+            // $('#box')
+            //     .css('color', 'blue')
+            //     .css('background-color', 'grey');
+
+            $('#box')
+                    .slideDown()
+                    .slideUp()
+                    .fadeIn()
+                    .fadeOut();
+        });
+
+        let n = 1;
+
+        $('#btn2').click(function() {
+            // $('#box').show('fast');
+            // $('#box').fadeIn();
+            // $('#box').slideDown();
+            $('#box').animate({
+                width: 'toggle'
+            });
+
+        });
+
+        $('#btn3').click(function() {
+            // $('#box').toggle(2000);
+            // $('#box').fadeToggle();
+            // $('#box').slideToggle();
+
+        });
+
+    </script>
+</body>
+</html>
