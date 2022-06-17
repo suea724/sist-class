@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <title>Document</title>
+    <style>
+        .slider {
+            margin: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Accordion</h1>
+
+    <div id="a1">
+        <h2>HTML</h2>
+        <div>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam repellat iure ullam, est iste rem natus, earum necessitatibus nobis non quas incidunt. Provident accusamus possimus veritatis sunt quas ipsa quia!
+        </div>
+        <h2>HTML</h2>
+        <div>
+            Obcaecati natus voluptas in praesentium nemo maxime laboriosam! Pariatur rerum minima facilis harum saepe porro incidunt amet? Assumenda quo fuga magnam ad exercitationem eius tempore in perspiciatis? Odit, recusandae neque!
+        </div>
+        <h2>HTML</h2>
+        <div>
+            Obcaecati repellendus magnam optio odio doloremque harum molestias veniam, culpa accusantium itaque sit laudantium possimus repellat, deserunt illo nostrum consectetur rerum quae eaque nihil non. Minima earum voluptatum quidem laudantium.
+        </div>
+    </div>
+
+    <h1>Button</h1>
+
+    <div id="btns">
+        <input type="button" value="등록하기" id="btn1" class="btn">
+        <input type="button" value="취소하기" id="btn2" class="btn">
+    </div>
+
+    <h1>날짜</h1>
+
+    날짜 선택: <input type="date">
+    날짜 선택: <input type="text" id="date1">
+
+    <hr>
+
+    <h1>다이얼로그</h1>
+
+    <input type="button" value="확인" id="btn3">
+    <div id="dialog1">다이얼로그</div>
+
+    <hr>
+
+    <h1>슬라이더</h1>
+
+    <div id="slider1" class="slider"></div>
+    <div id="result1"></div>
+
+    <h3>Colorpicker</h3>
+    <div id="slider2" class="slider"></div>
+    <div id="slider3" class="slider"></div> 
+    <div id="slider4" class="slider"></div>
+
+    <script>
+        $('#a1').accordion({
+            collapsible: true
+        });
+
+        $('.btn').button();
+        $('#btns').controlgroup();
+
+        $('#date1').datepicker({
+            dateFormat: 'yy-mm-dd',
+            // minDate: '-5',
+            // maxDate: '+5',
+            // minDate: '-1M -5D'
+            minDate: '2022-06-05',
+            maxDate: '2022-06-20'
+        });
+
+        $('#dialog1').hide();
+
+        $('#btn3').click(function() {
+            $('#dialog1').dialog({
+                title: '대화상자',
+                width: 300,
+                height: 200,
+                draggable: false,
+                resizable:false,
+                buttons: {
+                    '확인' : function() {
+                        alert();
+                    },
+                    '취소' : function() {
+                        $('#dialog1').dialog('close'); // 닫기 버튼
+                    }
+                },
+                modal: true // 대화창 열렸을 때 다른 요소에 접근 불가
+            });
+        });
+
+        /*
+            대화상자
+            1. modal
+                - 팝업창이 포커스를 독점
+                - 팝업창의 업무가 종료되기 전까지 부모창의 업무를 진행 불가
+                - 팝업창 <- 종속적 -> 부모창
+        
+            2. modaless
+                - 팝업창과 부모창의 포커스 전환이 자유롭다.
+                - 팝업창의 업무와 부모창의 업무를 동시에 진행할 수 있다.
+                - 팝업창 <- 비종속적 -> 부모창
+        */
+
+        $('#slider1').slider({
+            slide: function(event, ui) {
+                $('#result1').text(ui.value);
+            },
+            range: "min",
+            min: 100,
+            max: 1000,
+            step: 100
+        });
+
+        $('#slider2, #slider3, #slider4').slider({
+            min: 0,
+            max: 255,
+            value: 0,
+            slide: function(event, ui) {
+                let r = $('#slider2').slider('value');
+                let g = $('#slider3').slider('value');
+                let b = $('#slider4').slider('value');
+
+                $('body').css('background-color', `rgb(${r}, ${g}, ${b})`)
+            }
+        });
+        
+    </script>
+</body>
+</html>

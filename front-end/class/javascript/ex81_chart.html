@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align:center">차트 만들기</h1>
+
+    <div id="container"></div>
+
+
+    <script>
+        Highcharts.chart('container', {
+
+        title: {
+            text: '몸무게 변화 2021년'
+        },
+
+        subtitle: {
+            text: '측정 시간 : 기상 직후'
+        },
+
+        yAxis: {
+            title: {
+                text: '몸무게(kg)'
+            }
+        },
+
+        xAxis: {
+            accessibility: {
+                rangeDescription: 'Range: 2010 to 2017'
+            }
+        },
+
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom'
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: 1
+
+            }
+        },
+
+        series: [
+            {
+                name: '홍길동',
+                data: [58, 56, 57, 55, 54, 52, 50, 49, 54, 52, 50, 49]
+            },
+            {
+                name: '아무개',
+                data: [48, 46, 47, 45, 54, 52, 53, 46, 45, 54, 52, 53]
+            },
+            {
+                name: '하하하',
+                data: [54, 52, 53, 46, 48, 46, 47, 45, 52, 53, 46, 48]
+            }
+
+        ],
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+
+        });
+    </script>
+</body>
+</html>

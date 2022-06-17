@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+    <style>
+        table td {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <script>
+        let trlist = document.getElementsByTagName('td');
+
+        for (let i = 0 ; i < trlist.length ; i ++) {
+            trlist[i].addEventListener('click', function(event) {
+                let img = document.createElement('img');
+                img.setAttribute('src', 'images/dog-foot.png');
+
+                img.style.width = 100 + "px";
+                img.style.height = 100 + "px";
+                img.style.display = "block";
+
+                let color = getComputedStyle(trlist[i]);
+                img.style.backgroundColor = "#" + color.getPropertyValue + 111;
+
+                trlist[i].appendChild(img);               
+            });
+        }
+    </script>
+</body>
+</html>

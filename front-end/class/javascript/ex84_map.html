@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20556ca02cd4b892c95aa13783a3e841"></script>
+    <script src="js/data.js"></script>
+</head>
+<body>
+    <h1>지도 클릭 이벤트 + 마커 표시</h1>
+
+    <div id="map" style="width:1200px;height:600px;"></div>
+
+    <hr>
+
+    <div id="message"></div>
+    
+    <script>
+        var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(37.499359, 127.033175),
+			level:3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+
+        kakao.maps.event.addListener(map, 'click', function(event) {
+            
+            // alert(event.latLng); 위도 경도
+            document.getElementById('message').innerText = `클릭한 위치: 위도(${event.latLng.getLat()}), 경도(${event.latLng.getLng()})`;
+
+            // 좌표에 마커 표시
+            // 1. 마커 객체 생성
+            // 2. 지도 + 마커
+            const marker = new kakao.maps.Marker({
+                position: event.latLng
+            });
+
+            marker.setMap(map);
+
+        });
+
+        // 만들어 놓은 위도, 경도 객체 지도 위에서 마커로 표시하기
+        list.forEach(function(item, index) {
+            //  console.log(item.name);
+            //  console.log(item.position.lat, item.position.lng);
+            const marker = new kakao.maps.Marker({
+                position: new kakao.maps.LatLng(item.position.lat, item.position.lng)
+            });
+            marker.setMap(map);
+        });
+
+        
+        
+    </script>
+</body>
+</html>
