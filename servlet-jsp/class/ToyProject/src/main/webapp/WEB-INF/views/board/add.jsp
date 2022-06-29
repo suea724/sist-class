@@ -30,7 +30,7 @@
 				 	</table>
 				 	
 				 	<div class="btns">
-				 		<input type="button" value="돌아가기" class="btn btn-secondary" onclick='/toy/index.do' />
+				 		<input type="button" value="돌아가기" class="btn btn-secondary" onclick="location.href='/toy/index.do'" />
 				 		<input type="submit" value="글쓰기" class="btn btn-primary" />
 				 	</div>
  			 </form>

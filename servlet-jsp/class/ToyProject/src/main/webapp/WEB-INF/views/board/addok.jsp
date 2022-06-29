@@ -18,7 +18,7 @@
 		</c:if>
 		
 		<c:if test="${result == 0}">
-			alert('회원가입 실패');
+			alert('글 등록 실패');
 			history.back;
 		</c:if>
 	</script>

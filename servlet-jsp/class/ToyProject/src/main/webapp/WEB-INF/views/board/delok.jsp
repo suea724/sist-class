@@ -11,17 +11,16 @@
 </style>
 </head>
 <body>
-	
-	<main>
-		<%@ include file="/WEB-INF/views/inc/header.jsp" %>
-		<section>
-			 
-			 
-		</section>
-	</main>
-	
 	<script>
+	
+		<c:if test="${result == 1}">
+			location.href = '/toy/board/list.do';
+		</c:if>
 		
+		<c:if test="${result == 0}">
+			alert('삭제 실패');
+			history.back;
+		</c:if>
 	</script>
 
 </body>

@@ -20,9 +20,12 @@ html, body {
 main {
 	width: 800px;
 	margin: 0 auto;
-	height: 100%;
 	box-shadow: 0 0 3px #999;
 	background-color: white;
+	
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
 main > header {
@@ -54,7 +57,6 @@ main > header > nav > ul {
 
 main > header > nav > ul > li {
 	margin: 0 5px;
-	
 }
 
 main > section {
@@ -73,11 +75,26 @@ main > section {
 .table.vertical th {
 	text-align: center;
 	vertical-align: middle;
+	width: 60px;
 }
 
 .table.vertical textarea {
 	resize: none;
 	height: 300px;
+}
+
+.table.horizontal {
+	text-align: center;
+}
+
+.table.horizontal th:nth-child(1) {width: 80px;}
+.table.horizontal th:nth-child(2) {width: auto;}
+.table.horizontal th:nth-child(3) {width: 80px;}
+.table.horizontal th:nth-child(4) {width: 120px;}
+.table.horizontal th:nth-child(5) {width: 80px;}
+
+.table.horizontal td:nth-child(2) {
+	text-align: left;
 }
 
 a {
@@ -93,3 +110,48 @@ a:hover {
 	margin-top: 5px;
 }
 
+#search {
+	margin: 15px auto;
+}
+
+#search td > * {
+	width: auto;
+	margin: 0 3px;
+}
+
+#commentForm {
+	/* width: 100%; */
+	margin: 30px auto;
+}
+
+#commentForm textarea {
+	resize: none;
+	height: 100px;
+	width: 600px;
+}
+
+#commentForm .btn {
+	margin-left: 10px;
+}
+
+#commentList {
+	width: 100%;
+	margin: 20px auto;
+}
+
+#commentList td > div:nth-child(1) {
+	padding: 10px;
+}
+
+#commentList td > div:nth-child(2) > span:nth-child(1) {
+	color: #999;
+	font-size: 12px;
+	float: right;
+	margin-left: 10px;
+}
+
+#commentList td > div:nth-child(2) > span:nth-child(2) {
+	color: #999;
+	font-size: 12px;
+	float: right;
+}

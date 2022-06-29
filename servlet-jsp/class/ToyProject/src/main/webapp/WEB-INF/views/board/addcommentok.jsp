@@ -14,11 +14,11 @@
 	<script>
 	
 		<c:if test="${result == 1}">
-			location.href = '/toy/board/list.do?seq=${seq}';
+			location.href = '/toy/board/view.do?seq=${pseq}&isSearch=${isSearch}&column=${column}&word=${word}';
 		</c:if>
 		
 		<c:if test="${result == 0}">
-			alert('수정 실패');
+			alert('댓글 등록 실패');
 			history.back;
 		</c:if>
 	</script>

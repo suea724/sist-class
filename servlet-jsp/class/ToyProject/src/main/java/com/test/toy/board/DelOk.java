@@ -8,14 +8,55 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/board/delete.do")
+@WebServlet("/board/delok.do")
 public class DelOk extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/delete.jsp");
+		/**
+		 * 1. 데이터 가져오기 (seq)
+		 * 2. DB 작업 > DAO 위임
+		 * 3. 결과를 JSP에 반환
+		 */
+		
+		HttpSession session = req.getSession();
+		
+		// 1.
+		String seq = req.getParameter("seq");
+		
+		// 2.
+		BoardDAO dao = new BoardDAO();
+		
+		int temp = 0;
+		
+		if (session.getAttribute("auth") == null) {
+			temp = 1; // 익명 사용자
+		} else {
+			if (session.getAttribute("auth").equals(dao.get(seq).getId())) {
+				temp = 2; // 글쓴이 > 수정 권한 O
+			} else {
+				
+				if (session.getAttribute("auth").toString().equals("admin")) {
+					temp = 3; // 관리자 > 수정 권한 O
+				} else {
+					temp = 4; // 타인
+				}
+			}
+		}
+				
+		int result = 0;
+		
+		if (temp == 2 || temp == 3) {
+			result = dao.del(seq);
+		}
+		
+		// 3.
+		req.setAttribute("result", result);
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/delok.jsp");
 		dispatcher.forward(req, resp);
 	}
 

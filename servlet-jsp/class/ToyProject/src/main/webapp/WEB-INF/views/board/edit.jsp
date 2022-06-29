@@ -15,7 +15,27 @@
 	<main>
 		<%@ include file="/WEB-INF/views/inc/header.jsp" %>
 		<section>
+			 <h2>Board</h2>
 			 
+			 <form method="POST" action='/toy/board/editok.do'>
+				 <table class="table table-bordered vertical">
+				 		<tr>
+				 			<th>제목</th>
+				 			<td><input type="text" name="subject" class="form-control" required value="${dto.subject}"/></td>
+				 		</tr>
+				 		<tr>
+				 			<th>내용</th>
+				 			<td><textarea name="content" class="form-control">${dto.content}</textarea></td>
+				 		</tr>
+				 	</table>
+				 	
+				 	<div class="btns">
+				 		<input type="button" value="돌아가기" class="btn btn-secondary" onclick="location.href='/toy/board/view.do?seq=${dto.seq}'" />
+				 		<input type="submit" value="수정하기" class="btn btn-primary" />
+				 	</div>
+				 	
+				 	<input type="hidden" name="seq" value="${dto.seq}" />
+ 			 </form>
 			 
 		</section>
 	</main>
