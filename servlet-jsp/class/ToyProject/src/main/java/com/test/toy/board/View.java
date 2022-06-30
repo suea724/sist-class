@@ -25,7 +25,6 @@ public class View extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		
-		
 		// 1.
 		String seq = req.getParameter("seq");
 		
@@ -55,13 +54,17 @@ public class View extends HttpServlet {
 		dto.setContent(dto.getContent().replace("\r\n", "<br>"));
 		
 		// 검색어 CSS 조작
-		if (isSearch.equals("y") && column.equals("content")) {
+		if (isSearch != null && column != null && isSearch.equals("y") && column.equals("content")) {
 			dto.setContent(dto.getContent().replace(word, "<span style=\"background-color: gold;\">" + word + "</span>"));
 		}
 		
 		
 		// 2.3. 댓글 목록 가져오기
 		ArrayList<CommentDTO> clist = dao.listComment(seq);
+		
+		for (CommentDTO cdto : clist) {
+			cdto.setContent(cdto.getContent().replace("\r\n", "<br>"));
+		}
 		
 		// 3.
 		req.setAttribute("dto", dto);

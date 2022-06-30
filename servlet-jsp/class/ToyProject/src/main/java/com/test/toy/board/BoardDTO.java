@@ -13,4 +13,8 @@ public class BoardDTO {
 	private String readcount;
 	
 	private String name;
+	private String commentcount;
+	
+	private int thread;
+	private int depth;
 }

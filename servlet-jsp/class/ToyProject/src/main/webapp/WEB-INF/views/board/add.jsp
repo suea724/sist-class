@@ -33,6 +33,10 @@
 				 		<input type="button" value="돌아가기" class="btn btn-secondary" onclick="location.href='/toy/index.do'" />
 				 		<input type="submit" value="글쓰기" class="btn btn-primary" />
 				 	</div>
+				 	
+				 	<input type="hidden" name="reply" value="${reply}">
+				 	<input type="hidden" name="thread" value="${thread}">
+				 	<input type="hidden" name="depth" value="${depth}">
  			 </form>
 			 
 		</section>

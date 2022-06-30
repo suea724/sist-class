@@ -23,12 +23,15 @@ public class BoardDAO {
 	public int add(BoardDTO dto) {
 		
 		try {
-			String sql = "insert into tblBoard(seq, subject, content, id, regdate, readcount) values (seqBoard.nextVal, ?, ?, ?, default, default)";
+			String sql = "insert into tblBoard(seq, subject, content, id, regdate, readcount, thread, depth) values (seqBoard.nextVal, ?, ?, ?, default, default, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, dto.getSubject());
 			pstmt.setString(2, dto.getContent());
 			pstmt.setString(3, dto.getId());
+			
+			pstmt.setInt(4, dto.getThread());
+			pstmt.setInt(5, dto.getDepth());
 			
 			return pstmt.executeUpdate();
 			
@@ -50,7 +53,7 @@ public class BoardDAO {
 												map.get("word"));
 			}
 			
-			String sql = "select * from vwBoard" + where;
+			String sql = String.format("select * from (select b.*, rownum as rnum from vwBoard b %s) where rnum between %s and %s", where, map.get("begin"), map.get("end")) ;
 			
 			stmt = conn.createStatement();
 			
@@ -67,7 +70,11 @@ public class BoardDAO {
 				dto.setId(rs.getString("id"));
 				dto.setName(rs.getString("name"));
 				dto.setRegdate(rs.getString("regdate"));
+				dto.setCommentcount(rs.getString("commentcount"));
 				dto.setReadcount(rs.getString("readcount"));
+				
+				dto.setDepth(rs.getInt("depth"));
+				
 				
 				list.add(dto);
 			}
@@ -102,6 +109,9 @@ public class BoardDAO {
 				dto.setName(rs.getString("name"));
 				dto.setRegdate(rs.getString("regdate"));
 				dto.setReadcount(rs.getString("readcount"));
+				
+				dto.setThread(rs.getInt("thread"));
+				dto.setDepth(rs.getInt("depth"));
 			}
 			
 			return dto;
@@ -210,6 +220,119 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public int delcomment(String seq) {
+		
+		try {
+			String sql = "delete from tblComment where seq = ?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, seq);
+			
+			return pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public int editComment(CommentDTO dto) {
+		
+		try {
+			String sql = "update tblComment set content = ? where seq = ?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getContent());
+			pstmt.setString(2, dto.getSeq());
+			
+			return pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public void delcommentAll(String seq) {
+		try {
+			String sql = "delete from tblComment where pseq = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, seq);
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public int getTotalCount(HashMap<String, String> map) {
+		
+		try {
+			
+			String where = "";
+			
+			if (map.get("isSearch").equals("y")) {
+				where = String.format("where %s like '%%%s%%'",
+												map.get("column"),
+												map.get("word"));
+			}
+			
+			String sql = "select count(*) as cnt from tblBoard " + where;
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public int getMaxThread() {
+		
+		try {
+			String sql = "select nvl(max(thread), 0) as thread from tblBoard";
+			
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				return rs.getInt("thread");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public void updateThread(HashMap<String, Integer> map) {
+		try {
+			
+			String sql = "update tblBoard set thread = thread - 1 where > ? and thread < ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, map.get("previousThread"));
+			pstmt.setInt(2, map.get("parentThread"));
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

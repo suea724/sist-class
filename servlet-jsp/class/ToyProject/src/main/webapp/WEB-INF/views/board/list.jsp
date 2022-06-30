@@ -36,7 +36,14 @@
 			 	<tr>
 			 		<td>${dto.seq}</td>
 			 		<td>
+			 			<c:if test="${dto.depth > 0}">
+			 			<i class="fa-solid fa-right-long" style="margin-left: ${dto.depth * 20}"></i>
+			 			</c:if>
+			 		
 			 			<a href="/toy/board/view.do?seq=${dto.seq}&isSearch=${map.isSearch}&column=${map.column}&word=${map.word}">${dto.subject}</a>
+			 			<c:if test="${dto.commentcount > 0}">
+			 			<span class="badge badge-primary">${dto.commentcount}</span>
+			 			</c:if>
 		 			</td>
 			 		<td>${dto.name}</td>
 			 		<td>${dto.regdate}</td>
@@ -49,6 +56,16 @@
 			 	</tr>
 			 	</c:if>
 			 </table>
+			 
+			 <div style="text-align:center">
+			 	<%-- <select id="pagebar">
+			 		<c:forEach var="i" begin="1" end="${totalPages}">
+			 		<option value="${i}">${i} 페이지</option>
+			 		</c:forEach>
+			 	</select> --%>
+			 	
+			 	${pagebar}
+			 </div>
 			 
 			 <div>
 			 	<form method="GET" action="/toy/board/list.do">
@@ -93,6 +110,12 @@
 		$('select[name=column]').val('${map.column}');
 		$('input[name=word]').val('${map.word}')
 		</c:if>
+		
+		$('#pagebar').change(function() {
+			location.href='/toy/board/list.do?page=' + $(this).val() + "&column=${map.column}&word=${map.word}";
+		});
+		
+		$('#pagebar').val(${nowPage});
 	</script>
 
 </body>

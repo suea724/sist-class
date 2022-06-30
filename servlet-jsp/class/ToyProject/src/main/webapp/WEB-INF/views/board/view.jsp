@@ -57,7 +57,7 @@
 		 			삭제하기
 		 		</button>
 		 		</c:if>
-		 		<button class="btn btn-success" onclick="location.href='/toy/board/edit.do?seq'">
+		 		<button class="btn btn-success" type="button" onclick="location.href='/toy/board/add.do?reply=1&thread=${dto.thread}&depth=${dto.depth}';">
 		 			답변작성
 		 		</button>
 		 		</c:if>
@@ -89,17 +89,80 @@
 		 				<div>
 		 					<span>${cdto.regdate}</span>
 		 					<span>${cdto.name}(${cdto.id})</span>
+		 					
+		 					<c:if test="${cdto.id == auth}">
+		 					<span class="btnspan"><a href="#!" onclick="editcomment(${cdto.seq});">[수정]</a></span>
+		 					<span class="btnspan"><a href="#!" onclick="delcomment(${cdto.seq});">[삭제]</a></span>
+		 					</c:if>
 		 				</div>
 		 			</td>
 		 		</tr>
 		 		</c:forEach>
+		 		
+		 		
 		 	</table>
 			 
 		</section>
 	</main>
 	
 	<script>
+	
+		$('#commentList td').mouseover(function() {
+			$(this).find('.btnspan').show();
+		});
 		
+		$('#commentList td').mouseout(function() {
+			$(this).find('.btnspan').hide();
+		});
+		
+		function delcomment(seq) {
+			if (confirm('delete?')) {
+				location.href = 'delcommentok.do?seq=' + seq + '&pseq=${dto.seq}&isSearch=${isSearch}&column=${column}&word=${word}';
+			}
+		}
+		
+		let isEdit = false;
+		
+		function editcomment(seq) {
+			if (!isEdit) {
+				const comment = $(event.target).parent().parent().prev().text();
+				
+				$(event.target).parents('tr').after(temp);		
+				
+				isEdit = true;
+				
+				$(event.target).parent('tr').next().find('textarea').val(comment);
+				$(event.target).parent('tr').next().find('input[name=seq]').val(seq);
+			}
+		}
+		
+		const temp = `<tr id="editRow">
+ 			<td>
+				<form method="POST" action="/toy/board/editcommentok.do">
+		 		<table id="editcommentForm">
+		 			<tr>
+		 				<td>
+		 					<textarea class="form-control" name="content" required></textarea>
+		 				</td>
+		 				<td>
+		 					<button type="button" class="btn btn-secondary" onclick="cancelForm();">취소하기</button>
+		 					<button class="btn btn-primary">댓글 수정</button>
+		 				</td>
+		 			</tr>
+		 		</table>
+		 		<input type="hidden" name="pseq" value="${dto.seq}">
+		 		<input type="hidden" name="isSearch" value="${isSearch}" />
+		 		<input type="hidden" name="column" value="${column}" />
+		 		<input type="hidden" name="word" value="${word}" />
+		 		<input type="hidden" name="seq" />
+		 	</form>
+			</td>
+		</tr>`;
+		
+		function cancelForm() {
+			$('#editRow').remove();
+			isEdit = false;
+		}
 	</script>
 
 </body>

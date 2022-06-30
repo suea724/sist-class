@@ -83,7 +83,7 @@ main > section {
 	height: 300px;
 }
 
-.table.horizontal {
+.table.horizontal th, .table.horizontal td {
 	text-align: center;
 }
 
@@ -143,15 +143,30 @@ a:hover {
 	padding: 10px;
 }
 
-#commentList td > div:nth-child(2) > span:nth-child(1) {
+#commentList td > div:nth-child(2) > span {
 	color: #999;
 	font-size: 12px;
 	float: right;
 	margin-left: 10px;
 }
 
-#commentList td > div:nth-child(2) > span:nth-child(2) {
-	color: #999;
-	font-size: 12px;
-	float: right;
+
+#commentList td > div:nth-child(2) > span:nth-child(3),
+#commentList td > div:nth-child(2) > span:nth-child(4) {
+	display: none;
+	cursor: pointer;
 }
+
+#editcommentForm {
+	/* width: 100%; */
+	margin: 30px 0 30px 30px;
+}
+
+#editcommentForm textarea {
+	resize: none;
+	height: 100px;
+	width: 600px;
+	margin-right: 10px;
+}
+
+
