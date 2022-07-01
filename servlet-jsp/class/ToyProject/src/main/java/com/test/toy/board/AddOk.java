@@ -11,6 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 @WebServlet("/board/addok.do")
 public class AddOk extends HttpServlet {
 
@@ -29,12 +37,29 @@ public class AddOk extends HttpServlet {
 		// 1.
 		req.setCharacterEncoding("UTF-8");
 		
-		// 2.
-		String subject = req.getParameter("subject");
-		String content = req.getParameter("content");
+		// 1.5 파일 업로드
+		String path = req.getRealPath("/files");
+		int size = 1024 * 1024 * 100;
 		
-		// 2.5. 현재 새 글 작성중인지? 답변 글 작성중인지?
-		String reply = req.getParameter("reply");
+		MultipartRequest multi = null;
+		
+		try {
+			multi = new MultipartRequest( req,
+											path,
+											size,
+											"UTF-8",
+											new DefaultFileRenamePolicy());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		// 2.
+		String subject = multi.getParameter("subject");
+		String content = multi.getParameter("content");
+		
+		// 2.1. 현재 새 글 작성중인지? 답변 글 작성중인지?
+		String reply = multi.getParameter("reply");
 		// System.out.println(reply);
 		
 		int thread = -1;
@@ -51,8 +76,8 @@ public class AddOk extends HttpServlet {
 			depth = 0;
 		} else {
 			// 답변글
-			int parentThread = Integer.parseInt(req.getParameter("thread"));
-			int parentDepth = Integer.parseInt(req.getParameter("depth"));
+			int parentThread = Integer.parseInt(multi.getParameter("thread"));
+			int parentDepth = Integer.parseInt(multi.getParameter("depth"));
 			
 			int previousThread = (int)Math.floor((parentThread - 1) / 1000) * 1000;
 			
@@ -71,6 +96,12 @@ public class AddOk extends HttpServlet {
 			depth = parentDepth + 1;
 		}
 		
+		
+		// 2.3 업로드 파일 처리
+		String filename = multi.getFilesystemName("attach");
+		String orgfilename = multi.getOriginalFileName("attach");
+		
+		
 		// 3.
 		BoardDTO dto = new BoardDTO();
 		
@@ -81,11 +112,49 @@ public class AddOk extends HttpServlet {
 		dto.setThread(thread);
 		dto.setDepth(depth);
 		
+		dto.setFilename(filename);
+		dto.setOrgfilename(orgfilename);
+		
 		int result = 0;
 		
 		if (session.getAttribute("auth") != null) {
 			result = dao.add(dto);
 		}
+		
+		String seq = dao.getSeq();
+		
+		// 3.5 해시 태그
+		String tags = multi.getParameter("tags");
+		
+		JSONParser parser = new JSONParser();
+		
+		try {
+			JSONArray list = (JSONArray)parser.parse(tags);
+			
+			for (Object obj : list) {
+				// System.out.println(((JSONObject)obj).get("value"));
+				
+				String tag = (String)((JSONObject)obj).get("value");
+				
+				// HashTag > insert
+				dao.addHashTag(tag);
+				
+				String hseq = dao.getHashTagSeq();
+				
+				// Tagging > insert
+				HashMap<String, String> map = new HashMap<String, String>();
+				
+				map.put("bseq", seq);
+				map.put("hseq", hseq);
+				
+				dao.addTagging(map);
+			}
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		
 		
 		// 4.
 		req.setAttribute("result", result);

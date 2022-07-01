@@ -23,7 +23,7 @@ public class BoardDAO {
 	public int add(BoardDTO dto) {
 		
 		try {
-			String sql = "insert into tblBoard(seq, subject, content, id, regdate, readcount, thread, depth) values (seqBoard.nextVal, ?, ?, ?, default, default, ?, ?)";
+			String sql = "insert into tblBoard(seq, subject, content, id, regdate, readcount, thread, depth, filename, orgfilename) values (seqBoard.nextVal, ?, ?, ?, default, default, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, dto.getSubject());
@@ -32,6 +32,9 @@ public class BoardDAO {
 			
 			pstmt.setInt(4, dto.getThread());
 			pstmt.setInt(5, dto.getDepth());
+			
+			pstmt.setString(6, dto.getFilename());
+			pstmt.setString(7, dto.getOrgfilename());
 			
 			return pstmt.executeUpdate();
 			
@@ -46,14 +49,26 @@ public class BoardDAO {
 		try {
 			
 			String where = "";
+			String sql = "";
 			
-			if (map.get("isSearch").equals("y")) {
-				where = String.format(" where %s like '%%%s%%'",
-												map.get("column"),
-												map.get("word"));
+			if (map.get("tag") == null) {
+				
+				if (map.get("isSearch").equals("y")) {
+					where = String.format(" where %s like '%%%s%%'",
+							map.get("column"),
+							map.get("word"));
+				}
+				
+				sql = String.format("select * from (select b.*, rownum as rnum from vwBoard b %s) where rnum between %s and %s", where, map.get("begin"), map.get("end")) ;
+			} else {
+				sql = "select b.* from vwBoard b\r\n"
+						+ "    inner join tblTagging t\r\n"
+						+ "        on b.seq = t.bseq\r\n"
+						+ "            inner join tblHashTag h\r\n"
+						+ "                on h.seq = t.hseq\r\n"
+						+ "                    where h.tag = '" + map.get("tag") + "'";
 			}
 			
-			String sql = String.format("select * from (select b.*, rownum as rnum from vwBoard b %s) where rnum between %s and %s", where, map.get("begin"), map.get("end")) ;
 			
 			stmt = conn.createStatement();
 			
@@ -75,6 +90,8 @@ public class BoardDAO {
 				
 				dto.setDepth(rs.getInt("depth"));
 				
+				dto.setIsnew(rs.getDouble("isnew"));
+				dto.setFilename(rs.getString("filename"));
 				
 				list.add(dto);
 			}
@@ -112,7 +129,26 @@ public class BoardDAO {
 				
 				dto.setThread(rs.getInt("thread"));
 				dto.setDepth(rs.getInt("depth"));
+				
+				dto.setFilename(rs.getString("filename"));
+				dto.setOrgfilename(rs.getString("orgfilename"));
 			}
+			
+			// 해당 글의 해시 태그들 가져오기
+			sql = "select tag from tblHashTag h inner join tblTagging t on h.seq = t.hseq where bseq = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, seq);
+			
+			rs = pstmt.executeQuery();
+			
+			ArrayList<String> list = new ArrayList<>();
+			
+			while (rs.next()) {
+				list.add(rs.getString("tag"));
+			}
+			
+			dto.setTaglist(list);
 			
 			return dto;
 			
@@ -139,12 +175,14 @@ public class BoardDAO {
 
 	public int edit(BoardDTO dto) {
 		try {
-			String sql = "update tblBoard set subject = ?, content = ? where seq = ?";
+			String sql = "update tblBoard set subject = ?, content = ?, filename = ?, orgfilename = ? where seq = ?";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, dto.getSubject());
 			pstmt.setString(2, dto.getContent());
-			pstmt.setString(3, dto.getSeq());
+			pstmt.setString(3, dto.getFilename());
+			pstmt.setString(4, dto.getOrgfilename());
+			pstmt.setString(5, dto.getSeq());
 			
 			return pstmt.executeUpdate();
 			
@@ -333,6 +371,96 @@ public class BoardDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public String getSeq() {
+		
+		try {
+			String sql = "select max(seq) as seq from tblBoard";
+			
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getString("seq");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public void addHashTag(String tag) {
+		try {
+			String sql = "insert into tblHashTag (seq, tag) values (seqHashTag.nextVal, ?)";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, tag);
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public String getHashTagSeq() {
+		
+		try {
+			String sql = "select max(seq) as seq from tblHashTag";
+			
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getString("seq");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	public void addTagging(HashMap<String, String> map) {
+		try {
+			String sql = "insert into tblTagging (seq, bseq, hseq) values (seqTagging.nextVal, ?, ?)";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, map.get("bseq"));
+			pstmt.setString(2, map.get("hseq"));
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	// 자동완성을 위한 태그 리스트
+	public ArrayList<String> taglist() {
+		
+		try {
+			String sql = "select tag from tblHashTag order by tag asc";
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			ArrayList<String> list = new ArrayList<String>();
+			
+			while (rs.next()) {
+				list.add(rs.getString("tag"));
+			}
+			
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

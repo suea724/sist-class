@@ -50,7 +50,7 @@
 				 </form>
 				 &nbsp;
 				 <form method="POST" action="/toy/member/loginok.do">
-				 	<input type="hidden" name="id" value="sua">
+				 	<input type="hidden" name="id" value="suaa">
 				 	<input type="hidden" name="pw" value="1111">
 				 	<input type="submit" value="수아" class="btn btn-success" />
 				 </form>

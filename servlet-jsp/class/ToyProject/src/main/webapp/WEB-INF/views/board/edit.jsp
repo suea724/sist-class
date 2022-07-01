@@ -17,7 +17,7 @@
 		<section>
 			 <h2>Board</h2>
 			 
-			 <form method="POST" action='/toy/board/editok.do'>
+			 <form method="POST" action='/toy/board/editok.do' enctype="multipart/form-data">
 				 <table class="table table-bordered vertical">
 				 		<tr>
 				 			<th>제목</th>
@@ -27,6 +27,21 @@
 				 			<th>내용</th>
 				 			<td><textarea name="content" class="form-control">${dto.content}</textarea></td>
 				 		</tr>
+				 		<tr>
+				 			<th>파일</th>
+				 			<td>
+				 				<input type="file" name="attach" class="form-control" />
+				 				<div style="margin: 5px 10px;">
+				 				<c:if test="${not empty dto.orgfilename}">
+				 				파일명 : <span id="filename">${dto.orgfilename}</span><span onclick="delfile();" style="cursor:pointer;">&times;</span>
+				 				</c:if>
+				 				<c:if test="${empty dto.orgfilename}">
+				 				파일명 : 파일 없음
+				 				</c:if>
+				 				</div>
+			 				</td>
+				 			
+				 		</tr>
 				 	</table>
 				 	
 				 	<div class="btns">
@@ -35,13 +50,28 @@
 				 	</div>
 				 	
 				 	<input type="hidden" name="seq" value="${dto.seq}" />
+				 	<input type="hidden" name="isSearch" value="${isSearch}" />
+				 	<input type="hidden" name="column" value="${column}" />
+				 	<input type="hidden" name="word" value="${word}" />			
+				 	
+				 	<input type="hidden" name="delfile" value="n">	 
  			 </form>
 			 
 		</section>
 	</main>
 	
 	<script>
-		
+		function delfile() {
+			
+			if ($('#filename').css('text-decoration').indexOf('line-through') == -1) {
+				$('#filename').css('text-decoration', 'line-through');
+				$('input[name=delfile]').val('y');
+			} else {
+				$('#filename').css('text-decoration', 'none');
+				$('input[name=delfile]').val('n');
+			}
+			
+		}
 	</script>
 
 </body>

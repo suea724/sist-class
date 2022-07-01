@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>Toy Project</title>
 <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
+<link rel="stylesheet" href="/toy/asset/css/tagify.css">
+<script src="/toy/asset/js/jQuery.tagify.min.js"></script>
 <style>
 
 </style>
@@ -42,7 +44,53 @@
 		 			<th>내용</th>
 		 			<td style="height: 300px; vertical-align: middle;">${dto.content}</td>
 		 		</tr>
-		 		
+		 		<tr>
+		 			<th>파일</th>
+		 			
+		 			<c:if test="${not empty dto.orgfilename}">
+		 			<td><a href="/toy/board/download.do?filename=${dto.filename}&orgfilename=${dto.orgfilename}">${dto.orgfilename}</a></td>
+		 			</c:if>
+		 			
+		 			<c:if test="${empty dto.orgfilename}">
+		 			<td>파일없음</td>
+		 			</c:if>
+		 		</tr>
+		 		<tr>
+		 			<th>태그</th>
+		 			<td>
+		 				<input type="text" name="tags" id="" readonly />
+		 			</td>
+		 		</tr>
+		 		<tr>
+		 			<th>좋아요/싫어요</th>
+		 			<td>
+		 				<form method="GET" action="/toy/board/likehate.do">
+		 				<button class="btn btn-info">
+		 					<i class="fa-solid fa-thumbs-up"></i> 
+		 					좋아요
+		 					<span class="badge">10</span>
+		 				</button>
+		 				<input type="hidden" name="seq" value="${dto.seq}">
+		 				<input type="hidden" name="isSearch" value="${isSearch}" />
+				 		<input type="hidden" name="column" value="${column}" />
+				 		<input type="hidden" name="word" value="${word}" />
+				 		<input type="hidden" name="likebad" value="like" />
+		 				</form>
+		 				
+		 				<form method="GET" action="/toy/board/likehate.do">
+		 				<button class="btn btn-danger">
+		 					<i class="fa-solid fa-thumbs-up"></i>
+		 					싫어요
+		 					<span class="badge">10</span>
+		 				</button>
+		 				<input type="hidden" name="seq" value="${dto.seq}">
+		 				<input type="hidden" name="isSearch" value="${isSearch}" />
+				 		<input type="hidden" name="column" value="${column}" />
+				 		<input type="hidden" name="word" value="${word}" />
+				 		<input type="hidden" name="likebad" value="like" />
+		 				</form>
+		 			</td>
+		 		</tr>
 		 	</table>
 			 	
 		 	<div class="btns">
@@ -50,7 +98,7 @@
 		 		<c:if test="${not empty auth}">
 		 		
 		 		<c:if test="${auth == dto.id || auth == 'admin'}">
-		 		<button class="btn btn-primary" onclick="location.href='/toy/board/edit.do?seq=${dto.seq}'">
+		 		<button class="btn btn-primary" onclick="location.href='/toy/board/edit.do?seq=${dto.seq}&isSearch=${isSearch}&column=${column}&word=${word}'">
 		 			수정하기
 		 		</button>
 		 		<button class="btn btn-danger" onclick="location.href='/toy/board/del.do?seq=${dto.seq}'">
@@ -163,6 +211,17 @@
 			$('#editRow').remove();
 			isEdit = false;
 		}
+		
+		let tag = '';
+		
+		<c:forEach var="tag" items="${dto.taglist}">
+			tag += '${tag},'
+		</c:forEach>
+		
+		alert(tag);
+			
+		$('input[name=tags]').val('aaa, bbb, ccc');
+		$('input[name=tags]').tagify();
 	</script>
 
 </body>
