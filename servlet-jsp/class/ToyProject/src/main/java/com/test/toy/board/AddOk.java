@@ -137,9 +137,15 @@ public class AddOk extends HttpServlet {
 				String tag = (String)((JSONObject)obj).get("value");
 				
 				// HashTag > insert
-				dao.addHashTag(tag);
 				
-				String hseq = dao.getHashTagSeq();
+				String hseq = "";
+				
+				if (dao.findExistHashTagSeq(tag) == null) {
+					dao.addHashTag(tag);
+					hseq = dao.getNewHashTagSeq();					
+				} else {
+					hseq = dao.findExistHashTagSeq(tag);
+				}
 				
 				// Tagging > insert
 				HashMap<String, String> map = new HashMap<String, String>();
@@ -153,7 +159,6 @@ public class AddOk extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
 		
 		
 		// 4.

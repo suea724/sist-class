@@ -52,10 +52,13 @@ public class DelOk extends HttpServlet {
 		
 		if (temp == 2 || temp == 3) {
 			
+			// 해시태그 연결 제거
+			dao.delTaggingAll(seq);
+			
 			// 댓글 삭제
 			dao.delcommentAll(seq);
 			
-			// 원글 첨부파일 삭제
+			// 첨부파일 삭제
 			BoardDTO dto = dao.get(seq);
 			
 			if (dto.getFilename() != null) {
@@ -65,8 +68,9 @@ public class DelOk extends HttpServlet {
 				file.delete();
 			}
 			
-			// 원래 글 삭제
+			// 글 삭제
 			result = dao.del(seq);
+			
 		}
 		
 		// 3.

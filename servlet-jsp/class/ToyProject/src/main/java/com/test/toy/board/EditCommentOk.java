@@ -46,7 +46,7 @@ public class EditCommentOk extends HttpServlet {
 		
 		int result = dao.editComment(dto);
 		
-		System.out.println(result);
+		// System.out.println(result);
 		
 		// 4.
 		if (result == 1) {

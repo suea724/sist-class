@@ -37,7 +37,7 @@
 			 		<td>${dto.seq}</td>
 			 		<td>
 			 			<c:if test="${dto.depth > 0}">
-			 			<i class="fa-solid fa-right-long" style="margin-left: ${dto.depth * 20}"></i>
+			 			<i class="fa-solid fa-right-long" style="margin-left: ${dto.depth * 20}px"></i>
 			 			</c:if>
 			 		
 			 			<a href="/toy/board/view.do?seq=${dto.seq}&isSearch=${map.isSearch}&column=${map.column}&word=${map.word}">${dto.subject}</a>

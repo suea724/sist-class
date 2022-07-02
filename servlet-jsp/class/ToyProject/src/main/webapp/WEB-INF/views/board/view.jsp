@@ -147,7 +147,6 @@
 		 		</tr>
 		 		</c:forEach>
 		 		
-		 		
 		 	</table>
 			 
 		</section>
@@ -179,8 +178,8 @@
 				
 				isEdit = true;
 				
-				$(event.target).parent('tr').next().find('textarea').val(comment);
-				$(event.target).parent('tr').next().find('input[name=seq]').val(seq);
+				$(event.target).parents('tr').next().find('textarea').val(comment);
+				$(event.target).parents('tr').next().find('input[name=seq]').val(seq);
 			}
 		}
 		
@@ -217,11 +216,18 @@
 		<c:forEach var="tag" items="${dto.taglist}">
 			tag += '${tag},'
 		</c:forEach>
-		
-		alert(tag);
 			
-		$('input[name=tags]').val('aaa, bbb, ccc');
-		$('input[name=tags]').tagify();
+		$('input[name=tags]').val(tag);
+	
+		const tagify = new Tagify(document.querySelector('input[name=tags]'), {});
+		
+		tagify.on('click', test);
+		
+		function test(e) {
+			//alert(e.detail.data.value);
+			
+			location.href = '/toy/board/list.do?tag=' + e.detail.data.value;
+		}
 	</script>
 
 </body>

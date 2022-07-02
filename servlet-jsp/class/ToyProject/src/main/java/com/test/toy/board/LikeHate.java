@@ -15,8 +15,11 @@ public class LikeHate extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/likehate.jsp");
-		dispatcher.forward(req, resp);
+		/**
+		 * 1. 데이터 가져오기
+		 * 2. DB 작업 > DAO 위임
+		 * 3. 결과에 따라 피드백
+		 */
 	}
 }
 

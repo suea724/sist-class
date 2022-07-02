@@ -192,7 +192,7 @@ public class BoardDAO {
 		return 0;
 	}
 
-	public int del(String seq) {
+	public int del(String seq) { 
 		
 		try {
 			String sql = "delete from tblBoard where seq = ?";
@@ -406,7 +406,7 @@ public class BoardDAO {
 		}
 	}
 	
-	public String getHashTagSeq() {
+	public String getNewHashTagSeq() {
 		
 		try {
 			String sql = "select max(seq) as seq from tblHashTag";
@@ -461,6 +461,41 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public String findExistHashTagSeq(String tag) {
+		
+		try {
+			String sql = "select seq from tblHashTag where tag = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, tag);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getString("seq");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public void delTaggingAll(String seq) {
+		try {
+			String sql = "delete from tblTagging where bseq = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, seq);
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 	}
 
 }
