@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.drew.imaging.ImageMetadataReader;
+import com.drew.metadata.Metadata;
+import com.drew.metadata.exif.GpsDirectory;
+
 @WebServlet("/board/view.do")
 public class View extends HttpServlet {
 
@@ -73,6 +77,35 @@ public class View extends HttpServlet {
 			BufferedImage img = ImageIO.read(new File(req.getRealPath("files") + "\\" + dto.getFilename()));
 			
 			dto.setContent(dto.getContent() + String.format("<div style='margin-top: 15px;'><img src='/toy/files/%s' style='max-width:650px;' >", dto.getFilename()));
+			
+			File file = new File(req.getRealPath("files") + "\\" + dto.getFilename());
+            
+            String pdsLat = "";
+            String pdsLon = "";
+            
+            try {
+            	// 파일에 위치 정보가 있으면 지도에 표시
+            	Metadata metadata = ImageMetadataReader.readMetadata(file);
+                GpsDirectory gpsDirectory = metadata.getFirstDirectoryOfType(GpsDirectory.class);
+          
+                // 위도,경도 호출
+                if (gpsDirectory.containsTag(GpsDirectory.TAG_LATITUDE)
+                      && gpsDirectory.containsTag(GpsDirectory.TAG_LONGITUDE)) {
+          
+                   pdsLat = String.valueOf(gpsDirectory.getGeoLocation().getLatitude());
+                   pdsLon = String.valueOf(gpsDirectory.getGeoLocation().getLongitude());
+          
+                   if (pdsLat != null && pdsLon != null) {
+                      req.setAttribute("lat", pdsLat);
+                      req.setAttribute("lng", pdsLon);
+                      
+                   }
+                }
+                
+            } catch(Exception e) {
+            	e.printStackTrace();
+            }
+      
 		}
 		
 		

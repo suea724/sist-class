@@ -41,8 +41,8 @@
 			</c:if>
 			
 			<li><a href="/toy/board/list.do">Board</a></li>
-			<li><a href="/toy/etc">Etc</a></li>
-			<li><a href="/toy/etc">Etc</a></li>
+			<li><a href="/toy/etc/chart.do">Chart</a></li>
+			<li><a href="/toy/etc/food.do">Food</a></li>
 		</ul>
 	</nav>
 </header>

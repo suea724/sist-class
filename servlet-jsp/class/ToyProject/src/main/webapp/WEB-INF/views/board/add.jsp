@@ -72,15 +72,6 @@
 	</main>
 	
 	<script>
-		$('input[name=tags]').tagify({
-			
-			dropdown: {
-				classname: 'tags-look',
-				enabled: 0,
-				closeOnSelect: false
-			}
-		});
-		
 		/*
 			 JSON > JavaScript Object Notation
 			 - 데이터 전달용 상자 역할
@@ -92,29 +83,22 @@
 		*/
 		
 		const obj = {
-		         dropdown: {
-		            classname: 'tags-look',
-		            enabled: 0,
-		            closeOnSelect: false
-		         }
-		      };
-		   
-		      let temp = [];
-		      
-		      <c:forEach items="${taglist}" var="tag">
-		         temp.push('${tag}');
-		      </c:forEach>
-		      
-		      obj.whitelist = temp;
-		      
-		      const tagify = new Tagify(document.querySelector('input[name=tags]'), {});
-		      
-		      tagify.on('click', test);
-		      
-		      function test(e) {
-		         /* alert(e.detail.data.value); */
-		         location.href='/toy/board/list.do?tag' + e.detail.data.value;
-		      }
+				dropdown: {
+					classname: 'tags-look',
+					enabled: 0,
+					closeOnSelect: false
+				}
+			};
+		
+			let temp = [];
+			
+			<c:forEach items="${taglist}" var="tag">
+				temp.push('${tag}');
+			</c:forEach>
+			
+			obj.whitelist = temp;
+		
+			$('input[name=tags]').tagify(obj);
 		
 	</script>
 

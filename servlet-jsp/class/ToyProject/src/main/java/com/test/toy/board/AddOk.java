@@ -126,6 +126,8 @@ public class AddOk extends HttpServlet {
 		// 3.5 해시 태그
 		String tags = multi.getParameter("tags");
 		
+		System.out.println(tags);
+		
 		JSONParser parser = new JSONParser();
 		
 		try {

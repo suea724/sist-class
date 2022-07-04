@@ -7,9 +7,31 @@
 <title>Toy Project</title>
 <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
 <link rel="stylesheet" href="/toy/asset/css/tagify.css">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20556ca02cd4b892c95aa13783a3e841"></script>
 <script src="/toy/asset/js/jQuery.tagify.min.js"></script>
 <style>
-
+	tr:last-child form {
+		margin-right: 5px;
+	}
+	
+	<c:if test="${not empty dto.goodbad}">
+	#btngood, #btnbad {
+		opacity: .3;
+	}
+	</c:if>
+	
+	<c:if test="${empty dto.goodbad}">
+	#btngood, #btnbad {
+		opacity: 1;
+	}
+	</c:if>
+	
+	<c:if test="${not empty lat}">
+		#map {
+			width: 100%;
+			height: 400px;
+		}
+	</c:if>
 </style>
 </head>
 <body>
@@ -63,34 +85,42 @@
 		 		</tr>
 		 		<tr>
 		 			<th>좋아요/싫어요</th>
-		 			<td>
-		 				<form method="GET" action="/toy/board/likehate.do">
-		 				<button class="btn btn-info">
+		 			<td style="display: flex;">
+		 				<form method="GET" action="/toy/board/goodbad.do">
+		 				<button class="btn btn-info" id="btngood">
 		 					<i class="fa-solid fa-thumbs-up"></i> 
 		 					좋아요
-		 					<span class="badge">10</span>
+		 					<span class="badge">${dto.good}</span>
 		 				</button>
 		 				<input type="hidden" name="seq" value="${dto.seq}">
 		 				<input type="hidden" name="isSearch" value="${isSearch}" />
 				 		<input type="hidden" name="column" value="${column}" />
 				 		<input type="hidden" name="word" value="${word}" />
-				 		<input type="hidden" name="likebad" value="like" />
+				 		<input type="hidden" name="good" value="1" />
+				 		<input type="hidden" name="bad" value="0" />
 		 				</form>
 		 				
-		 				<form method="GET" action="/toy/board/likehate.do">
-		 				<button class="btn btn-danger">
+		 				<form method="GET" action="/toy/board/goodbad.do">
+		 				<button class="btn btn-danger"  id="btnbad">
 		 					<i class="fa-solid fa-thumbs-up"></i>
 		 					싫어요
-		 					<span class="badge">10</span>
+		 					<span class="badge">${dto.bad}</span>
 		 				</button>
 		 				<input type="hidden" name="seq" value="${dto.seq}">
 		 				<input type="hidden" name="isSearch" value="${isSearch}" />
 				 		<input type="hidden" name="column" value="${column}" />
 				 		<input type="hidden" name="word" value="${word}" />
-				 		<input type="hidden" name="likebad" value="like" />
+				 		<input type="hidden" name="bad" value="1" />
+				 		<input type="hidden" name="good" value="0" />
 		 				</form>
 		 			</td>
 		 		</tr>
+		 		<c:if test="${not empty lat}">
+		 		<tr>
+		 			<th>위치</th>
+		 			<td><div id="map"></div></td>
+		 		</tr>
+		 		</c:if>
 		 	</table>
 			 	
 		 	<div class="btns">
@@ -228,6 +258,24 @@
 			
 			location.href = '/toy/board/list.do?tag=' + e.detail.data.value;
 		}
+		
+		<c:if test="${not empty lat}">
+			var container = document.getElementById('map');
+			
+			var options = {
+				center: new kakao.maps.LatLng(${lat}, ${lng}),
+				level: 3
+			};
+		
+			var map = new kakao.maps.Map(container, options);
+			
+			var m = new kakao.maps.Marker({
+				position: new kakao.maps.LatLng(${lat}, ${lng})
+			});
+			
+			m.setMap(map);
+		</c:if>
+		
 	</script>
 
 </body>

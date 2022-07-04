@@ -1,4 +1,4 @@
-package com.test.toy.board;
+package com.test.toy.etc;
 
 import java.io.IOException;
 
@@ -9,17 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/likehate.do")
-public class LikeHate extends HttpServlet {
+@WebServlet("/etc/map.do")
+public class Map extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String no = req.getParameter("no"); 
 
-		/**
-		 * 1. 데이터 가져오기
-		 * 2. DB 작업 > DAO 위임
-		 * 3. 결과에 따라 피드백
-		 */
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/etc/map" + no + ".jsp");
+		dispatcher.forward(req, resp);
 	}
 }
 
