@@ -247,4 +247,50 @@ public class AjaxDAO {
 		
 		return null;
 	}
+
+	public int updatePosition(DraggableDTO dto) {
+		try {
+			String sql = "update tblDraggable set left = ?, top = ? where id = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getLeft());
+			pstmt.setString(2, dto.getTop());
+			pstmt.setString(3, dto.getId());
+			
+			return pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public ArrayList<DraggableDTO> listDraggable() {
+		
+		try {
+			String sql = "select * from tblDraggable";
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			ArrayList<DraggableDTO> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				
+				DraggableDTO dto = new DraggableDTO();
+				
+				dto.setId(rs.getString("id"));
+				dto.setLeft(rs.getString("left"));
+				dto.setTop(rs.getString("top"));
+				
+				list.add(dto);
+			}
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 }

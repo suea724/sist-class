@@ -98,4 +98,27 @@ public class EtcDAO {
 		return null;
 	}
 
+	public int addMovie(MovieDTO dto) {
+		
+		try {
+			String sql = "insert into tblMovie(seq, title, category, time, rdate, director, actor, poster) values (seqMovie.nextVal, ?, ?, ?, ?, ?, ?, ?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2, dto.getCategory());
+			pstmt.setString(3, dto.getTime());
+			pstmt.setString(4, dto.getRdate());
+			pstmt.setString(5, dto.getDirector());
+			pstmt.setString(6, dto.getActor());
+			pstmt.setString(7, dto.getPoster());
+			
+			return pstmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
 }
