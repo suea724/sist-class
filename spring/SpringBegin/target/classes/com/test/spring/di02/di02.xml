@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 스프링 설정 파일 -->
+	
+	<!-- 
+		자바 객체 생성 + 설정
+		- 자바 객체 == Bean
+	 -->
+	 
+	 <!-- m1() -->
+	 <!-- 하나의 객체가 어디에서 쓰이는지에 따라 역할이 달라질 수 있다 > 가독성을 위해 식별자를 여러개 제공 -->
+	 <bean id="pen" name="p1 p2 p3" class="com.test.spring.di02.Pen"></bean>
+	 <bean id="brush" class="com.test.spring.di02.Brush"></bean>
+	 
+	 
+	 <!-- Spring DI -->
+	 
+	 <bean id="hong" class="com.test.spring.di02.Hong">
+	 	<!-- 생성자 인자 -->
+	 	<constructor-arg ref="pen"></constructor-arg>
+	 </bean>
+	 
+	 <bean id="lee" class="com.test.spring.di02.Lee">
+	 	<!-- Setter 프로퍼티 -->
+	 	<property name="brush" ref="brush"></property>
+	 </bean>
+	 
+</beans>
