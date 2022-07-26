@@ -52,8 +52,15 @@
         		
         		 -->
         		 
-        		 <!-- 한 클래스 내 모든 메서드를 포인트컷으로 지정(와일드 카드 사용) -->
+        		 <!-- 한 클래스 내 모든 메서드를 포인트컷으로 지정(와일드 카드 사용)-->
         		 <aop:pointcut expression="execution(public * com.test.spring.aop.MemoImpl.*(..))" id="p4" />
+        		 
+        		 <aop:pointcut expression="execution(* *(..))" id="p5"/>
+        		 
+        		 <aop:pointcut expression="execution(public * com.test.spring.aop.MemoImpl.*(int,..))" id="p6"/>
+        		 
+        		 <aop:pointcut expression="execution(public * com.test.spring.aop.MemoImpl.add*(..))" id="p7"/>
+        		 
         		
         		<!-- 위빙(Weaving) > 포인트컷과 보조 업무 결합 > 5가지의 방법 > n:n의 관계 -->
         		
@@ -64,8 +71,17 @@
 	        		<aop:after method="log" pointcut-ref="p2" />
 	        		<aop:after method="log" pointcut-ref="p3" />
         		 -->
-        		 
+        		
+        		<!--  
 	        		<aop:after method="log" pointcut-ref="p4" />
+	        		<aop:before method="log" pointcut-ref="p4" />
+	        		<aop:around method="time" pointcut-ref="p5" />
+        		 -->
+        		 
+        		 <!-- <aop:after-returning method="history" pointcut-ref="p5" returning="memo"/> -->
+        		 <aop:after-throwing method="check" pointcut-ref="p5" throwing="e" />
+        		 
+        		 
         	</aop:aspect>
         </aop:config>
         

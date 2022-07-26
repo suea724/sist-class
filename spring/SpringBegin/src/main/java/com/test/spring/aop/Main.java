@@ -21,7 +21,11 @@ public class Main {
 		memo.add("스프링 AOP 수업중");
 		
 		// 메모 읽기
-		String txt = memo.read(5);
+		try {
+			String txt = memo.read(15);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		// 메모 수정하기
 		boolean result = memo.edit(5, "수정한 내용입니다.");

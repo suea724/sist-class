@@ -8,8 +8,13 @@ public class MemoImpl implements Memo {
 	}
 
 	@Override
-	public String read(int seq) {
-		System.out.println("메모 읽기: " + seq);
+	public String read(int seq) throws Exception{
+		
+		if (seq >= 1 && seq <= 10) {
+			System.out.println("메모 읽기: " + seq);
+		} else {
+			throw new Exception("존재하지 않는 메모");
+		}
 		return "메모입니다.";
 	}
 

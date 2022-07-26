@@ -6,7 +6,7 @@ public interface Memo {
 	void add(String memo);
 	
 	// 메모 읽기
-	String read(int seq);
+	String read(int seq) throws Exception;
 	
 	// 메모 수정하기
 	boolean edit(int seq, String memo);
