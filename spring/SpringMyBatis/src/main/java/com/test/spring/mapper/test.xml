@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 현재 파일과 동일한 이름으로 설정하는게 좋음 -->
+<mapper namespace="test">
+	<!--  Query 작성 -->
+	
+	<!-- 
+	   <select id=""></select>
+	   <insert id=""></insert>
+	   <update id=""></update>
+	   <delete id=""></delete>
+    -->
+    
+    <insert id="m1">
+    insert into tblMyBatis (seq, item, price, regdate) values (seqMyBatis.nextVal, '본체', '500000', default)
+    </insert>
+    
+    <update id="m2" parameterType="String">
+    update tblMyBatis set price = price * 1.2 where seq = #{seq}
+    </update>
+    
+    <delete id="m3" parameterType="String">
+    delete from tblMyBatis where seq = #{seq}
+    </delete>
+    
+    <insert id="m4" parameterType="dto">
+    insert into tblMyBatis values (seqMyBatis.nextVal, #{item}, #{price}, default)
+    </insert>
+    
+    <select id="m5" parameterType="String" resultType="Integer">
+    select price from tblMyBatis where seq = #{seq}
+    </select>
+    
+    <select id="m6" parameterType="String" resultType="dto">
+    select * from tblMyBatis where seq = #{seq}
+    </select>
+    
+    <!-- 반환되는 레코드의 개수와 상관없이 resultType은 항상 레코드 1개의 자료형으로만 작성한다. -->
+    <select id="m7" resultType="String">
+    select item from tblMyBatis
+    </select>
+    
+    <select id="m8" resultType="dto">
+    select * from tblMyBatis
+    </select>
+    
+    <!-- 문자열에 따옴표를 붙이지 않고 쿼리 생성 (데이터 X, 식별자 O) -->
+    <select id="m9" parameterType="String" resultType="Integer">
+    select count(*) from ${table}
+    </select>
+    
+    <select id="m10" parameterType="String" resultType="dto">
+    select * from tblMyBatis where item like '%${word}%'
+    </select>
+    
+    <select id="m11" parameterType="String" resultType="String">
+    
+    	<!-- 
+    	select
+	    	<if test="type == 1">
+		    jikwi
+		    </if>
+	    	<if test="type == 2">
+		    buseo
+		    </if>
+		 from tblInsa   
+    	 -->
+    	 
+    
+	    <if test="type == 1">
+	    select distinct buseo from tblInsa
+	    </if>
+	    
+	    <if test="type == 2">
+	    select distinct jikwi from tblInsa
+	    </if>
+    
+    </select>
+</mapper>
