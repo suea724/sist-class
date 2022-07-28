@@ -13,5 +13,6 @@ insert into tblMyBatis (seq, item, price, regdate) values (seqMyBatis.nextVal, '
 insert into tblMyBatis (seq, item, price, regdate) values (seqMyBatis.nextVal, '모니터', '230000', default);
 
 select * from tblMyBatis;
+select * from tblInsa;
 
 commit;

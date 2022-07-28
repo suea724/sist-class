@@ -1,0 +1,172 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'SUIT-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, p, div, span, th, td, li, input, textarea, select, header, section, nav, h1, h2, h3, a {
+	font-family: 'SUIT-Medium';
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background-color: #d5d9ed;
+}
+
+main {
+	width: 800px;
+	margin: 0 auto;
+	box-shadow: 0 0 3px #999;
+	background-color: white;
+	
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main > header {
+	height: 150px;
+	border-bottom: 1px solid #AAA;
+	position: relative;
+	left: 0;
+	top: 0;
+}
+
+main > header > h1 {
+	margin: 0;
+	padding: 40px 0 0 30px;
+	font-variant: small-caps;
+}
+
+main > header > nav {
+	position: absolute;
+	right: 10px;
+	bottom: 5px;
+}
+
+main > header > nav > ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+main > header > nav > ul > li {
+	margin: 0 5px;
+}
+
+main > section {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.form-control.short {
+	width: 100px;
+}
+
+.form-control.middle {
+	width: 250px;
+}
+
+.table.vertical th {
+	text-align: center;
+	vertical-align: middle;
+	width: 80px;
+}
+
+.table.vertical textarea {
+	resize: none;
+	height: 300px;
+}
+
+.table.horizontal th, .table.horizontal td {
+	text-align: center;
+}
+
+.table.horizontal th:nth-child(1) {width: 80px;}
+.table.horizontal th:nth-child(2) {width: auto;}
+.table.horizontal th:nth-child(3) {width: 80px;}
+.table.horizontal th:nth-child(4) {width: 120px;}
+.table.horizontal th:nth-child(5) {width: 80px;}
+
+.table.horizontal td:nth-child(2) {
+	text-align: left;
+}
+
+a {
+	color: #333;
+}
+
+a:hover {
+	text-decoration: none;
+	color: cornflowerblue;
+}
+
+.btns {
+	margin-top: 5px;
+}
+
+#search {
+	margin: 15px auto;
+}
+
+#search td > * {
+	width: auto;
+	margin: 0 3px;
+}
+
+#commentForm {
+	/* width: 100%; */
+	margin: 30px auto;
+}
+
+#commentForm textarea {
+	resize: none;
+	height: 100px;
+	width: 600px;
+}
+
+#commentForm .btn {
+	margin-left: 10px;
+}
+
+#commentList {
+	width: 100%;
+	margin: 20px auto;
+}
+
+#commentList td > div:nth-child(1) {
+	padding: 10px;
+}
+
+#commentList td > div:nth-child(2) > span {
+	color: #999;
+	font-size: 12px;
+	float: right;
+	margin-left: 10px;
+}
+
+
+#commentList td > div:nth-child(2) > span:nth-child(3),
+#commentList td > div:nth-child(2) > span:nth-child(4) {
+	display: none;
+	cursor: pointer;
+}
+
+#editcommentForm {
+	/* width: 100%; */
+	margin: 30px 0 30px 30px;
+}
+
+#editcommentForm textarea {
+	resize: none;
+	height: 100px;
+	width: 600px;
+	margin-right: 10px;
+}
+
+
