@@ -1,5 +1,6 @@
 package com.test.java;
 
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -145,6 +146,114 @@ public class Ex01_RegEx {
 				ex) "\w{3,5}"
 			
 		*/
+		
+		// m1();
+		// m2();
+		// m3();
+		// m4();
+		 m5();
+		
+	}
+	
+	private static void m5() {
+		
+		//Á¤±Ô½ÄÀ» Áö¿øÇÏ´Â ÀÚ¹Ù ¸Ş¼Òµå
+		//- String Å¬·¡½º Á¦°ø
+		
+		
+		//¿ÏÀü ÀÏÄ¡ °Ë»ç
+		String txt = "22¼¼";
+		System.out.println(txt.matches("[0-9]{2,3}"));
+		
+		
+		//String names = "È«±æµ¿,¾Æ¹«°³,,ÇÏÇÏÇÏ;È£È£È£,,,ÈÄÈÄÈÄ";
+		//String[] result = names.split("[,;]+");
+		
+		String names = "È«±æµ¿ ¾Æ¹«°³  ÇÏÇÏÇÏ       È£È£È£ ÈÄÈÄÈÄ";
+		String[] result = names.split("\\s+");
+		
+		for (String name : result) {
+			System.out.println(name);
+		}
+		
+		
+		
+		//°³ÀÎÁ¤º¸ ¸¶½ºÅ·
+		String line = "¾È³çÇÏ¼¼¿ä. Á¦ ¿¬¶ôÃ³´Â 010-5145-2874ÀÔ´Ï´Ù. ¿¬¶ôÀÌ ¾ÈµÇ¸é 010-1234-5678·Î ¿¬¶ôÁÖ¼¼¿ä.";
+		
+		//System.out.println(line.replace("010-2144-2541", "XXX-XXXX-XXXX").replace("010-5896-9854", "XXX-XXXX-XXXX"));
+		
+		System.out.println(line.replaceAll("[0-9]{3}-[0-9]{3,4}-[0-9]{4}", "XXX-XXXX-XXXX"));
+		
+		System.out.println(line.replaceFirst("[0-9]{3}-[0-9]{3,4}-[0-9]{4}", "XXX-XXXX-XXXX"));
+		
+		
+	}
+
+	private static void m4() {
+		
+		//È¸¿ø °¡ÀÔ > »ç¿ëÀÚ ÀÔ·Â > À¯È¿¼º °Ë»ç
+		//1. ÀÌ¸§ > ÇÊ¼ö, ÇÑ±Û, 2~5ÀÚ ÀÌ³»
+		//2. ³ªÀÌ > ÇÊ¼ö, ¼ıÀÚ, 0~120¼¼ ÀÌ³»
+		//3. ¾ÆÀÌµğ > ÇÊ¼ö, ¿µ¾î+¼ıÀÚ+_ Á¶ÇÕ, ¼ıÀÚ ½ÃÀÛ ºÒ°¡´É, 4~12ÀÚ ÀÌ³»
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("ÀÌ¸§: ");
+		String name = scan.nextLine();
+		
+		System.out.print("³ªÀÌ: ");
+		int age = scan.nextInt();
+		scan.skip("\r\n");
+		
+		System.out.print("¾ÆÀÌµğ: ");
+		String id = scan.nextLine();
+		
+		if (check(name, age, id)) {
+			System.out.println("°¡ÀÔ ¿Ï·á");
+		} else {
+			System.out.println("°¡ÀÔ ½ÇÆĞ");
+		}
+		
+	}
+
+	private static boolean check(String name, int age, String id) {
+		
+		String regex = "";
+		Pattern pattern = null;
+		Matcher matcher = null;
+		
+		//1. ÀÌ¸§ > ÇÊ¼ö, ÇÑ±Û, 2~5ÀÚ ÀÌ³»
+		regex = "^[°¡-ÆR]{2,5}$";
+		pattern = Pattern.compile(regex);
+		matcher = pattern.matcher(name); //"È«±æµ¿"
+		
+		if (!matcher.find()) {
+			return false;
+		}
+		
+		
+		//2. ³ªÀÌ > ÇÊ¼ö, ¼ıÀÚ, 0~120¼¼ ÀÌ³»
+		regex = "^[0-9]{1,3}$";
+		pattern = Pattern.compile(regex);
+		matcher = pattern.matcher(age + "");
+		
+		if (!(matcher.find() && (age >= 0 && age <= 120))) {
+			return false;
+		}
+		
+		
+		//3. ¾ÆÀÌµğ > ÇÊ¼ö, ¿µ¾î+¼ıÀÚ+_ Á¶ÇÕ, ¼ıÀÚ ½ÃÀÛ ºÒ°¡´É, 4~12ÀÚ ÀÌ³»
+		regex = "^[A-Za-z_][A-Za-z0-9_]{3,11}$";
+		pattern = Pattern.compile(regex);
+		matcher = pattern.matcher(id);
+		
+		if (!matcher.find()) {
+			return false;
+		}
+		
+		
+		return true;
 	}
 	
 	private static void m3() {
