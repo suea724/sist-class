@@ -1,0 +1,70 @@
+Spring Boot + Thymeleaf
+
+Name: "boot-thymeleaf"
+
+의존성
+- Spring Web
+- Spring Boot DevTools
+- Oracle Driver
+- MyBatis Framework
+- Lombok
+- Thymeleaf
+
+
+설정
+- Server Port
+- MyBatis
+- Thymeleaf
+
+
+
+Thymeleaf, 타임리프
+- 템플릿 엔진(Thyemeleaf, Freemarker, Mustache, Groovy 
+- JSP와 유사한 역할
+- 서버측에서 클라이언트가 보게될 웹 페이지를 동적으로 만드는 역할
+- Spring Boot 공식적으로 선택한 템플릿 엔진
+- 순수 HTML 페이지 기반 > 서버측 도움없이 자체적으로 실행 가능한 템플릿
+
+- "com.test.spring.thymeleaf" > "ThymeleafController.java"
+							  > "AddressDAO.java"
+							  > "AddressDTO.java"
+
+							  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

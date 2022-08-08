@@ -1,0 +1,58 @@
+Name: "boot-mybatis"
+Package: "com.test.spring"
+
+의존성
+1. Spring Web
+2. Spring Boot DevTools
+3. Lombok
+4. MyBatis Framework
+5. Oracle Driver
+
+
+설정
+1. JSP 사용하기
+	- pom.xml
+	- application.properties
+	
+
+
+의존 주입
+- "com.test.controller" > "DIController.java"
+- "com.test.repository" > "TestDAO.java"
+                        > "IMemberDAO.java" (I)
+                        > "MemberDAO.java" (C)
+                        > "AdminDAO.java" (C)
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

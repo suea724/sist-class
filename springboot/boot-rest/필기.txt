@@ -1,0 +1,18 @@
+Spring REST
+
+Name: "boot-rest"
+
+의존성
+- Spring Web
+- Spring Boot DevTools
+
+파일
+- "com.test.spring" > "RestController.java"
+
+
+
+
+
+
+
+
