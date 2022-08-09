@@ -32,7 +32,11 @@ Thymeleaf, 타임리프
 							  
 
 
-
+스프링 메시지
+- application.properties
+- resources > "messages.properties"	
+		    > "messages_en.properties"
+		    > "messages_ja.properties"
 
 
 

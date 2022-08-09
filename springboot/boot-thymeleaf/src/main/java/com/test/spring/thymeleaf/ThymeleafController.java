@@ -1,5 +1,9 @@
 package com.test.spring.thymeleaf;
 
+import java.util.Calendar;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,11 +52,72 @@ public class ThymeleafController {
 	@GetMapping("/m3")
 	public String m3(Model model) {
 		
+		//단일값
 		int num = dao.num();
+		String txt = dao.txt();
+		Calendar now = dao.now();
+		AddressDTO dto = dao.get();
+		Map<String,Integer> map = dao.map();
 		
 		model.addAttribute("num", num);
+		model.addAttribute("txt", txt);
+		model.addAttribute("now", now);
+		model.addAttribute("dto", dto);
+		model.addAttribute("map", map);
 		
 		return "m3";
+	}
+	
+	
+	@GetMapping("/m4")
+	public String m4(Model model) {
+		
+				
+		return "m4";
+	}
+	
+	
+	@GetMapping("/m5")
+	public String m5(Model model) {
+		
+		int a = 10;
+		int b = 3;
+		
+		model.addAttribute("a", a);
+		model.addAttribute("b", b);
+				
+		return "m5";
+	}
+	
+	
+	@GetMapping("/m6")
+	public String m6(Model model) {
+		
+		model.addAttribute("s1", "age");
+		model.addAttribute("size", 30);
+		
+		model.addAttribute("color", "cornflowerblue");
+		
+		return "m6";
+	}
+	
+	
+	@GetMapping("/m7")
+	public String m7(Model model) {
+		
+		String txt = "<u>홍길동</u>입니다.";
+		AddressDTO dto = dao.get();
+		Map<String,Integer> map = dao.map();
+		List<String> names = dao.names();
+		List<AddressDTO> list = dao.list();
+		
+		model.addAttribute("txt", txt);
+		model.addAttribute("dto", dto);
+		model.addAttribute("map", map);
+		model.addAttribute("names", names);
+		model.addAttribute("list", list);
+
+		return "m7";
 	}
 	
 	
