@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -121,7 +123,109 @@ public class ThymeleafController {
 	}
 	
 	
+	@GetMapping("/m8")
+	public String m8(Model model) {
+		
+		int num1 = 1234567;
+		double num2 = 12345.6789;
+		Calendar now = dao.now();
+		
+		model.addAttribute("num1", num1);
+		model.addAttribute("num2", num2);
+		model.addAttribute("now", now);
+
+		return "m8";
+	}
+	
+	
+	@GetMapping("/m9")
+	public String m9(Model model) {
+		
+		int seq = 100;
+		String mode = "add";
+		
+		model.addAttribute("seq", seq);
+		model.addAttribute("mode", mode);
+
+		return "m9";
+	}
+	
+	
+	@GetMapping("/m10")
+	public String m10(Model model) {
+		
+		int num1 = 100;
+		int num2 = -50;
+		String mode = "add";
+		
+		model.addAttribute("num1", num1);
+		model.addAttribute("num2", num2);
+		model.addAttribute("mode", mode);
+
+		return "m10";
+	}
+	
+	
+	@GetMapping("/m11")
+	public String m11(Model model) {
+		
+		List<String> names = dao.names();
+		List<AddressDTO> list = dao.list();
+		
+		model.addAttribute("names", names);
+		model.addAttribute("list", list);
+
+		return "m11";
+	}
+	
+	
+	@GetMapping("/m12")
+	public String m12(Model model) {
+				
+		return "m12";
+	}
+	
+	@GetMapping("/login")
+	public String login(Model model, HttpSession session) {
+		
+		session.setAttribute("auth", "hong");
+		
+		return "redirect:/m12";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(Model model, HttpSession session) {
+		
+		session.removeAttribute("auth");
+		
+		return "redirect:/m12";
+	}
+	
+	
+	@GetMapping("/m13")
+	public String m13(Model model) {
+
+		AddressDTO dto = dao.get();
+		
+		model.addAttribute("dto", dto);
+		
+		return "m13";
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

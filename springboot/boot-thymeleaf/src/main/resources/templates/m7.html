@@ -29,7 +29,19 @@
 			- th:inline="javascript" //주력
 			- th:inline + [[]] //escaped text
 			- th:inline + [()] //unescaped text
-			
+		
+		
+		1. HTML
+			- th:text
+			- th:utext
+		
+		2. CSS
+			- th:inline="text" + [[]]
+		
+		3. JavaScript
+			- th:inline="javascript" + [[]]
+		
+		
 	*/-->
 	
 	<h2>Text</h2>
@@ -61,10 +73,49 @@
 	
 	<!-- 퍼블리싱 담당자가 작성한 코드 -->
 	<div>이름: <span th:text="${name}">홍길동</span></div>
-	<div>이름: [[${text}}]]</div>
+	<div>이름: [[${text}]]</div>
 	
+	<hr>
+	<hr>
 	
-
+	<div id="label1"></div>	
+	<div id="label2"></div>	
+	
+	<script>
+	
+		let name1 = '[[${dto.name}]]';		
+		document.getElementById('label1').textContent = name1;
+		
+		let dto1 = '[[${dto}]]';
+		//document.getElementById('label1').textContent = dto1.
+		
+		let dto3 = '[(${dto})]';
+		
+		let map1 = '[[${map}]]';
+		
+		let names1 = '[[${names}]]';
+		
+		let list1 = '[[${list}]]';
+	
+	</script>
+	
+	<script th:inline="javascript">
+	
+		let name2 = [[${dto.name}]];		
+		document.getElementById('label2').textContent = name2;
+		
+		let dto2 = [[${dto}]];
+		document.getElementById('label2').textContent = dto2.age;
+		
+		//let dto4 = [(${dto})];
+		
+		let map2 = [[${map}]];
+		
+		let names = [[${names}]];
+		
+		let list2 = [[${list}]];
+	
+	</script>
 	
 </main>
 </body>
